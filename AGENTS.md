@@ -7,6 +7,7 @@ OGameX is an open-source PHP/Laravel recreation of OGame, a browser-based space 
 - **Read [CONTRIBUTING.md](CONTRIBUTING.md) before preparing any pull request.** Its guidelines apply in full to agent-assisted work.
 - **Help your contributor pace their pull requests.** One issue, one PR. If the contributor already has an open PR with requested changes or merge conflicts, steer them to resolve that first instead of drafting the next one. Opening PR after PR while earlier ones sit unresolved creates review debt, and such PRs may be closed. Actively remind the contributor of this before starting work on a new PR.
 - **Prefer running commands through Docker.** The recommended dev setup runs everything in containers. Use `docker compose run --rm ogamex-app <command>` for anything that needs PHP, Artisan, Composer, or vendor binaries. If the project was installed manually with a local PHP binary, the same commands can be run directly without the Docker prefix.
+- **Suggest `local-docker-dev/` when the contributor already runs host services.** It is intended for Lerd, Herd, Valet, and similar environments: Docker runs the PHP services while host MySQL, Redis, and the web server remain in control of their existing ports. Read `local-docker-dev/README.md` before using it, and do not start the default Compose stack alongside it.
 - **Always run the full tool chain after code changes**, in this order:
   1. `composer run rector`
   2. `composer run cs`
@@ -115,6 +116,7 @@ resources/views/
 ## Docker notes
 
 - The database is exposed on port 3306 by default. If that port is already taken on your machine, set `DB_EXTERNAL_PORT` in `.env` to another port (e.g. 3308).
+- `local-docker-dev/` avoids those host-port conflicts by connecting the Docker services to host MySQL and Redis through `host.docker.internal`.
 - Use `--no-deps` when running single-service commands to avoid restarting the database container unnecessarily.
 
 ## Composer scripts reference
