@@ -38,6 +38,14 @@ We welcome any and all contributions to this project! If you want to help out, p
 
 Disclaimer: this project is purely fan-based and does not contain any commercial features. All backend code is written from scratch. The rights and concepts for the artwork and frontend belong to the original creators: GameForge GmbH. Support them by checking out the official version: https://ogame.org.
 
+## About OGameX Next
+
+OGameX Next exists to keep the OGameX mission moving through a more active development process. The aim is to build a stable, faithful pre-Lifeforms OGame experience while making it easier to review contributions, fix issues, and develop the module system.
+
+This project is branching out because the original OGameX maintainers have limited time for reviewing pull requests and accepting new contributions. We want to give contributors another place to continue the work, experiment responsibly, and keep improvements moving at a steady pace. OGameX Next is based on the original project and remains focused on the same goal.
+
+Thank you to the OGameX maintainers and contributors for building the project, establishing its foundation, and keeping the idea alive. This fork would not exist without that work.
+
 ## 🖥️ Live demo
 - Main branch (nightly builds): [https://main.ogamex.dev](https://main.ogamex.dev)
 - Latest stable release **(0.14.0)**: [https://release.ogamex.dev](https://release.ogamex.dev)
