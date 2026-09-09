@@ -18,6 +18,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Carbon;
 use Lab404\Impersonate\Models\Impersonate;
 use OGame\Enums\CharacterClass;
+use OGame\Models\Concerns\HasModuleData;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
@@ -94,6 +95,7 @@ use Spatie\Permission\Traits\HasRoles;
 class User extends Authenticatable
 {
     use HasFactory;
+    use HasModuleData;
     use HasRoles;
     use Impersonate;
     use Notifiable;
@@ -103,6 +105,14 @@ class User extends Authenticatable
      * @var bool
      */
     public $remember_token = false;
+
+    /**
+     * The entity type used to namespace module data for this model.
+     */
+    protected function moduleEntityType(): string
+    {
+        return 'player';
+    }
 
     /**
      * Boot method to attach model events.

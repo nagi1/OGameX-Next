@@ -4,6 +4,7 @@ namespace OGame\Factories;
 
 use Cache;
 use Illuminate\Support\Facades\Date;
+use OGame\Events\Game\PlanetCreated;
 use OGame\GameConstants\UniverseConstants;
 use OGame\Models\Enums\PlanetType;
 use OGame\Models\Planet;
@@ -521,6 +522,8 @@ class PlanetServiceFactory
         }
 
         $planet->save();
+
+        event(new PlanetCreated($planet->id, $player->getId(), $planet_type->value));
 
         return $this->makeForPlayer($player, $planet->id);
     }

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
+use OGame\Models\Concerns\HasModuleData;
 
 /**
  *
@@ -175,6 +176,15 @@ use Illuminate\Support\Carbon;
 class Planet extends Model
 {
     use HasFactory;
+    use HasModuleData;
+
+    /**
+     * The entity type used to namespace module data for this model.
+     */
+    protected function moduleEntityType(): string
+    {
+        return 'planet';
+    }
 
     /**
      * Get the planet that owns the research queue record.

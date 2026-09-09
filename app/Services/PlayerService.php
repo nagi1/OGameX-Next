@@ -7,6 +7,7 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
+use OGame\Events\Game\ResearchCompleted;
 use OGame\GameObjects\Models\Calculations\CalculationType;
 use OGame\Models\BuildingQueue;
 use OGame\Models\FleetMission;
@@ -689,6 +690,8 @@ class PlayerService
 
             // Update planet and update level of the building that has been processed.
             $this->setResearchLevel($object->machine_name, $item->object_level_target);
+
+            event(new ResearchCompleted($this->getId(), $object->machine_name, $item->object_level_target));
 
             // Update build queue record
             $item->processed = 1;

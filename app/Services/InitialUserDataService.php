@@ -2,6 +2,7 @@
 
 namespace OGame\Services;
 
+use OGame\Events\Game\PlayerCreated;
 use OGame\Factories\PlanetServiceFactory;
 use OGame\Factories\PlayerServiceFactory;
 use OGame\Models\User;
@@ -26,5 +27,7 @@ class InitialUserDataService
         }
 
         (new MessageService($playerService))->sendWelcomeMessage();
+
+        event(new PlayerCreated($user->id));
     }
 }

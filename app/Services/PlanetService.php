@@ -7,6 +7,7 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use OGame\Events\Game\BuildingCompleted;
 use OGame\Factories\PlanetServiceFactory;
 use OGame\Factories\PlayerServiceFactory;
 use OGame\GameObjects\Models\Abstracts\GameObject;
@@ -1724,7 +1725,9 @@ class PlanetService
                 // ended up in the building queue due to a prior bug), skip it gracefully. The item is
                 // already marked processed above, so it will not be retried on the next page load.
                 try {
+                    $object = ObjectService::getObjectById($item->object_id);
                     $this->setObjectLevel($item->object_id, $item->object_level_target, $save_planet);
+                    event(new BuildingCompleted($this->getPlanetId(), $object->machine_name, $item->object_level_target));
                 } catch (RuntimeException $e) {
                     Log::error('Building queue item skipped due to invalid object type.', [
                         'planet_id' => $this->getPlanetId(),

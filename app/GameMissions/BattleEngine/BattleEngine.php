@@ -3,6 +3,7 @@
 namespace OGame\GameMissions\BattleEngine;
 
 use InvalidArgumentException;
+use OGame\Events\Game\BattleResolved;
 use OGame\GameMissions\BattleEngine\Models\AttackerFleet;
 use OGame\GameMissions\BattleEngine\Models\AttackerFleetResult;
 use OGame\GameMissions\BattleEngine\Models\BattleResult;
@@ -290,6 +291,13 @@ abstract class BattleEngine
             $result->moonChance = $this->calculateMoonChance($result->debris);
             $result->moonCreated = $this->rollMoonCreation($result->moonChance);
         }
+
+        $attackerPlayerIds = array_map(
+            static fn (AttackerFleet $attacker): int => $attacker->ownerId,
+            $this->attackers,
+        );
+
+        event(new BattleResolved($attackerPlayerIds, $defenderPlayer->getId(), $this->defenderPlanet->getPlanetId()));
 
         return $result;
     }

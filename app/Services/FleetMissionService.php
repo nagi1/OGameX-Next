@@ -6,6 +6,7 @@ use Exception;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Date;
 use OGame\Enums\FleetSpeedType;
+use OGame\Events\Game\FleetMissionArrived;
 use OGame\Factories\GameMissionFactory;
 use OGame\Factories\PlanetServiceFactory;
 use OGame\GameConstants\UniverseConstants;
@@ -601,6 +602,8 @@ class FleetMissionService
             'messageService' => $this->messageService,
         ]);
         $missionObject->process($mission);
+
+        event(new FleetMissionArrived($mission->id, $mission->mission_type, $mission->parent_id));
     }
 
     /**
