@@ -12,6 +12,22 @@ use OGame\Services\SettingsService;
 abstract class TestCase extends BaseTestCase
 {
     /**
+     * Fail quickly when a test tries to wait on an InnoDB row lock or MySQL metadata lock.
+     *
+     * These are session settings, so they must be applied after Laravel has selected the
+     * per-worker parallel test database connection.
+     */
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        if ($this->app->environment('testing') && DB::getDriverName() === 'mysql') {
+            DB::unprepared('SET SESSION innodb_lock_wait_timeout = 1');
+            DB::unprepared('SET SESSION lock_wait_timeout = 1');
+        }
+    }
+
+    /**
      * Creates the application.
      *
      * @return Application
