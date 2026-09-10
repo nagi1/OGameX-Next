@@ -51,6 +51,16 @@ use RuntimeException;
 
 class ExpeditionMission extends GameMission
 {
+    /**
+     * Outcome weights do not change during a mission. Keep only the last mission's
+     * weights so repeated outcome selection is cheap without retaining old missions.
+     *
+     * @var array<string, float>
+     */
+    private array $outcomeWeightsCache = [];
+
+    private int|string|null $outcomeWeightsCacheKey = null;
+
     protected static string $name = 'Expedition';
     protected static int $typeId = 15;
     protected static bool $hasReturnMission = true;
@@ -66,6 +76,11 @@ class ExpeditionMission extends GameMission
      */
     protected function getOutcomeWeights(FleetMission $mission): array
     {
+        $cacheKey = $mission->getKey() ?? spl_object_id($mission);
+        if ($this->outcomeWeightsCacheKey === $cacheKey) {
+            return $this->outcomeWeightsCache;
+        }
+
         $settingsService = app(SettingsService::class);
 
         $weights = [
@@ -90,6 +105,9 @@ class ExpeditionMission extends GameMission
             $weights['pirates'] *= $combatMultiplier;
             $weights['aliens'] *= $combatMultiplier;
         }
+
+        $this->outcomeWeightsCacheKey = $cacheKey;
+        $this->outcomeWeightsCache = $weights;
 
         return $weights;
     }

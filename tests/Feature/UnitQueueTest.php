@@ -106,12 +106,12 @@ class UnitQueueTest extends IsolatedAccountTestCase
         $response->assertStatus(200);
         $this->assertObjectLevelOnPage($response, 'light_fighter', 0, 'Light Fighter is not at 0 units directly after build request issued.');
 
-        // Increase time by random 1-15 minute intervals 20 times in total to simulate partial updates.
+        // Advance the queue directly between checkpoints. The page request itself is
+        // not part of the partial-progress assertion and rendering the full shipyard
+        // page for every interval makes this stress test unnecessarily expensive.
         for ($i = 0; $i < 50; $i++) {
             $this->travel(rand(1, 15))->minutes();
-
-            $response = $this->get('/shipyard');
-            $response->assertStatus(200);
+            $this->planetService->updateUnitQueue();
         }
 
         // ---
@@ -151,20 +151,18 @@ class UnitQueueTest extends IsolatedAccountTestCase
         $response->assertStatus(200);
         $this->assertObjectLevelOnPage($response, 'light_fighter', 0, 'Light Fighter is not at 0 units directly after build request issued.');
 
-        // Increase time by random 1-15 second intervals 20 times in total to simulate partial updates.
+        // Advance the queue directly between checkpoints. The page request itself is
+        // not part of the partial-progress assertion and rendering the full shipyard
+        // page for every interval makes this stress test unnecessarily expensive.
         for ($i = 0; $i < 20; $i++) {
             $this->travel(rand(1, 15))->seconds();
-
-            $response = $this->get('/shipyard');
-            $response->assertStatus(200);
+            $this->planetService->updateUnitQueue();
         }
 
         // Do it again but now with just millisecond differences.
         for ($i = 0; $i < 20; $i++) {
             $this->travel(rand(400, 999))->milliseconds();
-
-            $response = $this->get('/shipyard');
-            $response->assertStatus(200);
+            $this->planetService->updateUnitQueue();
         }
 
         // Increase time by 10 hours to simulate the final update.
