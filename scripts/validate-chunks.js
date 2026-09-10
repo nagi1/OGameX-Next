@@ -18,7 +18,7 @@ const ORIGINAL = projectPath(args.input, "input");
 const CHUNKS_DIR = projectPath(args.chunks, "chunks");
 const TYPE = assetType(ORIGINAL, args.type);
 const MANIFEST = path.join(CHUNKS_DIR, "manifest.json");
-const REASSEMBLED = path.join(CHUNKS_DIR, "_reassembled." + (TYPE === "css" ? "css" : "js"));
+const REASSEMBLED = projectPath("tmp/asset-validation/reassembled." + (TYPE === "css" ? "css" : "js"), "validation output");
 
 const manifest = JSON.parse(fs.readFileSync(MANIFEST, "utf8"));
 
@@ -33,6 +33,7 @@ for (const chunk of manifest.chunks) {
   reassembled += fs.readFileSync(chunkPath, "utf8");
 }
 
+fs.mkdirSync(path.dirname(REASSEMBLED), { recursive: true });
 fs.writeFileSync(REASSEMBLED, reassembled);
 
 // ---- Compare sizes ----

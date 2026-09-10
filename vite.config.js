@@ -1,8 +1,36 @@
 import { defineConfig } from 'vite'
 import laravel from 'laravel-vite-plugin'
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs'
-import { resolve } from 'node:path'
+import { dirname, resolve } from 'node:path'
 import { createHash } from 'node:crypto'
+
+function legacyChunkFiles(manifestFile) {
+    const manifestPath = resolve(manifestFile)
+    const chunksDirectory = dirname(manifestPath)
+    const chunksRoot = chunksDirectory + '/'
+    const manifest = JSON.parse(readFileSync(manifestPath, 'utf-8'))
+
+    if (!Array.isArray(manifest.chunks) || manifest.chunks.length === 0) {
+        throw new Error('Legacy chunk manifest has no chunks: ' + manifestFile)
+    }
+
+    return manifest.chunks.map(({ path }) => {
+        if (typeof path !== 'string' || path.length === 0) {
+            throw new Error('Legacy chunk manifest has an invalid path: ' + manifestFile)
+        }
+
+        const chunkPath = resolve(chunksDirectory, path)
+        if (!chunkPath.startsWith(chunksRoot)) {
+            throw new Error('Legacy chunk manifest path escapes its directory: ' + path)
+        }
+
+        readFileSync(chunkPath, 'utf-8')
+
+        return chunkPath
+    })
+}
+
+const ingameChunkFiles = legacyChunkFiles('resources/js/ingame/chunks/manifest.json')
 
 const ingameScripts = [
     'resources/js/ingame/jquery-1.12.4.min.js',
@@ -17,7 +45,7 @@ const ingameScripts = [
     'resources/js/ingame/tooltips.js',
     'resources/js/ingame/trader.js',
     'resources/js/ingame/timerhandler.js',
-    'resources/js/ingame/e7c74974620fa35b197315ebdbb8c2.js',
+    ...ingameChunkFiles,
     'resources/js/ingame/messages-pagination.js',
     'node_modules/pusher-js/dist/web/pusher.min.js',
     'node_modules/laravel-echo/dist/echo.iife.js',

@@ -10,7 +10,7 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
 import * as acorn from "acorn";
-import { options, projectPath } from "./lib/asset-workflow.js";
+import { displayPath, options, projectPath } from "./lib/asset-workflow.js";
 
 const args = options({
   input: "resources/js/ingame/e7c74974620fa35b197315ebdbb8c2.js",
@@ -231,7 +231,7 @@ if (cursor < code.length) {
 
 const manifest = {
   description: "Feature-oriented, source-order-preserving in-game JavaScript split",
-  source: INPUT,
+  source: displayPath(INPUT),
   chunks: groups.map(({ source, symbols, ...group }) => ({
     ...group,
     symbols: symbols.slice(0, 30),
@@ -240,7 +240,7 @@ const manifest = {
 fs.writeFileSync(MANIFEST, JSON.stringify(manifest, null, 2));
 
 const plan = {
-  source: INPUT,
+  source: displayPath(INPUT),
   generatedAt: new Date().toISOString(),
   grouping: "AST top-level statements, symbol names, and feature keyword rules",
   caveat: "This is a review aid. Groups preserve order and may repeat when a feature is interleaved.",
