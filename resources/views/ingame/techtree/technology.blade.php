@@ -82,7 +82,6 @@
         }
 
         closeCategories();
-        openCategory($categoryHeadings.first());
 
         $categoryHeadings
             .off('.technologyCategories')
