@@ -1936,17 +1936,17 @@ However, the Space Dock's engineers think that some of the remains can be salvag
 
     @if (\Session::has('success'))
     $(document).ready(function () {
-        fadeBox("{!! \Session::get('success') !!}", 0);
+        fadeBox(@json(\Session::get('success')), 0);
     });
     @endif
     @if (\Session::has('error'))
     $(document).ready(function () {
-        fadeBox("{!! \Session::get('error') !!}", 1);
+        fadeBox(@json(\Session::get('error')), 1);
     });
     @endif
     @if (\Session::has('success_logout'))
     $(document).ready(function () {
-        errorBoxNotify("Ok", "{!! \Session::get('success_logout') !!}", "Ok", redirectLogout);
+        errorBoxNotify("Ok", @json(\Session::get('success_logout')), "Ok", redirectLogout);
     });
     @endif
 </script>

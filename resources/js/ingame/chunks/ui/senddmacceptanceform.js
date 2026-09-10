@@ -1,0 +1,5 @@
+
+
+function sendDMAcceptanceForm() {
+  $('#premiumAcceptForm').submit();
+}

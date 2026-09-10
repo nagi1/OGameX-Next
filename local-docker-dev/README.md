@@ -19,11 +19,21 @@ docker compose -f local-docker-dev/docker-compose.yml up -d
 
 The app publishes PHP-FPM on port 9000. Configure your existing web server to pass PHP requests to `127.0.0.1:9000`. The containers reach host MySQL and Redis at `host.docker.internal`; the Linux `host-gateway` mapping is included in the Compose file.
 
-The queue worker and Reverb are opt-in so they do not start or claim ports unless you need them:
+Reverb starts with the core stack and serves secure WebSockets on port 8090 using
+Yerd's local certificate. This is required when the site is served at an HTTPS
+`.test` URL. Set the root `.env` client values to:
+
+```dotenv
+REVERB_HOST=ogamex-next.test
+REVERB_PORT=8090
+REVERB_SCHEME=https
+```
+
+The app container still broadcasts to Reverb over the private Docker network.
+The queue worker is opt-in:
 
 ```bash
 docker compose -f local-docker-dev/docker-compose.yml --profile queue up -d
-docker compose -f local-docker-dev/docker-compose.yml --profile reverb up -d
 ```
 
 Keep `LOCAL_DB_DATABASE` pointed at a dedicated development or test database. This setup runs migrations when the app container starts.

@@ -81,7 +81,11 @@
         }
 
         $(document).ready(function () {
-            gfSlider = new GFSlider(getElementByIdWithCache('detailWrapper'));
+            const detailWrapper = getElementByIdWithCache('detailWrapper');
+
+            if (detailWrapper) {
+                gfSlider = new GFSlider(detailWrapper);
+            }
             initType();
             @if (!empty($ship_active))
             // Countdown for inline ship element (pusher)

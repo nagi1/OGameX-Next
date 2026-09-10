@@ -26,6 +26,7 @@ services:
     environment:
       CONTAINER_ROLE: app
       REVERB_HOST: ogamex-reverb
+      REVERB_SCHEME: http
       <<: *host-services
     ports:
       - "${PHP_FPM_PORT:-9000}:9000"
@@ -44,6 +45,7 @@ services:
     environment:
       CONTAINER_ROLE: queue
       REVERB_HOST: ogamex-reverb
+      REVERB_SCHEME: http
       QUEUE_WORKERS_LIGHT: ${QUEUE_WORKERS_LIGHT:-2}
       QUEUE_WORKERS_HEAVY: ${QUEUE_WORKERS_HEAVY:-3}
       <<: *host-services
@@ -52,9 +54,15 @@ services:
 
   ogamex-reverb:
     <<: *service
-    profiles: ["reverb"]
+    volumes:
+      - ..:/var/www
+      - ../php/local.ini:/usr/local/etc/php/conf.d/local.ini
+      - /opt/yerd/web/certs/sites:/etc/ssl/yerd:ro
     environment:
       CONTAINER_ROLE: reverb
+      REVERB_SERVER_TLS_CERTIFICATE: /etc/ssl/yerd/ogamex-next.test.crt
+      REVERB_SERVER_TLS_KEY: /etc/ssl/yerd/ogamex-next.test.key
+      REVERB_SERVER_TLS_VERIFY_PEER: "false"
       <<: *host-services
     ports:
       - "${REVERB_SERVER_PORT:-8090}:${REVERB_SERVER_PORT:-8090}"

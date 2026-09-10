@@ -22038,6 +22038,9 @@ function initIndex() {
     $('html, body').animate({
       scrollTop: 0
     }, 500);
+    if (window.gfSlider === undefined) {
+      return;
+    }
     gfSlider.slideIn(getElementByIdWithCache("detail"), id);
   }).undelegate('a.close_details', 'click').delegate('a.close_details', 'click', function () {
     if (window.gfSlider !== undefined) {

@@ -13,7 +13,13 @@
         return;
     }
 
-    window.Echo = new Echo({
+    const EchoConstructor = window.Echo?.default ?? window.Echo;
+
+    if (typeof EchoConstructor !== 'function') {
+        return;
+    }
+
+    window.Echo = new EchoConstructor({
         broadcaster: 'reverb',
         key: reverbAppKey,
         wsHost: reverbHost,

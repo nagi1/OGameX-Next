@@ -1,0 +1,4626 @@
+{
+  "description": "Feature-oriented, source-order-preserving in-game JavaScript split",
+  "source": "resources/js/ingame/e7c74974620fa35b197315ebdbb8c2.js",
+  "chunks": [
+    {
+      "feature": "events",
+      "start": 116,
+      "end": 1511,
+      "startLine": 7,
+      "endLine": 80,
+      "statementCount": 6,
+      "module": "timerhandler",
+      "responsibility": "timers, event boxes, and movement updates",
+      "path": "events/timerhandler.js",
+      "symbols": [
+        "TimerHandler",
+        "TimerHandler.prototype.appendCallback",
+        "TimerHandler.prototype.removeCallback",
+        "TimerHandler.prototype.startTimer",
+        "TimerHandler.prototype.stopTimer",
+        "TimerHandler.prototype._timer"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 1687,
+      "end": 50153,
+      "startLine": 89,
+      "endLine": 1650,
+      "statementCount": 21,
+      "module": "fn-dump",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/fn-dump.js",
+      "symbols": [
+        "IfStatement",
+        "$.fn.dump",
+        "$.dump",
+        "trim",
+        "ltrim",
+        "rtrim",
+        "fieldSelection",
+        "initialization",
+        "$.fn.hoverIntent",
+        "noop",
+        "genericCallback",
+        "callIfDefined",
+        "qMarkOrAmp",
+        "STR_ASYNC, STR_CHARSET, STR_EMPTY, STR_ERROR, STR_INSERT_BEFORE, STR_JQUERY_JSONP, STR_ON, STR_ON_CLICK, STR_ON_ERROR, STR_ON_LOAD, STR_ON_READY_STATE_CHANGE, STR_READY_STATE, STR_REMOVE_CHILD, STR_SCRIPT_TAG, STR_SUCCESS, STR_TIMEOUT, win, Deferred, head, pageCache, count, lastValue, xOptionsDefaults, opera, oldIE",
+        "jsonp",
+        "jsonp.setup",
+        "$.jsonp",
+        "$.fn.markItUp",
+        "$.fn.markItUpRemove",
+        "$.markItUp",
+        "ExpressionStatement"
+      ]
+    },
+    {
+      "feature": "ui",
+      "start": 53472,
+      "end": 155187,
+      "startLine": 1727,
+      "endLine": 4696,
+      "statementCount": 21,
+      "module": "ts",
+      "responsibility": "overlays, menus, forms, and reusable interface behavior",
+      "path": "ui/ts.js",
+      "symbols": [
+        "initialization",
+        "initialization",
+        "ts",
+        "initialization",
+        "initialization",
+        "initialization",
+        "initialization",
+        "initialization",
+        "initialization",
+        "initialization",
+        "initialization",
+        "initialization",
+        "initialization",
+        "initialization",
+        "initialization",
+        "ExpressionStatement",
+        "methods",
+        "$.fn.validationEngine",
+        "$.validationEngine",
+        "tooltipSettings",
+        "methods._buildPrompt"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 155191,
+      "end": 383716,
+      "startLine": 4698,
+      "endLine": 11443,
+      "statementCount": 18,
+      "module": "methods-closeprompt",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/methods-closeprompt.js",
+      "symbols": [
+        "methods._closePrompt",
+        "methods._updatePrompt",
+        "methods._getPrompt",
+        "initialization",
+        "$.fn.wipetouch",
+        "ExpressionStatement",
+        "ogame",
+        "IfStatement",
+        "EmptyStatement",
+        "Spinners",
+        "b",
+        "c",
+        "d",
+        "e, f, g",
+        "initialization",
+        "h",
+        "ExpressionStatement",
+        "ExpressionStatement"
+      ]
+    },
+    {
+      "feature": "ui",
+      "start": 492673,
+      "end": 493415,
+      "startLine": 14234,
+      "endLine": 14268,
+      "statementCount": 3,
+      "module": "reloadrightmenu",
+      "responsibility": "overlays, menus, forms, and reusable interface behavior",
+      "path": "ui/reloadrightmenu.js",
+      "symbols": [
+        "reloadRightmenu",
+        "displayRightmenu",
+        "ajaxFormSubmit"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 493417,
+      "end": 493676,
+      "startLine": 14270,
+      "endLine": 14278,
+      "statementCount": 1,
+      "module": "initconnectionerrorfunction",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/initconnectionerrorfunction.js",
+      "symbols": [
+        "initConnectionErrorFunction"
+      ]
+    },
+    {
+      "feature": "alliance",
+      "start": 493695,
+      "end": 493817,
+      "startLine": 14280,
+      "endLine": 14285,
+      "statementCount": 1,
+      "module": "initallianceinfo",
+      "responsibility": "alliance and diplomacy interactions",
+      "path": "alliance/initallianceinfo.js",
+      "symbols": [
+        "initAllianceInfo"
+      ]
+    },
+    {
+      "feature": "messages",
+      "start": 493819,
+      "end": 510667,
+      "startLine": 14287,
+      "endLine": 14828,
+      "statementCount": 3,
+      "module": "initbbcodeeditor",
+      "responsibility": "messages, reports, chat, and notifications",
+      "path": "messages/initbbcodeeditor.js",
+      "symbols": [
+        "initialization",
+        "initBBCodeEditor",
+        "initBBCodes"
+      ]
+    },
+    {
+      "feature": "alliance",
+      "start": 510668,
+      "end": 513051,
+      "startLine": 14829,
+      "endLine": 14923,
+      "statementCount": 5,
+      "module": "ogame-buddies",
+      "responsibility": "alliance and diplomacy interactions",
+      "path": "alliance/ogame-buddies.js",
+      "symbols": [
+        "ogame.buddies",
+        "initInviteCodes",
+        "incrementBuddyCount",
+        "updateRequestCount",
+        "updateBuddyCount"
+      ]
+    },
+    {
+      "feature": "messages",
+      "start": 513053,
+      "end": 514370,
+      "startLine": 14925,
+      "endLine": 14977,
+      "statementCount": 6,
+      "module": "reportmessage",
+      "responsibility": "messages, reports, chat, and notifications",
+      "path": "messages/reportmessage.js",
+      "symbols": [
+        "reportMessage",
+        "reportAllyMessage",
+        "elem, messageId, senderId",
+        "reportAllyRoundMessage",
+        "reportMessageCallback",
+        "requestsReady"
+      ]
+    },
+    {
+      "feature": "alliance",
+      "start": 514372,
+      "end": 515315,
+      "startLine": 14979,
+      "endLine": 15002,
+      "statementCount": 1,
+      "module": "initbuddyrequestform",
+      "responsibility": "alliance and diplomacy interactions",
+      "path": "alliance/initbuddyrequestform.js",
+      "symbols": [
+        "initBuddyRequestForm"
+      ]
+    },
+    {
+      "feature": "marketplace",
+      "start": 515316,
+      "end": 516231,
+      "startLine": 15003,
+      "endLine": 15030,
+      "statementCount": 1,
+      "module": "initbuyresourceoverlay",
+      "responsibility": "marketplace, items, and resource trading",
+      "path": "marketplace/initbuyresourceoverlay.js",
+      "symbols": [
+        "initBuyResourceOverlay"
+      ]
+    },
+    {
+      "feature": "ui",
+      "start": 516233,
+      "end": 516304,
+      "startLine": 15032,
+      "endLine": 15034,
+      "statementCount": 1,
+      "module": "senddmacceptanceform",
+      "responsibility": "overlays, menus, forms, and reusable interface behavior",
+      "path": "ui/senddmacceptanceform.js",
+      "symbols": [
+        "sendDMAcceptanceForm"
+      ]
+    },
+    {
+      "feature": "marketplace",
+      "start": 516306,
+      "end": 516881,
+      "startLine": 15036,
+      "endLine": 15053,
+      "statementCount": 3,
+      "module": "openbuyresourcedialog",
+      "responsibility": "marketplace, items, and resource trading",
+      "path": "marketplace/openbuyresourcedialog.js",
+      "symbols": [
+        "openBuyResourceDialog",
+        "abortBuyResource",
+        "initBuyResources"
+      ]
+    },
+    {
+      "feature": "resources",
+      "start": 516883,
+      "end": 519844,
+      "startLine": 15055,
+      "endLine": 15128,
+      "statementCount": 2,
+      "module": "onchangetopremium",
+      "responsibility": "resource display and production interactions",
+      "path": "resources/onchangetopremium.js",
+      "symbols": [
+        "onChangeToPremium",
+        "submitBuyRequest"
+      ]
+    },
+    {
+      "feature": "marketplace",
+      "start": 519846,
+      "end": 521377,
+      "startLine": 15130,
+      "endLine": 15194,
+      "statementCount": 2,
+      "module": "reallysubmitbuyrequest",
+      "responsibility": "marketplace, items, and resource trading",
+      "path": "marketplace/reallysubmitbuyrequest.js",
+      "symbols": [
+        "reallySubmitBuyRequest",
+        "handleInputForResourcePackages"
+      ]
+    },
+    {
+      "feature": "resources",
+      "start": 521379,
+      "end": 522686,
+      "startLine": 15196,
+      "endLine": 15231,
+      "statementCount": 1,
+      "module": "updatecostsafterusermodification",
+      "responsibility": "resource display and production interactions",
+      "path": "resources/updatecostsafterusermodification.js",
+      "symbols": [
+        "updateCostsAfterUserModification"
+      ]
+    },
+    {
+      "feature": "ui",
+      "start": 522688,
+      "end": 523869,
+      "startLine": 15233,
+      "endLine": 15259,
+      "statementCount": 1,
+      "module": "updatepercentagebasedpackages",
+      "responsibility": "overlays, menus, forms, and reusable interface behavior",
+      "path": "ui/updatepercentagebasedpackages.js",
+      "symbols": [
+        "updatePercentageBasedPackages"
+      ]
+    },
+    {
+      "feature": "resources",
+      "start": 523871,
+      "end": 525664,
+      "startLine": 15261,
+      "endLine": 15300,
+      "statementCount": 2,
+      "module": "updateproductionbasedpackages",
+      "responsibility": "resource display and production interactions",
+      "path": "resources/updateproductionbasedpackages.js",
+      "symbols": [
+        "updateProductionBasedPackages",
+        "updateBuyTextAndActivatePackage"
+      ]
+    },
+    {
+      "feature": "messages",
+      "start": 525745,
+      "end": 582884,
+      "startLine": 15303,
+      "endLine": 16982,
+      "statementCount": 1,
+      "module": "ogame-chat-removed",
+      "responsibility": "messages, reports, chat, and notifications",
+      "path": "messages/ogame-chat-removed.js",
+      "symbols": [
+        "_ogame_chat_removed"
+      ]
+    },
+    {
+      "feature": "lifeforms",
+      "start": 582885,
+      "end": 582953,
+      "startLine": 16983,
+      "endLine": 16983,
+      "statementCount": 1,
+      "module": "characterclassarr",
+      "responsibility": "lifeforms, classes, rewards, and graveyard screens",
+      "path": "lifeforms/characterclassarr.js",
+      "symbols": [
+        "characterClassArr"
+      ]
+    },
+    {
+      "feature": "alliance",
+      "start": 582954,
+      "end": 583022,
+      "startLine": 16984,
+      "endLine": 16984,
+      "statementCount": 1,
+      "module": "allianceclassarr",
+      "responsibility": "alliance and diplomacy interactions",
+      "path": "alliance/allianceclassarr.js",
+      "symbols": [
+        "allianceClassArr"
+      ]
+    },
+    {
+      "feature": "lifeforms",
+      "start": 583023,
+      "end": 583107,
+      "startLine": 16985,
+      "endLine": 16991,
+      "statementCount": 1,
+      "module": "characterclassbonuses",
+      "responsibility": "lifeforms, classes, rewards, and graveyard screens",
+      "path": "lifeforms/characterclassbonuses.js",
+      "symbols": [
+        "characterClassBonuses"
+      ]
+    },
+    {
+      "feature": "alliance",
+      "start": 583108,
+      "end": 583191,
+      "startLine": 16992,
+      "endLine": 16998,
+      "statementCount": 1,
+      "module": "allianceclassbonuses",
+      "responsibility": "alliance and diplomacy interactions",
+      "path": "alliance/allianceclassbonuses.js",
+      "symbols": [
+        "allianceClassBonuses"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 583193,
+      "end": 583306,
+      "startLine": 17000,
+      "endLine": 17008,
+      "statementCount": 1,
+      "module": "isjsonstring",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/isjsonstring.js",
+      "symbols": [
+        "isJsonString"
+      ]
+    },
+    {
+      "feature": "messages",
+      "start": 583308,
+      "end": 583776,
+      "startLine": 17010,
+      "endLine": 17019,
+      "statementCount": 1,
+      "module": "isreportstring",
+      "responsibility": "messages, reports, chat, and notifications",
+      "path": "messages/isreportstring.js",
+      "symbols": [
+        "isReportString"
+      ]
+    },
+    {
+      "feature": "galaxy",
+      "start": 583778,
+      "end": 584663,
+      "startLine": 17021,
+      "endLine": 17052,
+      "statementCount": 1,
+      "module": "loadplanetaction",
+      "responsibility": "galaxy, planets, moons, and debris fields",
+      "path": "galaxy/loadplanetaction.js",
+      "symbols": [
+        "loadPlanetAction"
+      ]
+    },
+    {
+      "feature": "messages",
+      "start": 584665,
+      "end": 585771,
+      "startLine": 17054,
+      "endLine": 17092,
+      "statementCount": 1,
+      "module": "loadspyreport",
+      "responsibility": "messages, reports, chat, and notifications",
+      "path": "messages/loadspyreport.js",
+      "symbols": [
+        "loadSpyReport"
+      ]
+    },
+    {
+      "feature": "empire",
+      "start": 585773,
+      "end": 586642,
+      "startLine": 17094,
+      "endLine": 17114,
+      "statementCount": 1,
+      "module": "adjustresearchclassbonuses",
+      "responsibility": "empire, construction, and technology screens",
+      "path": "empire/adjustresearchclassbonuses.js",
+      "symbols": [
+        "adjustResearchClassBonuses"
+      ]
+    },
+    {
+      "feature": "combat",
+      "start": 586644,
+      "end": 587457,
+      "startLine": 17116,
+      "endLine": 17135,
+      "statementCount": 1,
+      "module": "simchanged",
+      "responsibility": "combat simulation and battle presentation",
+      "path": "combat/simchanged.js",
+      "symbols": [
+        "simChanged"
+      ]
+    },
+    {
+      "feature": "galaxy",
+      "start": 587459,
+      "end": 588487,
+      "startLine": 17137,
+      "endLine": 17161,
+      "statementCount": 1,
+      "module": "switchspaceobject",
+      "responsibility": "galaxy, planets, moons, and debris fields",
+      "path": "galaxy/switchspaceobject.js",
+      "symbols": [
+        "switchSpaceObject"
+      ]
+    },
+    {
+      "feature": "fleet",
+      "start": 588489,
+      "end": 598384,
+      "startLine": 17163,
+      "endLine": 17341,
+      "statementCount": 4,
+      "module": "changeclass",
+      "responsibility": "fleet dispatch, templates, and fleet actions",
+      "path": "fleet/changeclass.js",
+      "symbols": [
+        "changeClass",
+        "fillData",
+        "clearPlayer",
+        "clearTechnologies"
+      ]
+    },
+    {
+      "feature": "lifeforms",
+      "start": 598386,
+      "end": 598651,
+      "startLine": 17343,
+      "endLine": 17351,
+      "statementCount": 1,
+      "module": "expandlifeforms",
+      "responsibility": "lifeforms, classes, rewards, and graveyard screens",
+      "path": "lifeforms/expandlifeforms.js",
+      "symbols": [
+        "expandLifeforms"
+      ]
+    },
+    {
+      "feature": "galaxy",
+      "start": 598653,
+      "end": 599821,
+      "startLine": 17353,
+      "endLine": 17376,
+      "statementCount": 3,
+      "module": "showspaceobjectselection",
+      "responsibility": "galaxy, planets, moons, and debris fields",
+      "path": "galaxy/showspaceobjectselection.js",
+      "symbols": [
+        "showSpaceObjectSelection",
+        "selectSpaceObject",
+        "loadPlanetInfo"
+      ]
+    },
+    {
+      "feature": "combat",
+      "start": 599823,
+      "end": 600447,
+      "startLine": 17378,
+      "endLine": 17389,
+      "statementCount": 1,
+      "module": "loadinfoparticipant",
+      "responsibility": "combat simulation and battle presentation",
+      "path": "combat/loadinfoparticipant.js",
+      "symbols": [
+        "loadInfoParticipant"
+      ]
+    },
+    {
+      "feature": "lifeforms",
+      "start": 600449,
+      "end": 600687,
+      "startLine": 17391,
+      "endLine": 17397,
+      "statementCount": 1,
+      "module": "selectcharacterclass",
+      "responsibility": "lifeforms, classes, rewards, and graveyard screens",
+      "path": "lifeforms/selectcharacterclass.js",
+      "symbols": [
+        "selectCharacterClass"
+      ]
+    },
+    {
+      "feature": "alliance",
+      "start": 600689,
+      "end": 600921,
+      "startLine": 17399,
+      "endLine": 17405,
+      "statementCount": 1,
+      "module": "selectallianceclass",
+      "responsibility": "alliance and diplomacy interactions",
+      "path": "alliance/selectallianceclass.js",
+      "symbols": [
+        "selectAllianceClass"
+      ]
+    },
+    {
+      "feature": "combat",
+      "start": 600923,
+      "end": 604914,
+      "startLine": 17407,
+      "endLine": 17517,
+      "statementCount": 4,
+      "module": "switchparticipant",
+      "responsibility": "combat simulation and battle presentation",
+      "path": "combat/switchparticipant.js",
+      "symbols": [
+        "switchParticipant",
+        "deleteRequest",
+        "deleteSim",
+        "saveSimName"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 604916,
+      "end": 605311,
+      "startLine": 17519,
+      "endLine": 17533,
+      "statementCount": 1,
+      "module": "filterplayernames",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/filterplayernames.js",
+      "symbols": [
+        "filterPlayerNames"
+      ]
+    },
+    {
+      "feature": "combat",
+      "start": 605313,
+      "end": 606471,
+      "startLine": 17535,
+      "endLine": 17563,
+      "statementCount": 2,
+      "module": "loadsiminfo",
+      "responsibility": "combat simulation and battle presentation",
+      "path": "combat/loadsiminfo.js",
+      "symbols": [
+        "loadSimInfo",
+        "saveRequest"
+      ]
+    },
+    {
+      "feature": "fleet",
+      "start": 606473,
+      "end": 619442,
+      "startLine": 17565,
+      "endLine": 17816,
+      "statementCount": 1,
+      "module": "savesim",
+      "responsibility": "fleet dispatch, templates, and fleet actions",
+      "path": "fleet/savesim.js",
+      "symbols": [
+        "saveSim"
+      ]
+    },
+    {
+      "feature": "combat",
+      "start": 619444,
+      "end": 633172,
+      "startLine": 17818,
+      "endLine": 18142,
+      "statementCount": 8,
+      "module": "removecombatsim",
+      "responsibility": "combat simulation and battle presentation",
+      "path": "combat/removecombatsim.js",
+      "symbols": [
+        "removeCombatSim",
+        "changeCombatSimState",
+        "loadSim",
+        "addParticipant",
+        "newCombatPlanning",
+        "resetAnim",
+        "invitePlayerToSim",
+        "removeParticipant"
+      ]
+    },
+    {
+      "feature": "fleet",
+      "start": 633174,
+      "end": 634090,
+      "startLine": 18144,
+      "endLine": 18170,
+      "statementCount": 1,
+      "module": "loadsimdetails",
+      "responsibility": "fleet dispatch, templates, and fleet actions",
+      "path": "fleet/loadsimdetails.js",
+      "symbols": [
+        "loadSimDetails"
+      ]
+    },
+    {
+      "feature": "combat",
+      "start": 634092,
+      "end": 640841,
+      "startLine": 18172,
+      "endLine": 18326,
+      "statementCount": 4,
+      "module": "updatesimshortinfo",
+      "responsibility": "combat simulation and battle presentation",
+      "path": "combat/updatesimshortinfo.js",
+      "symbols": [
+        "updateSimShortInfo",
+        "joinCombatSim",
+        "startSimulation",
+        "initialization"
+      ]
+    },
+    {
+      "feature": "fleet",
+      "start": 640842,
+      "end": 641127,
+      "startLine": 18327,
+      "endLine": 18334,
+      "statementCount": 1,
+      "module": "document",
+      "responsibility": "fleet dispatch, templates, and fleet actions",
+      "path": "fleet/document.js",
+      "symbols": [
+        "initialization"
+      ]
+    },
+    {
+      "feature": "combat",
+      "start": 641129,
+      "end": 649147,
+      "startLine": 18336,
+      "endLine": 18603,
+      "statementCount": 8,
+      "module": "closecombatsimresultoverlay",
+      "responsibility": "combat simulation and battle presentation",
+      "path": "combat/closecombatsimresultoverlay.js",
+      "symbols": [
+        "closeCombatSimResultOverlay",
+        "getRoundData",
+        "selectRound",
+        "displayRoundData",
+        "getRoundStatistic",
+        "displayRoundStatistics",
+        "getCombatResearchPercentages",
+        "displayCombatResearchPercentages"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 649149,
+      "end": 649315,
+      "startLine": 18605,
+      "endLine": 18611,
+      "statementCount": 2,
+      "module": "findclassname",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/findclassname.js",
+      "symbols": [
+        "findClassName",
+        "findClassId"
+      ]
+    },
+    {
+      "feature": "ui",
+      "start": 649691,
+      "end": 650527,
+      "startLine": 18623,
+      "endLine": 18661,
+      "statementCount": 1,
+      "module": "formattimewrapper",
+      "responsibility": "overlays, menus, forms, and reusable interface behavior",
+      "path": "ui/formattimewrapper.js",
+      "symbols": [
+        "formatTimeWrapper"
+      ]
+    },
+    {
+      "feature": "events",
+      "start": 650584,
+      "end": 654083,
+      "startLine": 18668,
+      "endLine": 18780,
+      "statementCount": 3,
+      "module": "reload-page",
+      "responsibility": "timers, event boxes, and movement updates",
+      "path": "events/reload-page.js",
+      "symbols": [
+        "reload_page",
+        "ClassDeclaration",
+        "ClassDeclaration"
+      ]
+    },
+    {
+      "feature": "fleet",
+      "start": 654085,
+      "end": 657183,
+      "startLine": 18782,
+      "endLine": 18857,
+      "statementCount": 1,
+      "module": "classdeclaration",
+      "responsibility": "fleet dispatch, templates, and fleet actions",
+      "path": "fleet/classdeclaration.js",
+      "symbols": [
+        "ClassDeclaration"
+      ]
+    },
+    {
+      "feature": "events",
+      "start": 657218,
+      "end": 664504,
+      "startLine": 18863,
+      "endLine": 19090,
+      "statementCount": 5,
+      "module": "oldcountdown",
+      "responsibility": "timers, event boxes, and movement updates",
+      "path": "events/oldcountdown.js",
+      "symbols": [
+        "oldcountdown",
+        "eventboxCountdown",
+        "simpleCountdown",
+        "countdownWithTickFunction",
+        "movementImageCountdown"
+      ]
+    },
+    {
+      "feature": "marketplace",
+      "start": 664505,
+      "end": 666923,
+      "startLine": 19091,
+      "endLine": 19151,
+      "statementCount": 1,
+      "module": "inititemactivation",
+      "responsibility": "marketplace, items, and resource trading",
+      "path": "marketplace/inititemactivation.js",
+      "symbols": [
+        "initItemActivation"
+      ]
+    },
+    {
+      "feature": "ui",
+      "start": 666925,
+      "end": 669557,
+      "startLine": 19153,
+      "endLine": 19231,
+      "statementCount": 1,
+      "module": "initbuffbar",
+      "responsibility": "overlays, menus, forms, and reusable interface behavior",
+      "path": "ui/initbuffbar.js",
+      "symbols": [
+        "initBuffBar"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 669559,
+      "end": 672195,
+      "startLine": 19233,
+      "endLine": 19292,
+      "statementCount": 3,
+      "module": "getitem",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/getitem.js",
+      "symbols": [
+        "getItem",
+        "updateItemDetails",
+        "startedActivation"
+      ]
+    },
+    {
+      "feature": "marketplace",
+      "start": 672197,
+      "end": 672264,
+      "startLine": 19294,
+      "endLine": 19296,
+      "statementCount": 1,
+      "module": "nohandleritemactivation",
+      "responsibility": "marketplace, items, and resource trading",
+      "path": "marketplace/nohandleritemactivation.js",
+      "symbols": [
+        "noHandlerItemActivation"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 672266,
+      "end": 679460,
+      "startLine": 19298,
+      "endLine": 19461,
+      "statementCount": 1,
+      "module": "activateitem",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/activateitem.js",
+      "symbols": [
+        "activateItem"
+      ]
+    },
+    {
+      "feature": "empire",
+      "start": 679462,
+      "end": 679645,
+      "startLine": 19463,
+      "endLine": 19467,
+      "statementCount": 1,
+      "module": "initempireequipment",
+      "responsibility": "empire, construction, and technology screens",
+      "path": "empire/initempireequipment.js",
+      "symbols": [
+        "initEmpireEquipment"
+      ]
+    },
+    {
+      "feature": "events",
+      "start": 679647,
+      "end": 680218,
+      "startLine": 19469,
+      "endLine": 19479,
+      "statementCount": 1,
+      "module": "startcooldown",
+      "responsibility": "timers, event boxes, and movement updates",
+      "path": "events/startcooldown.js",
+      "symbols": [
+        "startCooldown"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 680220,
+      "end": 680247,
+      "startLine": 19481,
+      "endLine": 19481,
+      "statementCount": 1,
+      "module": "activatingitem",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/activatingitem.js",
+      "symbols": [
+        "activatingItem"
+      ]
+    },
+    {
+      "feature": "alliance",
+      "start": 680249,
+      "end": 682006,
+      "startLine": 19483,
+      "endLine": 19527,
+      "statementCount": 2,
+      "module": "fetchdataaboutcurrentallianceclass",
+      "responsibility": "alliance and diplomacy interactions",
+      "path": "alliance/fetchdataaboutcurrentallianceclass.js",
+      "symbols": [
+        "fetchDataAboutCurrentAllianceClass",
+        "promptUserForAllianceClassChange"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 682007,
+      "end": 682430,
+      "startLine": 19528,
+      "endLine": 19540,
+      "statementCount": 2,
+      "module": "errorboxasarray",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/errorboxasarray.js",
+      "symbols": [
+        "errorBoxAsArray",
+        "notifyBoxAsArray"
+      ]
+    },
+    {
+      "feature": "messages",
+      "start": 682432,
+      "end": 685027,
+      "startLine": 19542,
+      "endLine": 19615,
+      "statementCount": 4,
+      "module": "fadebox",
+      "responsibility": "messages, reports, chat, and notifications",
+      "path": "messages/fadebox.js",
+      "symbols": [
+        "fadeBox",
+        "NotificationTimers",
+        "showNotification",
+        "removeNotification"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 685029,
+      "end": 685229,
+      "startLine": 19617,
+      "endLine": 19619,
+      "statementCount": 1,
+      "module": "decisionboxasarray",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/decisionboxasarray.js",
+      "symbols": [
+        "decisionBoxAsArray"
+      ]
+    },
+    {
+      "feature": "ui",
+      "start": 685231,
+      "end": 688276,
+      "startLine": 19621,
+      "endLine": 19729,
+      "statementCount": 2,
+      "module": "errorboxdecision",
+      "responsibility": "overlays, menus, forms, and reusable interface behavior",
+      "path": "ui/errorboxdecision.js",
+      "symbols": [
+        "errorBoxDecision",
+        "errorBoxNotify"
+      ]
+    },
+    {
+      "feature": "galaxy",
+      "start": 688493,
+      "end": 689119,
+      "startLine": 19738,
+      "endLine": 19756,
+      "statementCount": 1,
+      "module": "eventbdayinitgalaxy",
+      "responsibility": "galaxy, planets, moons, and debris fields",
+      "path": "galaxy/eventbdayinitgalaxy.js",
+      "symbols": [
+        "eventBDayInitGalaxy"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 689121,
+      "end": 691778,
+      "startLine": 19758,
+      "endLine": 19818,
+      "statementCount": 1,
+      "module": "eventbdayinit",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/eventbdayinit.js",
+      "symbols": [
+        "eventBDayInit"
+      ]
+    },
+    {
+      "feature": "fleet",
+      "start": 691780,
+      "end": 693165,
+      "startLine": 19820,
+      "endLine": 19868,
+      "statementCount": 3,
+      "module": "initbdayeventhints",
+      "responsibility": "fleet dispatch, templates, and fleet actions",
+      "path": "fleet/initbdayeventhints.js",
+      "symbols": [
+        "initBDayEventHints",
+        "toggleEvents",
+        "refreshFleetEvents"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 693167,
+      "end": 693505,
+      "startLine": 19870,
+      "endLine": 19880,
+      "statementCount": 1,
+      "module": "toggledetails",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/toggledetails.js",
+      "symbols": [
+        "toggleDetails"
+      ]
+    },
+    {
+      "feature": "lifeforms",
+      "start": 693506,
+      "end": 700705,
+      "startLine": 19881,
+      "endLine": 20100,
+      "statementCount": 22,
+      "module": "exodus",
+      "responsibility": "lifeforms, classes, rewards, and graveyard screens",
+      "path": "lifeforms/exodus.js",
+      "symbols": [
+        "Exodus",
+        "Exodus.prototype.onAjaxDone",
+        "Exodus.prototype.onAjaxError",
+        "Exodus.prototype.updateToken",
+        "Exodus.prototype.initCommon",
+        "Exodus.prototype.initServerSelect",
+        "Exodus.prototype.onChangeServerLanguage",
+        "Exodus.prototype.onChangeServerNumber",
+        "Exodus.prototype.onClickExecute",
+        "Exodus.prototype.fetchServerNumbers",
+        "Exodus.prototype.checkIsReady",
+        "Exodus.prototype.setLanguage",
+        "Exodus.prototype.setServer",
+        "Exodus.prototype.refreshLanguage",
+        "Exodus.prototype.refreshServer",
+        "Exodus.prototype.resetLanguage",
+        "Exodus.prototype.resetServer",
+        "Exodus.prototype.getFirstLanguage",
+        "Exodus.prototype.onCheckIsReady",
+        "Exodus.prototype.handleSubmitExodusResponse",
+        "Exodus.prototype.displayErrors",
+        "Exodus.prototype.onFetchServerNumbers"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 700849,
+      "end": 701823,
+      "startLine": 20105,
+      "endLine": 20139,
+      "statementCount": 2,
+      "module": "typeof",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/typeof.js",
+      "symbols": [
+        "IfStatement",
+        "IfStatement"
+      ]
+    },
+    {
+      "feature": "ui",
+      "start": 701825,
+      "end": 710086,
+      "startLine": 20141,
+      "endLine": 20433,
+      "statementCount": 1,
+      "module": "formatter",
+      "responsibility": "overlays, menus, forms, and reusable interface behavior",
+      "path": "ui/formatter.js",
+      "symbols": [
+        "Formatter"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 710087,
+      "end": 714695,
+      "startLine": 20434,
+      "endLine": 20592,
+      "statementCount": 3,
+      "module": "ogame-frontendactions",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/ogame-frontendactions.js",
+      "symbols": [
+        "ogame.frontendActions",
+        "reloadComponent",
+        "initialization"
+      ]
+    },
+    {
+      "feature": "lifeforms",
+      "start": 714696,
+      "end": 721796,
+      "startLine": 20593,
+      "endLine": 20809,
+      "statementCount": 22,
+      "module": "graveyard",
+      "responsibility": "lifeforms, classes, rewards, and graveyard screens",
+      "path": "lifeforms/graveyard.js",
+      "symbols": [
+        "Graveyard",
+        "Graveyard.prototype.onAjaxDone",
+        "Graveyard.prototype.onAjaxError",
+        "Graveyard.prototype.updateToken",
+        "Graveyard.prototype.initCommon",
+        "Graveyard.prototype.initServerSelect",
+        "Graveyard.prototype.onChangeServerLanguage",
+        "Graveyard.prototype.onChangeServerNumber",
+        "Graveyard.prototype.onClickExecute",
+        "Graveyard.prototype.fetchServerNumbers",
+        "Graveyard.prototype.checkIsReady",
+        "Graveyard.prototype.setLanguage",
+        "Graveyard.prototype.setServer",
+        "Graveyard.prototype.refreshLanguage",
+        "Graveyard.prototype.refreshServer",
+        "Graveyard.prototype.resetLanguage",
+        "Graveyard.prototype.resetServer",
+        "Graveyard.prototype.getFirstLanguage",
+        "Graveyard.prototype.onCheckIsReady",
+        "Graveyard.prototype.handleSubmitExodusResponse",
+        "Graveyard.prototype.displayErrors",
+        "Graveyard.prototype.onFetchServerNumbers"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 721842,
+      "end": 722082,
+      "startLine": 20813,
+      "endLine": 20821,
+      "statementCount": 2,
+      "module": "dom-get-element-by-id-cache",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/dom-get-element-by-id-cache.js",
+      "symbols": [
+        "DOM_GET_ELEMENT_BY_ID_CACHE",
+        "getElementByIdWithCache"
+      ]
+    },
+    {
+      "feature": "ui",
+      "start": 722192,
+      "end": 725085,
+      "startLine": 20829,
+      "endLine": 20922,
+      "statementCount": 3,
+      "module": "number-format",
+      "responsibility": "overlays, menus, forms, and reusable interface behavior",
+      "path": "ui/number-format.js",
+      "symbols": [
+        "number_format",
+        "gfNumberGetHumanReadable",
+        "getNumberFormatShort"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 725087,
+      "end": 727487,
+      "startLine": 20924,
+      "endLine": 20990,
+      "statementCount": 2,
+      "module": "createexpiretime",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/createexpiretime.js",
+      "symbols": [
+        "createExpireTime",
+        "initHighscore"
+      ]
+    },
+    {
+      "feature": "ui",
+      "start": 727489,
+      "end": 739838,
+      "startLine": 20992,
+      "endLine": 21342,
+      "statementCount": 2,
+      "module": "inithighscorecontent",
+      "responsibility": "overlays, menus, forms, and reusable interface behavior",
+      "path": "ui/inithighscorecontent.js",
+      "symbols": [
+        "initHighscoreContent",
+        "IPI"
+      ]
+    },
+    {
+      "feature": "empire",
+      "start": 739924,
+      "end": 740554,
+      "startLine": 21348,
+      "endLine": 21387,
+      "statementCount": 2,
+      "module": "saveimperiumorder",
+      "responsibility": "empire, construction, and technology screens",
+      "path": "empire/saveimperiumorder.js",
+      "symbols": [
+        "saveImperiumOrder",
+        "clearImperiumOrder"
+      ]
+    },
+    {
+      "feature": "galaxy",
+      "start": 740700,
+      "end": 749350,
+      "startLine": 21397,
+      "endLine": 21579,
+      "statementCount": 3,
+      "module": "createsummaryhtml",
+      "responsibility": "galaxy, planets, moons, and debris fields",
+      "path": "galaxy/createsummaryhtml.js",
+      "symbols": [
+        "createSummaryHtml",
+        "createHeaderHtml",
+        "createPlanetsHtml"
+      ]
+    },
+    {
+      "feature": "empire",
+      "start": 749480,
+      "end": 751793,
+      "startLine": 21589,
+      "endLine": 21653,
+      "statementCount": 1,
+      "module": "createimperiumhtml",
+      "responsibility": "empire, construction, and technology screens",
+      "path": "empire/createimperiumhtml.js",
+      "symbols": [
+        "createImperiumHtml"
+      ]
+    },
+    {
+      "feature": "messages",
+      "start": 751795,
+      "end": 752000,
+      "startLine": 21655,
+      "endLine": 21658,
+      "statementCount": 1,
+      "module": "displaymessage",
+      "responsibility": "messages, reports, chat, and notifications",
+      "path": "messages/displaymessage.js",
+      "symbols": [
+        "displayMessage"
+      ]
+    },
+    {
+      "feature": "galaxy",
+      "start": 752002,
+      "end": 752946,
+      "startLine": 21660,
+      "endLine": 21686,
+      "statementCount": 2,
+      "module": "doupgrade",
+      "responsibility": "galaxy, planets, moons, and debris fields",
+      "path": "galaxy/doupgrade.js",
+      "symbols": [
+        "doUpgrade",
+        "executeBuildAction"
+      ]
+    },
+    {
+      "feature": "empire",
+      "start": 752948,
+      "end": 754754,
+      "startLine": 21688,
+      "endLine": 21754,
+      "statementCount": 2,
+      "module": "initempire",
+      "responsibility": "empire, construction, and technology screens",
+      "path": "empire/initempire.js",
+      "symbols": [
+        "initEmpire",
+        "initBuffBarEmpire"
+      ]
+    },
+    {
+      "feature": "messages",
+      "start": 754756,
+      "end": 755563,
+      "startLine": 21756,
+      "endLine": 21789,
+      "statementCount": 1,
+      "module": "changesetting",
+      "responsibility": "messages, reports, chat, and notifications",
+      "path": "messages/changesetting.js",
+      "symbols": [
+        "changeSetting"
+      ]
+    },
+    {
+      "feature": "ui",
+      "start": 755565,
+      "end": 757139,
+      "startLine": 21791,
+      "endLine": 21817,
+      "statementCount": 1,
+      "module": "getoverlaytext",
+      "responsibility": "overlays, menus, forms, and reusable interface behavior",
+      "path": "ui/getoverlaytext.js",
+      "symbols": [
+        "getOverlayText"
+      ]
+    },
+    {
+      "feature": "fleet",
+      "start": 757141,
+      "end": 760746,
+      "startLine": 21819,
+      "endLine": 21939,
+      "statementCount": 5,
+      "module": "getfastbuildprice",
+      "responsibility": "fleet dispatch, templates, and fleet actions",
+      "path": "fleet/getfastbuildprice.js",
+      "symbols": [
+        "getFastBuildPrice",
+        "getRedirectLink",
+        "sendShips",
+        "sendShipsWithPopup",
+        "outlawWarning"
+      ]
+    },
+    {
+      "feature": "ui",
+      "start": 760748,
+      "end": 761507,
+      "startLine": 21941,
+      "endLine": 21965,
+      "statementCount": 1,
+      "module": "initthousandseparator",
+      "responsibility": "overlays, menus, forms, and reusable interface behavior",
+      "path": "ui/initthousandseparator.js",
+      "symbols": [
+        "initThousandSeparator"
+      ]
+    },
+    {
+      "feature": "empire",
+      "start": 761509,
+      "end": 761546,
+      "startLine": 21967,
+      "endLine": 21967,
+      "statementCount": 1,
+      "module": "speedingupbuildlistentry",
+      "responsibility": "empire, construction, and technology screens",
+      "path": "empire/speedingupbuildlistentry.js",
+      "symbols": [
+        "speedingUpBuildListEntry"
+      ]
+    },
+    {
+      "feature": "galaxy",
+      "start": 761570,
+      "end": 765817,
+      "startLine": 21969,
+      "endLine": 22105,
+      "statementCount": 2,
+      "module": "initindex",
+      "responsibility": "galaxy, planets, moons, and debris fields",
+      "path": "galaxy/initindex.js",
+      "symbols": [
+        "initIndex",
+        "initPlanetSorting"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 765819,
+      "end": 767289,
+      "startLine": 22107,
+      "endLine": 22151,
+      "statementCount": 1,
+      "module": "inithideelements",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/inithideelements.js",
+      "symbols": [
+        "initHideElements"
+      ]
+    },
+    {
+      "feature": "fleet",
+      "start": 767291,
+      "end": 770693,
+      "startLine": 22153,
+      "endLine": 22254,
+      "statementCount": 5,
+      "module": "initjumpgate",
+      "responsibility": "fleet dispatch, templates, and fleet actions",
+      "path": "fleet/initjumpgate.js",
+      "symbols": [
+        "initJumpgate",
+        "jumpgateDone",
+        "jumpgateDefaultTargetSelectionCallback",
+        "setNewTokenData",
+        "openJumpgate"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 770695,
+      "end": 770984,
+      "startLine": 22256,
+      "endLine": 22270,
+      "statementCount": 4,
+      "module": "redirectlogout",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/redirectlogout.js",
+      "symbols": [
+        "redirectLogout",
+        "redirectBuyPremium",
+        "redirectOverview",
+        "redirectSpaceDock"
+      ]
+    },
+    {
+      "feature": "ui",
+      "start": 770985,
+      "end": 773511,
+      "startLine": 22271,
+      "endLine": 22389,
+      "statementCount": 1,
+      "module": "typeof",
+      "responsibility": "overlays, menus, forms, and reusable interface behavior",
+      "path": "ui/typeof.js",
+      "symbols": [
+        "IfStatement"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 773531,
+      "end": 791744,
+      "startLine": 22392,
+      "endLine": 22884,
+      "statementCount": 2,
+      "module": "extend",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/extend.js",
+      "symbols": [
+        "initialization",
+        "initialization"
+      ]
+    },
+    {
+      "feature": "ui",
+      "start": 791745,
+      "end": 792686,
+      "startLine": 22885,
+      "endLine": 22919,
+      "statementCount": 5,
+      "module": "ogameloadingindicator",
+      "responsibility": "overlays, menus, forms, and reusable interface behavior",
+      "path": "ui/ogameloadingindicator.js",
+      "symbols": [
+        "OGameLoadingIndicator",
+        "OGameLoadingIndicator.prototype.init",
+        "OGameLoadingIndicator.prototype.show",
+        "OGameLoadingIndicator.prototype.hide",
+        "$.fn.ogameLoadingIndicator"
+      ]
+    },
+    {
+      "feature": "messages",
+      "start": 792699,
+      "end": 841601,
+      "startLine": 22921,
+      "endLine": 24346,
+      "statementCount": 5,
+      "module": "messageslider",
+      "responsibility": "messages, reports, chat, and notifications",
+      "path": "messages/messageslider.js",
+      "symbols": [
+        "MessageSlider",
+        "ogame.messagecounter",
+        "ogame.messagemarker",
+        "ogame.messages",
+        "initShowMessage"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 841603,
+      "end": 842638,
+      "startLine": 24348,
+      "endLine": 24389,
+      "statementCount": 1,
+      "module": "initnetworkajax",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/initnetworkajax.js",
+      "symbols": [
+        "initNetworkAjax"
+      ]
+    },
+    {
+      "feature": "combat",
+      "start": 842639,
+      "end": 879167,
+      "startLine": 24390,
+      "endLine": 25349,
+      "statementCount": 1,
+      "module": "ogame-messages-combatreport",
+      "responsibility": "combat simulation and battle presentation",
+      "path": "combat/ogame-messages-combatreport.js",
+      "symbols": [
+        "ogame.messages.combatreport"
+      ]
+    },
+    {
+      "feature": "fleet",
+      "start": 879168,
+      "end": 880517,
+      "startLine": 25350,
+      "endLine": 25386,
+      "statementCount": 4,
+      "module": "closedetails",
+      "responsibility": "fleet dispatch, templates, and fleet actions",
+      "path": "fleet/closedetails.js",
+      "symbols": [
+        "closeDetails",
+        "openDetails",
+        "updateCookieStatus",
+        "openCloseDetails"
+      ]
+    },
+    {
+      "feature": "events",
+      "start": 880519,
+      "end": 881719,
+      "startLine": 25388,
+      "endLine": 25427,
+      "statementCount": 2,
+      "module": "preclosemovements",
+      "responsibility": "timers, event boxes, and movement updates",
+      "path": "events/preclosemovements.js",
+      "symbols": [
+        "preCloseMovements",
+        "initMovement"
+      ]
+    },
+    {
+      "feature": "alliance",
+      "start": 881721,
+      "end": 883443,
+      "startLine": 25429,
+      "endLine": 25487,
+      "statementCount": 7,
+      "module": "addusertounion",
+      "responsibility": "alliance and diplomacy interactions",
+      "path": "alliance/addusertounion.js",
+      "symbols": [
+        "addUserToUnion",
+        "removeUserFromUnion",
+        "addUserToUnionByForm",
+        "setUnionUsers",
+        "unionUser",
+        "initFederationLayer",
+        "submit_unionform"
+      ]
+    },
+    {
+      "feature": "fleet",
+      "start": 883445,
+      "end": 884076,
+      "startLine": 25489,
+      "endLine": 25505,
+      "statementCount": 1,
+      "module": "recallshipcountdown",
+      "responsibility": "fleet dispatch, templates, and fleet actions",
+      "path": "fleet/recallshipcountdown.js",
+      "symbols": [
+        "recallShipCountdown"
+      ]
+    },
+    {
+      "feature": "ui",
+      "start": 884077,
+      "end": 888006,
+      "startLine": 25506,
+      "endLine": 25627,
+      "statementCount": 2,
+      "module": "initnotesform",
+      "responsibility": "overlays, menus, forms, and reusable interface behavior",
+      "path": "ui/initnotesform.js",
+      "symbols": [
+        "initNotesForm",
+        "initNotes"
+      ]
+    },
+    {
+      "feature": "events",
+      "start": 888007,
+      "end": 891580,
+      "startLine": 25628,
+      "endLine": 25721,
+      "statementCount": 5,
+      "module": "getajaxeventbox",
+      "responsibility": "timers, event boxes, and movement updates",
+      "path": "events/getajaxeventbox.js",
+      "symbols": [
+        "getAjaxEventbox",
+        "reloadEventBoxTimer",
+        "reloadEventbox",
+        "initialization",
+        "initialization"
+      ]
+    },
+    {
+      "feature": "fleet",
+      "start": 891583,
+      "end": 892019,
+      "startLine": 25722,
+      "endLine": 25735,
+      "statementCount": 1,
+      "module": "eventboxcontent",
+      "responsibility": "fleet dispatch, templates, and fleet actions",
+      "path": "fleet/eventboxcontent.js",
+      "symbols": [
+        "initialization"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 892077,
+      "end": 892123,
+      "startLine": 25740,
+      "endLine": 25742,
+      "statementCount": 1,
+      "module": "ogame",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/ogame.js",
+      "symbols": [
+        "IfStatement"
+      ]
+    },
+    {
+      "feature": "messages",
+      "start": 892125,
+      "end": 892997,
+      "startLine": 25744,
+      "endLine": 25766,
+      "statementCount": 1,
+      "module": "ogame-notify",
+      "responsibility": "messages, reports, chat, and notifications",
+      "path": "messages/ogame-notify.js",
+      "symbols": [
+        "ogame.Notify"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 892999,
+      "end": 893162,
+      "startLine": 25768,
+      "endLine": 25774,
+      "statementCount": 2,
+      "module": "ogame-notify-prototype-setimage",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/ogame-notify-prototype-setimage.js",
+      "symbols": [
+        "ogame.Notify.prototype.setImage",
+        "ogame.Notify.prototype.setTag"
+      ]
+    },
+    {
+      "feature": "messages",
+      "start": 893164,
+      "end": 893377,
+      "startLine": 25776,
+      "endLine": 25781,
+      "statementCount": 1,
+      "module": "ogame-notify-prototype-show",
+      "responsibility": "messages, reports, chat, and notifications",
+      "path": "messages/ogame-notify-prototype-show.js",
+      "symbols": [
+        "ogame.Notify.prototype.show"
+      ]
+    },
+    {
+      "feature": "ui",
+      "start": 893378,
+      "end": 906860,
+      "startLine": 25782,
+      "endLine": 26178,
+      "statementCount": 5,
+      "module": "scrolltotopofdialog",
+      "responsibility": "overlays, menus, forms, and reusable interface behavior",
+      "path": "ui/scrolltotopofdialog.js",
+      "symbols": [
+        "scrollToTopOfDialog",
+        "openOverlay",
+        "isOverlayOpen",
+        "initOverlays",
+        "updateOverlayToken"
+      ]
+    },
+    {
+      "feature": "galaxy",
+      "start": 906861,
+      "end": 908957,
+      "startLine": 26179,
+      "endLine": 26238,
+      "statementCount": 3,
+      "module": "initoverview",
+      "responsibility": "galaxy, planets, moons, and debris fields",
+      "path": "galaxy/initoverview.js",
+      "symbols": [
+        "initOverview",
+        "clearField",
+        "fillField"
+      ]
+    },
+    {
+      "feature": "alliance",
+      "start": 908959,
+      "end": 909070,
+      "startLine": 26240,
+      "endLine": 26245,
+      "statementCount": 1,
+      "module": "openbuddyoverlay",
+      "responsibility": "alliance and diplomacy interactions",
+      "path": "alliance/openbuddyoverlay.js",
+      "symbols": [
+        "openBuddyOverlay"
+      ]
+    },
+    {
+      "feature": "galaxy",
+      "start": 909072,
+      "end": 909432,
+      "startLine": 26247,
+      "endLine": 26257,
+      "statementCount": 1,
+      "module": "planetgivenup",
+      "responsibility": "galaxy, planets, moons, and debris fields",
+      "path": "galaxy/planetgivenup.js",
+      "symbols": [
+        "planetGivenup"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 909493,
+      "end": 919948,
+      "startLine": 26259,
+      "endLine": 26578,
+      "statementCount": 5,
+      "module": "initpreferences",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/initpreferences.js",
+      "symbols": [
+        "IfStatement",
+        "IfStatement",
+        "initPreferences",
+        "onClickExecutePtrCopy",
+        "pqChangeTarget"
+      ]
+    },
+    {
+      "feature": "ui",
+      "start": 919950,
+      "end": 920335,
+      "startLine": 26580,
+      "endLine": 26586,
+      "statementCount": 1,
+      "module": "switchproductiontab",
+      "responsibility": "overlays, menus, forms, and reusable interface behavior",
+      "path": "ui/switchproductiontab.js",
+      "symbols": [
+        "switchProductionTab"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 920336,
+      "end": 921042,
+      "startLine": 26587,
+      "endLine": 26603,
+      "statementCount": 3,
+      "module": "display-info",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/display-info.js",
+      "symbols": [
+        "display_info",
+        "display_error",
+        "hide_error"
+      ]
+    },
+    {
+      "feature": "ui",
+      "start": 921044,
+      "end": 921545,
+      "startLine": 26605,
+      "endLine": 26624,
+      "statementCount": 2,
+      "module": "checkusername",
+      "responsibility": "overlays, menus, forms, and reusable interface behavior",
+      "path": "ui/checkusername.js",
+      "symbols": [
+        "checkUsername",
+        "checkEmail"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 921603,
+      "end": 921631,
+      "startLine": 26628,
+      "endLine": 26628,
+      "statementCount": 1,
+      "module": "techid-repair-dock",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/techid-repair-dock.js",
+      "symbols": [
+        "TECHID_REPAIR_DOCK"
+      ]
+    },
+    {
+      "feature": "events",
+      "start": 921632,
+      "end": 921673,
+      "startLine": 26629,
+      "endLine": 26629,
+      "statementCount": 1,
+      "module": "burnupcountdownforstationscreen",
+      "responsibility": "timers, event boxes, and movement updates",
+      "path": "events/burnupcountdownforstationscreen.js",
+      "symbols": [
+        "burnUpCountDownForStationScreen"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 921674,
+      "end": 922717,
+      "startLine": 26630,
+      "endLine": 26666,
+      "statementCount": 3,
+      "module": "repairtimedownforstationscreen",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/repairtimedownforstationscreen.js",
+      "symbols": [
+        "repairTimeDownForStationScreen",
+        "displayBurnUpEnquiry",
+        "startWreckFieldRepairs"
+      ]
+    },
+    {
+      "feature": "fleet",
+      "start": 922719,
+      "end": 923121,
+      "startLine": 26668,
+      "endLine": 26683,
+      "statementCount": 1,
+      "module": "recommissionships",
+      "responsibility": "fleet dispatch, templates, and fleet actions",
+      "path": "fleet/recommissionships.js",
+      "symbols": [
+        "reCommissionShips"
+      ]
+    },
+    {
+      "feature": "events",
+      "start": 923123,
+      "end": 923903,
+      "startLine": 26685,
+      "endLine": 26709,
+      "statementCount": 2,
+      "module": "registerburnupcountdown",
+      "responsibility": "timers, event boxes, and movement updates",
+      "path": "events/registerburnupcountdown.js",
+      "symbols": [
+        "registerBurnUpCountDown",
+        "registerRepairTimeCountDown"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 923905,
+      "end": 924046,
+      "startLine": 26711,
+      "endLine": 26712,
+      "statementCount": 2,
+      "module": "document",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/document.js",
+      "symbols": [
+        "initialization",
+        "initialization"
+      ]
+    },
+    {
+      "feature": "fleet",
+      "start": 924047,
+      "end": 924116,
+      "startLine": 26713,
+      "endLine": 26713,
+      "statementCount": 1,
+      "module": "click",
+      "responsibility": "fleet dispatch, templates, and fleet actions",
+      "path": "fleet/click.js",
+      "symbols": [
+        "initialization"
+      ]
+    },
+    {
+      "feature": "events",
+      "start": 924117,
+      "end": 924546,
+      "startLine": 26714,
+      "endLine": 26723,
+      "statementCount": 2,
+      "module": "document",
+      "responsibility": "timers, event boxes, and movement updates",
+      "path": "events/document.js",
+      "symbols": [
+        "initialization",
+        "initialization"
+      ]
+    },
+    {
+      "feature": "marketplace",
+      "start": 924547,
+      "end": 924745,
+      "startLine": 26724,
+      "endLine": 26730,
+      "statementCount": 1,
+      "module": "initresourcetrader",
+      "responsibility": "marketplace, items, and resource trading",
+      "path": "marketplace/initresourcetrader.js",
+      "symbols": [
+        "initResourceTrader"
+      ]
+    },
+    {
+      "feature": "resources",
+      "start": 924747,
+      "end": 925618,
+      "startLine": 26732,
+      "endLine": 26749,
+      "statementCount": 1,
+      "module": "onselectresource",
+      "responsibility": "resource display and production interactions",
+      "path": "resources/onselectresource.js",
+      "symbols": [
+        "onSelectResource"
+      ]
+    },
+    {
+      "feature": "marketplace",
+      "start": 925620,
+      "end": 925777,
+      "startLine": 26751,
+      "endLine": 26757,
+      "statementCount": 1,
+      "module": "showtradenowbutton",
+      "responsibility": "marketplace, items, and resource trading",
+      "path": "marketplace/showtradenowbutton.js",
+      "symbols": [
+        "showTradeNowButton"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 925842,
+      "end": 926055,
+      "startLine": 26761,
+      "endLine": 26767,
+      "statementCount": 2,
+      "module": "calccosts",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/calccosts.js",
+      "symbols": [
+        "calcCosts",
+        "calcInputFromCosts"
+      ]
+    },
+    {
+      "feature": "ui",
+      "start": 926057,
+      "end": 926288,
+      "startLine": 26769,
+      "endLine": 26775,
+      "statementCount": 1,
+      "module": "setvalue",
+      "responsibility": "overlays, menus, forms, and reusable interface behavior",
+      "path": "ui/setvalue.js",
+      "symbols": [
+        "setValue"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 926290,
+      "end": 927145,
+      "startLine": 26777,
+      "endLine": 26797,
+      "statementCount": 2,
+      "module": "checkvalue",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/checkvalue.js",
+      "symbols": [
+        "checkValue",
+        "setMaxValue"
+      ]
+    },
+    {
+      "feature": "marketplace",
+      "start": 927147,
+      "end": 930052,
+      "startLine": 26799,
+      "endLine": 26894,
+      "statementCount": 3,
+      "module": "calltrader",
+      "responsibility": "marketplace, items, and resource trading",
+      "path": "marketplace/calltrader.js",
+      "symbols": [
+        "callTrader",
+        "tradeDone",
+        "closeTradeResourcesOverlay"
+      ]
+    },
+    {
+      "feature": "fleet",
+      "start": 930053,
+      "end": 930287,
+      "startLine": 26895,
+      "endLine": 26903,
+      "statementCount": 1,
+      "module": "closesearch",
+      "responsibility": "fleet dispatch, templates, and fleet actions",
+      "path": "fleet/closesearch.js",
+      "symbols": [
+        "closeSearch"
+      ]
+    },
+    {
+      "feature": "ui",
+      "start": 930331,
+      "end": 961312,
+      "startLine": 26905,
+      "endLine": 27769,
+      "statementCount": 2,
+      "module": "inventoryobj",
+      "responsibility": "overlays, menus, forms, and reusable interface behavior",
+      "path": "ui/inventoryobj.js",
+      "symbols": [
+        "inventoryObj",
+        "GFSlider"
+      ]
+    },
+    {
+      "feature": "fleet",
+      "start": 961313,
+      "end": 962022,
+      "startLine": 27770,
+      "endLine": 27793,
+      "statementCount": 2,
+      "module": "supplyfleet",
+      "responsibility": "fleet dispatch, templates, and fleet actions",
+      "path": "fleet/supplyfleet.js",
+      "symbols": [
+        "supplyFleet",
+        "updateSupplyDetails"
+      ]
+    },
+    {
+      "feature": "alliance",
+      "start": 962024,
+      "end": 962530,
+      "startLine": 27795,
+      "endLine": 27810,
+      "statementCount": 1,
+      "module": "initalliancedepot",
+      "responsibility": "alliance and diplomacy interactions",
+      "path": "alliance/initalliancedepot.js",
+      "symbols": [
+        "initAllianceDepot"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 963225,
+      "end": 964425,
+      "startLine": 27831,
+      "endLine": 27872,
+      "statementCount": 7,
+      "module": "pushbutton",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/pushbutton.js",
+      "symbols": [
+        "ExpressionStatement",
+        "pushButton",
+        "applicationServerPublicKey",
+        "isSubscribed",
+        "swRegistration",
+        "urlB64ToUint8Array",
+        "initializeUI"
+      ]
+    },
+    {
+      "feature": "messages",
+      "start": 964427,
+      "end": 964881,
+      "startLine": 27874,
+      "endLine": 27891,
+      "statementCount": 1,
+      "module": "updatebtn",
+      "responsibility": "messages, reports, chat, and notifications",
+      "path": "messages/updatebtn.js",
+      "symbols": [
+        "updateBtn"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 964883,
+      "end": 966776,
+      "startLine": 27893,
+      "endLine": 27950,
+      "statementCount": 4,
+      "module": "subscribeuser",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/subscribeuser.js",
+      "symbols": [
+        "subscribeUser",
+        "unsubscribeUser",
+        "updateSubscriptionOnServer",
+        "initSubscriptionSystem"
+      ]
+    },
+    {
+      "feature": "ui",
+      "start": 966891,
+      "end": 967299,
+      "startLine": 27956,
+      "endLine": 27967,
+      "statementCount": 1,
+      "module": "tabletinitoverviewadvice",
+      "responsibility": "overlays, menus, forms, and reusable interface behavior",
+      "path": "ui/tabletinitoverviewadvice.js",
+      "symbols": [
+        "tabletInitOverviewAdvice"
+      ]
+    },
+    {
+      "feature": "galaxy",
+      "start": 967301,
+      "end": 970071,
+      "startLine": 27969,
+      "endLine": 28040,
+      "statementCount": 1,
+      "module": "tabletinitgalaxydetails",
+      "responsibility": "galaxy, planets, moons, and debris fields",
+      "path": "galaxy/tabletinitgalaxydetails.js",
+      "symbols": [
+        "tabletInitGalaxyDetails"
+      ]
+    },
+    {
+      "feature": "empire",
+      "start": 970073,
+      "end": 971325,
+      "startLine": 28042,
+      "endLine": 28081,
+      "statementCount": 2,
+      "module": "tablettoggletechtreeinfos",
+      "responsibility": "empire, construction, and technology screens",
+      "path": "empire/tablettoggletechtreeinfos.js",
+      "symbols": [
+        "tabletToggleTechtreeInfos",
+        "tabletInitEmpire"
+      ]
+    },
+    {
+      "feature": "ui",
+      "start": 971327,
+      "end": 972181,
+      "startLine": 28083,
+      "endLine": 28106,
+      "statementCount": 1,
+      "module": "tabletinitpayment",
+      "responsibility": "overlays, menus, forms, and reusable interface behavior",
+      "path": "ui/tabletinitpayment.js",
+      "symbols": [
+        "tabletInitPayment"
+      ]
+    },
+    {
+      "feature": "galaxy",
+      "start": 972183,
+      "end": 972649,
+      "startLine": 28108,
+      "endLine": 28129,
+      "statementCount": 1,
+      "module": "tabletinitgalaxy",
+      "responsibility": "galaxy, planets, moons, and debris fields",
+      "path": "galaxy/tabletinitgalaxy.js",
+      "symbols": [
+        "tabletInitGalaxy"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 972651,
+      "end": 972907,
+      "startLine": 28131,
+      "endLine": 28138,
+      "statementCount": 1,
+      "module": "initretinaimages",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/initretinaimages.js",
+      "symbols": [
+        "initRetinaImages"
+      ]
+    },
+    {
+      "feature": "ui",
+      "start": 972908,
+      "end": 973171,
+      "startLine": 28139,
+      "endLine": 28144,
+      "statementCount": 1,
+      "module": "setupoverlay",
+      "responsibility": "overlays, menus, forms, and reusable interface behavior",
+      "path": "ui/setupoverlay.js",
+      "symbols": [
+        "setupOverlay"
+      ]
+    },
+    {
+      "feature": "messages",
+      "start": 973173,
+      "end": 974018,
+      "startLine": 28146,
+      "endLine": 28173,
+      "statementCount": 1,
+      "module": "drawerrorbox",
+      "responsibility": "messages, reports, chat, and notifications",
+      "path": "messages/drawerrorbox.js",
+      "symbols": [
+        "drawErrorbox"
+      ]
+    },
+    {
+      "feature": "fleet",
+      "start": 974020,
+      "end": 975250,
+      "startLine": 28175,
+      "endLine": 28215,
+      "statementCount": 1,
+      "module": "showerrors",
+      "responsibility": "fleet dispatch, templates, and fleet actions",
+      "path": "fleet/showerrors.js",
+      "symbols": [
+        "showErrors"
+      ]
+    },
+    {
+      "feature": "empire",
+      "start": 975251,
+      "end": 976105,
+      "startLine": 28216,
+      "endLine": 28243,
+      "statementCount": 1,
+      "module": "initglobaltechtree",
+      "responsibility": "empire, construction, and technology screens",
+      "path": "empire/initglobaltechtree.js",
+      "symbols": [
+        "initGlobalTechtree"
+      ]
+    },
+    {
+      "feature": "ui",
+      "start": 976107,
+      "end": 976270,
+      "startLine": 28245,
+      "endLine": 28248,
+      "statementCount": 1,
+      "module": "initoverlayname",
+      "responsibility": "overlays, menus, forms, and reusable interface behavior",
+      "path": "ui/initoverlayname.js",
+      "symbols": [
+        "initOverlayName"
+      ]
+    },
+    {
+      "feature": "empire",
+      "start": 976272,
+      "end": 988292,
+      "startLine": 28250,
+      "endLine": 28487,
+      "statementCount": 2,
+      "module": "drawarrows",
+      "responsibility": "empire, construction, and technology screens",
+      "path": "empire/drawarrows.js",
+      "symbols": [
+        "drawArrows",
+        "initTechtree"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 988377,
+      "end": 990741,
+      "startLine": 28496,
+      "endLine": 28562,
+      "statementCount": 6,
+      "module": "readableversionoflabel",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/readableversionoflabel.js",
+      "symbols": [
+        "readableVersionOfLabel",
+        "lineInCoordinatesBlocked",
+        "positionInCoordinatesBlocked",
+        "javascriptAvailable",
+        "days",
+        "months"
+      ]
+    },
+    {
+      "feature": "ui",
+      "start": 990743,
+      "end": 991532,
+      "startLine": 28564,
+      "endLine": 28580,
+      "statementCount": 1,
+      "module": "getformateddate",
+      "responsibility": "overlays, menus, forms, and reusable interface behavior",
+      "path": "ui/getformateddate.js",
+      "symbols": [
+        "getFormatedDate"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 991677,
+      "end": 992026,
+      "startLine": 28590,
+      "endLine": 28603,
+      "statementCount": 1,
+      "module": "dezint",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/dezint.js",
+      "symbols": [
+        "dezInt"
+      ]
+    },
+    {
+      "feature": "ui",
+      "start": 992028,
+      "end": 992293,
+      "startLine": 28605,
+      "endLine": 28612,
+      "statementCount": 1,
+      "module": "getformatedtime",
+      "responsibility": "overlays, menus, forms, and reusable interface behavior",
+      "path": "ui/getformatedtime.js",
+      "symbols": [
+        "getFormatedTime"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 992294,
+      "end": 992735,
+      "startLine": 28613,
+      "endLine": 28644,
+      "statementCount": 1,
+      "module": "tsdpkt",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/tsdpkt.js",
+      "symbols": [
+        "tsdpkt"
+      ]
+    },
+    {
+      "feature": "ui",
+      "start": 992737,
+      "end": 994189,
+      "startLine": 28646,
+      "endLine": 28700,
+      "statementCount": 6,
+      "module": "formattime",
+      "responsibility": "overlays, menus, forms, and reusable interface behavior",
+      "path": "ui/formattime.js",
+      "symbols": [
+        "formatTime",
+        "round",
+        "show_hide_menus",
+        "change_class",
+        "show_hide_tbl",
+        "cntchar"
+      ]
+    },
+    {
+      "feature": "galaxy",
+      "start": 994191,
+      "end": 994375,
+      "startLine": 28702,
+      "endLine": 28704,
+      "statementCount": 1,
+      "module": "showgalaxy",
+      "responsibility": "galaxy, planets, moons, and debris fields",
+      "path": "galaxy/showgalaxy.js",
+      "symbols": [
+        "showGalaxy"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 994377,
+      "end": 994932,
+      "startLine": 28706,
+      "endLine": 28730,
+      "statementCount": 2,
+      "module": "openparentlocation",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/openparentlocation.js",
+      "symbols": [
+        "openParentLocation",
+        "submitOnEnter"
+      ]
+    },
+    {
+      "feature": "fleet",
+      "start": 994934,
+      "end": 995228,
+      "startLine": 28732,
+      "endLine": 28739,
+      "statementCount": 1,
+      "module": "setmaxintinput",
+      "responsibility": "fleet dispatch, templates, and fleet actions",
+      "path": "fleet/setmaxintinput.js",
+      "symbols": [
+        "setMaxIntInput"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 995230,
+      "end": 996069,
+      "startLine": 28741,
+      "endLine": 28785,
+      "statementCount": 4,
+      "module": "clearinput",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/clearinput.js",
+      "symbols": [
+        "clearInput",
+        "checkIntInput",
+        "clampInt",
+        "clampFloat"
+      ]
+    },
+    {
+      "feature": "ui",
+      "start": 996071,
+      "end": 996260,
+      "startLine": 28787,
+      "endLine": 28795,
+      "statementCount": 1,
+      "module": "handlertosubmitajaxform",
+      "responsibility": "overlays, menus, forms, and reusable interface behavior",
+      "path": "ui/handlertosubmitajaxform.js",
+      "symbols": [
+        "handlerToSubmitAjaxForm"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 996262,
+      "end": 996811,
+      "startLine": 28797,
+      "endLine": 28815,
+      "statementCount": 1,
+      "module": "ajaxcall",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/ajaxcall.js",
+      "symbols": [
+        "ajaxCall"
+      ]
+    },
+    {
+      "feature": "ui",
+      "start": 996813,
+      "end": 997531,
+      "startLine": 28817,
+      "endLine": 28836,
+      "statementCount": 1,
+      "module": "ajaxsubmit",
+      "responsibility": "overlays, menus, forms, and reusable interface behavior",
+      "path": "ui/ajaxsubmit.js",
+      "symbols": [
+        "ajaxSubmit"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 997533,
+      "end": 998903,
+      "startLine": 28838,
+      "endLine": 28885,
+      "statementCount": 3,
+      "module": "number-prototype-isbetween",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/number-prototype-isbetween.js",
+      "symbols": [
+        "Number.prototype.isBetween",
+        "getValue",
+        "loadScript"
+      ]
+    },
+    {
+      "feature": "ui",
+      "start": 998905,
+      "end": 999494,
+      "startLine": 28887,
+      "endLine": 28902,
+      "statementCount": 1,
+      "module": "formatnumber",
+      "responsibility": "overlays, menus, forms, and reusable interface behavior",
+      "path": "ui/formatnumber.js",
+      "symbols": [
+        "formatNumber"
+      ]
+    },
+    {
+      "feature": "galaxy",
+      "start": 999496,
+      "end": 999948,
+      "startLine": 28904,
+      "endLine": 28913,
+      "statementCount": 1,
+      "module": "inittoggleheader",
+      "responsibility": "galaxy, planets, moons, and debris fields",
+      "path": "galaxy/inittoggleheader.js",
+      "symbols": [
+        "initToggleHeader"
+      ]
+    },
+    {
+      "feature": "ui",
+      "start": 999950,
+      "end": 1000111,
+      "startLine": 28915,
+      "endLine": 28920,
+      "statementCount": 1,
+      "module": "initformvalidation",
+      "responsibility": "overlays, menus, forms, and reusable interface behavior",
+      "path": "ui/initformvalidation.js",
+      "symbols": [
+        "initFormValidation"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 1000113,
+      "end": 1000448,
+      "startLine": 28922,
+      "endLine": 28938,
+      "statementCount": 1,
+      "module": "function-prototype-clone",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/function-prototype-clone.js",
+      "symbols": [
+        "Function.prototype.clone"
+      ]
+    },
+    {
+      "feature": "ui",
+      "start": 1000450,
+      "end": 1000957,
+      "startLine": 28940,
+      "endLine": 28962,
+      "statementCount": 3,
+      "module": "hidetipsontabchange",
+      "responsibility": "overlays, menus, forms, and reusable interface behavior",
+      "path": "ui/hidetipsontabchange.js",
+      "symbols": [
+        "hideTipsOnTabChange",
+        "jQuery.fn.slideFadeToggle",
+        "focusOnTabChange"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 1001073,
+      "end": 1003560,
+      "startLine": 28969,
+      "endLine": 29063,
+      "statementCount": 3,
+      "module": "getieversion",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/getieversion.js",
+      "symbols": [
+        "getIEVersion",
+        "ogame.tools",
+        "refreshBars"
+      ]
+    },
+    {
+      "feature": "ui",
+      "start": 1003561,
+      "end": 1011829,
+      "startLine": 29064,
+      "endLine": 29357,
+      "statementCount": 8,
+      "module": "inittooltipskins",
+      "responsibility": "overlays, menus, forms, and reusable interface behavior",
+      "path": "ui/inittooltipskins.js",
+      "symbols": [
+        "initTooltipSkins",
+        "changeTooltip",
+        "removeTooltip",
+        "getTooltipOptions",
+        "getTooltipSelector",
+        "sanitizeTooltip",
+        "initTooltips",
+        "initialization"
+      ]
+    },
+    {
+      "feature": "marketplace",
+      "start": 1011830,
+      "end": 1075066,
+      "startLine": 29358,
+      "endLine": 31089,
+      "statementCount": 1,
+      "module": "inittrader",
+      "responsibility": "marketplace, items, and resource trading",
+      "path": "marketplace/inittrader.js",
+      "symbols": [
+        "initTrader"
+      ]
+    },
+    {
+      "feature": "alliance",
+      "start": 1075068,
+      "end": 1086434,
+      "startLine": 31091,
+      "endLine": 31398,
+      "statementCount": 23,
+      "module": "alliance",
+      "responsibility": "alliance and diplomacy interactions",
+      "path": "alliance/alliance.js",
+      "symbols": [
+        "Alliance",
+        "Alliance.prototype.displayErrors",
+        "Alliance.prototype.initCommon",
+        "Alliance.prototype.initCommonWithout",
+        "Alliance.prototype.refreshContent",
+        "Alliance.prototype.onAjaxDone",
+        "Alliance.prototype.initCreateAlliance",
+        "Alliance.prototype.initHandleApplication",
+        "Alliance.prototype.initAllianceOverview",
+        "Alliance.prototype.initAllianceMembers",
+        "Alliance.prototype.initOverview",
+        "Alliance.prototype.initManagement",
+        "Alliance.prototype.initApplication",
+        "Alliance.prototype.initBroadcast",
+        "Alliance.prototype.initClasses",
+        "Alliance.prototype.onClickCreateRank",
+        "Alliance.prototype.onClickUpdateRank",
+        "Alliance.prototype.onClickDeleteRank",
+        "Alliance.prototype.onClickUpdateAllianceText",
+        "Alliance.prototype.onClickUpdateSettings",
+        "Alliance.prototype.onClickSubmitTag",
+        "Alliance.prototype.onClickSubmitName",
+        "Alliance.prototype.onClickSubmitDisolve"
+      ]
+    },
+    {
+      "feature": "fleet",
+      "start": 1086436,
+      "end": 1087571,
+      "startLine": 31400,
+      "endLine": 31428,
+      "statementCount": 2,
+      "module": "alliance-prototype-onclicksubmittransferleadership",
+      "responsibility": "fleet dispatch, templates, and fleet actions",
+      "path": "fleet/alliance-prototype-onclicksubmittransferleadership.js",
+      "symbols": [
+        "Alliance.prototype.onClickSubmitTransferLeadership",
+        "Alliance.prototype.onClickSubmitTakeoverLeadership"
+      ]
+    },
+    {
+      "feature": "alliance",
+      "start": 1087573,
+      "end": 1098404,
+      "startLine": 31430,
+      "endLine": 31790,
+      "statementCount": 26,
+      "module": "alliance-prototype-onclickleavealliance",
+      "responsibility": "alliance and diplomacy interactions",
+      "path": "alliance/alliance-prototype-onclickleavealliance.js",
+      "symbols": [
+        "Alliance.prototype.onClickLeaveAlliance",
+        "Alliance.prototype.onClickKickMember",
+        "Alliance.prototype.onClickKickMemberCancel",
+        "Alliance.prototype.onClickKickMemberSubmit",
+        "Alliance.prototype.onClickAssignRankSubmit",
+        "Alliance.prototype.submitRanks",
+        "Alliance.prototype.onClickCreateAlliance",
+        "Alliance.prototype.onClickSendApplication",
+        "Alliance.prototype.onClickCancelApplication",
+        "Alliance.prototype.submitKickMember",
+        "Alliance.prototype.onClickNewAlly",
+        "Alliance.prototype.onClickTab",
+        "Alliance.prototype.fetchNewApplication",
+        "Alliance.prototype.fetchNewAlliance",
+        "Alliance.prototype.fetch",
+        "Alliance.prototype.onFetch",
+        "Alliance.prototype.updateToken",
+        "Alliance.prototype.refreshTabs",
+        "Alliance.prototype.onClickDenyApplication",
+        "Alliance.prototype.submitDenyApplication",
+        "Alliance.prototype.onFormClickDenyApplication",
+        "Alliance.prototype.onClickAcceptApplication",
+        "Alliance.prototype.submitAcceptApplication",
+        "Alliance.prototype.onFormClickAcceptApplication",
+        "Alliance.prototype.handleResponse",
+        "Alliance.prototype.onFormClickBroadcastButton"
+      ]
+    },
+    {
+      "feature": "messages",
+      "start": 1098406,
+      "end": 1098773,
+      "startLine": 31792,
+      "endLine": 31799,
+      "statementCount": 1,
+      "module": "document",
+      "responsibility": "messages, reports, chat, and notifications",
+      "path": "messages/document.js",
+      "symbols": [
+        "initialization"
+      ]
+    },
+    {
+      "feature": "alliance",
+      "start": 1098774,
+      "end": 1105472,
+      "startLine": 31800,
+      "endLine": 31990,
+      "statementCount": 13,
+      "module": "allianceclassboxes",
+      "responsibility": "alliance and diplomacy interactions",
+      "path": "alliance/allianceclassboxes.js",
+      "symbols": [
+        "AllianceClassBoxes",
+        "AllianceClassBoxes.prototype.init",
+        "AllianceClassBoxes.prototype.hasActiveSelection",
+        "AllianceClassBoxes.prototype.executeActionWithRedirect",
+        "AllianceClassBoxes.prototype.onClickFreeSelect",
+        "AllianceClassBoxes.prototype.onClickDarkMatter",
+        "AllianceClassBoxes.prototype.onClickNoDarkMatter",
+        "AllianceClassBoxes.prototype.onClickDeactivate",
+        "AllianceClassBoxes.prototype.onClickClassChangeItem",
+        "AllianceClassBoxes.prototype.displayErrors",
+        "AllianceClassBoxes.prototype.handleResponse",
+        "AllianceClassBoxes.prototype.fetchDataAboutCurrentAllianceClass",
+        "AllianceClassBoxes.prototype.promptUserForAllianceClassChange"
+      ]
+    },
+    {
+      "feature": "empire",
+      "start": 1105473,
+      "end": 1109186,
+      "startLine": 31991,
+      "endLine": 32156,
+      "statementCount": 4,
+      "module": "buildlistactioncalled",
+      "responsibility": "empire, construction, and technology screens",
+      "path": "empire/buildlistactioncalled.js",
+      "symbols": [
+        "buildListActionCalled",
+        "buildListActionBuild",
+        "buildListActionDemolish",
+        "buildListActionCancel"
+      ]
+    },
+    {
+      "feature": "lifeforms",
+      "start": 1109187,
+      "end": 1113254,
+      "startLine": 32157,
+      "endLine": 32261,
+      "statementCount": 10,
+      "module": "characterclassboxes",
+      "responsibility": "lifeforms, classes, rewards, and graveyard screens",
+      "path": "lifeforms/characterclassboxes.js",
+      "symbols": [
+        "CharacterClassBoxes",
+        "CharacterClassBoxes.prototype.init",
+        "CharacterClassBoxes.prototype.hasActiveSelection",
+        "CharacterClassBoxes.prototype.executeActionWithRedirect",
+        "CharacterClassBoxes.prototype.onClickFreeSelect",
+        "CharacterClassBoxes.prototype.onClickDarkMatter",
+        "CharacterClassBoxes.prototype.onClickNoDarkMatter",
+        "CharacterClassBoxes.prototype.onClickDeactivate",
+        "CharacterClassBoxes.prototype.onClickClassChangeItem",
+        "CharacterClassBoxes.prototype.displayErrors"
+      ]
+    },
+    {
+      "feature": "fleet",
+      "start": 1113256,
+      "end": 1118408,
+      "startLine": 32263,
+      "endLine": 32407,
+      "statementCount": 11,
+      "module": "initexpeditionfleettemplate",
+      "responsibility": "fleet dispatch, templates, and fleet actions",
+      "path": "fleet/initexpeditionfleettemplate.js",
+      "symbols": [
+        "initExpeditionFleetTemplate",
+        "selectShipsPerFleet",
+        "editingTemplate",
+        "saveExpeditionFleetTemplate",
+        "deleteExpeditionFleetTemplate",
+        "updateExpeditionFleetTemplates",
+        "resetExpedtionFleetTemplateForm",
+        "setExpeditionFleetTemplateShips",
+        "reinitializeExpeditionFleetTemplateOGameDropdown",
+        "FLEET_DISPATCH_PAGE1",
+        "FLEET_DISPATCH_PAGE2"
+      ]
+    },
+    {
+      "feature": "resources",
+      "start": 1118410,
+      "end": 1118540,
+      "startLine": 32409,
+      "endLine": 32412,
+      "statementCount": 1,
+      "module": "getresourcesfromheader",
+      "responsibility": "resource display and production interactions",
+      "path": "resources/getresourcesfromheader.js",
+      "symbols": [
+        "getResourcesFromHeader"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 1118542,
+      "end": 1118681,
+      "startLine": 32414,
+      "endLine": 32422,
+      "statementCount": 1,
+      "module": "getkeycode",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/getkeycode.js",
+      "symbols": [
+        "getKeyCode"
+      ]
+    },
+    {
+      "feature": "fleet",
+      "start": 1118683,
+      "end": 1189650,
+      "startLine": 32424,
+      "endLine": 34566,
+      "statementCount": 143,
+      "module": "fleetdispatcher",
+      "responsibility": "fleet dispatch, templates, and fleet actions",
+      "path": "fleet/fleetdispatcher.js",
+      "symbols": [
+        "FleetDispatcher",
+        "FleetDispatcher.prototype.init",
+        "FleetDispatcher.prototype.displayErrors",
+        "FleetDispatcher.prototype.refresh",
+        "FleetDispatcher.prototype.switchToPage",
+        "FleetDispatcher.prototype.startLoading",
+        "FleetDispatcher.prototype.stopLoading",
+        "FleetDispatcher.prototype.updateToken",
+        "FleetDispatcher.prototype.appendTokenParams",
+        "FleetDispatcher.prototype.updateEmptySystems",
+        "FleetDispatcher.prototype.updateInactiveSystems",
+        "FleetDispatcher.prototype.appendShipParams",
+        "FleetDispatcher.prototype.appendTargetParams",
+        "FleetDispatcher.prototype.appendCargoParams",
+        "FleetDispatcher.prototype.appendPrioParams",
+        "FleetDispatcher.prototype.initFleet1",
+        "FleetDispatcher.prototype.focusSubmitFleet1",
+        "FleetDispatcher.prototype.hasShipsSelected",
+        "FleetDispatcher.prototype.hasFreeSlots",
+        "FleetDispatcher.prototype.hasEnoughFuel",
+        "FleetDispatcher.prototype.validateFleet1",
+        "FleetDispatcher.prototype.trySubmitFleet1",
+        "FleetDispatcher.prototype.refreshFleet1",
+        "FleetDispatcher.prototype.refreshNavigationFleet1",
+        "FleetDispatcher.prototype.refreshShips",
+        "FleetDispatcher.prototype.refreshAPIData",
+        "FleetDispatcher.prototype.selectShip",
+        "FleetDispatcher.prototype.addShip",
+        "FleetDispatcher.prototype.findShip",
+        "FleetDispatcher.prototype.getNumberOfShipsSelected"
+      ]
+    },
+    {
+      "feature": "resources",
+      "start": 1189651,
+      "end": 1190094,
+      "startLine": 34567,
+      "endLine": 34578,
+      "statementCount": 4,
+      "module": "cancelproduction-id",
+      "responsibility": "resource display and production interactions",
+      "path": "resources/cancelproduction-id.js",
+      "symbols": [
+        "cancelProduction_id",
+        "production_listid",
+        "cancelProduction",
+        "cancelProductionStart"
+      ]
+    },
+    {
+      "feature": "fleet",
+      "start": 1190095,
+      "end": 1191011,
+      "startLine": 34579,
+      "endLine": 34615,
+      "statementCount": 1,
+      "module": "submitonkey",
+      "responsibility": "fleet dispatch, templates, and fleet actions",
+      "path": "fleet/submitonkey.js",
+      "symbols": [
+        "submitOnKey"
+      ]
+    },
+    {
+      "feature": "messages",
+      "start": 1191013,
+      "end": 1191333,
+      "startLine": 34617,
+      "endLine": 34636,
+      "statementCount": 1,
+      "module": "keyevent",
+      "responsibility": "messages, reports, chat, and notifications",
+      "path": "messages/keyevent.js",
+      "symbols": [
+        "keyevent"
+      ]
+    },
+    {
+      "feature": "fleet",
+      "start": 1191335,
+      "end": 1191756,
+      "startLine": 34638,
+      "endLine": 34651,
+      "statementCount": 1,
+      "module": "launchmissiles",
+      "responsibility": "fleet dispatch, templates, and fleet actions",
+      "path": "fleet/launchmissiles.js",
+      "symbols": [
+        "launchMissiles"
+      ]
+    },
+    {
+      "feature": "galaxy",
+      "start": 1191758,
+      "end": 1195556,
+      "startLine": 34653,
+      "endLine": 34770,
+      "statementCount": 4,
+      "module": "moveplanet",
+      "responsibility": "galaxy, planets, moons, and debris fields",
+      "path": "galaxy/moveplanet.js",
+      "symbols": [
+        "movePlanet",
+        "discoverPlanet",
+        "sendingSystemDiscoveryMission",
+        "sendSystemDiscoveryMission"
+      ]
+    },
+    {
+      "feature": "ui",
+      "start": 1195558,
+      "end": 1196262,
+      "startLine": 34772,
+      "endLine": 34797,
+      "statementCount": 1,
+      "module": "addtotable",
+      "responsibility": "overlays, menus, forms, and reusable interface behavior",
+      "path": "ui/addtotable.js",
+      "symbols": [
+        "addToTable"
+      ]
+    },
+    {
+      "feature": "fleet",
+      "start": 1196264,
+      "end": 1196389,
+      "startLine": 34799,
+      "endLine": 34805,
+      "statementCount": 1,
+      "module": "setships",
+      "responsibility": "fleet dispatch, templates, and fleet actions",
+      "path": "fleet/setships.js",
+      "symbols": [
+        "setShips"
+      ]
+    },
+    {
+      "feature": "galaxy",
+      "start": 1196391,
+      "end": 1204219,
+      "startLine": 34807,
+      "endLine": 34968,
+      "statementCount": 7,
+      "module": "rendercontentgalaxy",
+      "responsibility": "galaxy, planets, moons, and debris fields",
+      "path": "galaxy/rendercontentgalaxy.js",
+      "symbols": [
+        "renderContentGalaxy",
+        "renderPlanet",
+        "renderDebris",
+        "renderMoon",
+        "renderPlayer",
+        "colorNumberInFrontOfFriendsPlanet",
+        "renderEmptySlot"
+      ]
+    },
+    {
+      "feature": "fleet",
+      "start": 1204221,
+      "end": 1205388,
+      "startLine": 34970,
+      "endLine": 34991,
+      "statementCount": 1,
+      "module": "renderphalanx",
+      "responsibility": "fleet dispatch, templates, and fleet actions",
+      "path": "fleet/renderphalanx.js",
+      "symbols": [
+        "renderPhalanx"
+      ]
+    },
+    {
+      "feature": "alliance",
+      "start": 1205390,
+      "end": 1205953,
+      "startLine": 34993,
+      "endLine": 35007,
+      "statementCount": 1,
+      "module": "renderalliance",
+      "responsibility": "alliance and diplomacy interactions",
+      "path": "alliance/renderalliance.js",
+      "symbols": [
+        "renderAlliance"
+      ]
+    },
+    {
+      "feature": "galaxy",
+      "start": 1205955,
+      "end": 1207642,
+      "startLine": 35009,
+      "endLine": 35047,
+      "statementCount": 3,
+      "module": "renderactions",
+      "responsibility": "galaxy, planets, moons, and debris fields",
+      "path": "galaxy/renderactions.js",
+      "symbols": [
+        "renderActions",
+        "renderEmptySlotActions",
+        "getPlayerName"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 1207644,
+      "end": 1208331,
+      "startLine": 35049,
+      "endLine": 35080,
+      "statementCount": 1,
+      "module": "getplayercolorclass",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/getplayercolorclass.js",
+      "symbols": [
+        "getPlayerColorClass"
+      ]
+    },
+    {
+      "feature": "galaxy",
+      "start": 1208333,
+      "end": 1210497,
+      "startLine": 35082,
+      "endLine": 35120,
+      "statementCount": 1,
+      "module": "getplayerabbreviations",
+      "responsibility": "galaxy, planets, moons, and debris fields",
+      "path": "galaxy/getplayerabbreviations.js",
+      "symbols": [
+        "getPlayerAbbreviations"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 1210499,
+      "end": 1210733,
+      "startLine": 35122,
+      "endLine": 35128,
+      "statementCount": 1,
+      "module": "getplayerselectedlanguage",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/getplayerselectedlanguage.js",
+      "symbols": [
+        "getPlayerSelectedLanguage"
+      ]
+    },
+    {
+      "feature": "ui",
+      "start": 1210735,
+      "end": 1211261,
+      "startLine": 35130,
+      "endLine": 35145,
+      "statementCount": 1,
+      "module": "getactivitystar",
+      "responsibility": "overlays, menus, forms, and reusable interface behavior",
+      "path": "ui/getactivitystar.js",
+      "symbols": [
+        "getActivityStar"
+      ]
+    },
+    {
+      "feature": "fleet",
+      "start": 1211263,
+      "end": 1211806,
+      "startLine": 35147,
+      "endLine": 35160,
+      "statementCount": 2,
+      "module": "addfleetcontainer",
+      "responsibility": "fleet dispatch, templates, and fleet actions",
+      "path": "fleet/addfleetcontainer.js",
+      "symbols": [
+        "addFleetContainer",
+        "getFleetIcon"
+      ]
+    },
+    {
+      "feature": "galaxy",
+      "start": 1211808,
+      "end": 1216078,
+      "startLine": 35162,
+      "endLine": 35277,
+      "statementCount": 3,
+      "module": "getplanettooltip",
+      "responsibility": "galaxy, planets, moons, and debris fields",
+      "path": "galaxy/getplanettooltip.js",
+      "symbols": [
+        "getPlanetTooltip",
+        "getMoonTooltip",
+        "getPlanetOrMoonTooltipLinks"
+      ]
+    },
+    {
+      "feature": "fleet",
+      "start": 1216080,
+      "end": 1217098,
+      "startLine": 35279,
+      "endLine": 35301,
+      "statementCount": 1,
+      "module": "getespionagemission",
+      "responsibility": "fleet dispatch, templates, and fleet actions",
+      "path": "fleet/getespionagemission.js",
+      "symbols": [
+        "getEspionageMission"
+      ]
+    },
+    {
+      "feature": "galaxy",
+      "start": 1217100,
+      "end": 1219302,
+      "startLine": 35303,
+      "endLine": 35349,
+      "statementCount": 1,
+      "module": "getdebristooltip",
+      "responsibility": "galaxy, planets, moons, and debris fields",
+      "path": "galaxy/getdebristooltip.js",
+      "symbols": [
+        "getDebrisTooltip"
+      ]
+    },
+    {
+      "feature": "ui",
+      "start": 1219304,
+      "end": 1221814,
+      "startLine": 35351,
+      "endLine": 35417,
+      "statementCount": 1,
+      "module": "getplayertooltip",
+      "responsibility": "overlays, menus, forms, and reusable interface behavior",
+      "path": "ui/getplayertooltip.js",
+      "symbols": [
+        "getPlayerTooltip"
+      ]
+    },
+    {
+      "feature": "galaxy",
+      "start": 1221816,
+      "end": 1228865,
+      "startLine": 35419,
+      "endLine": 35601,
+      "statementCount": 5,
+      "module": "rendereventspaceobjects",
+      "responsibility": "galaxy, planets, moons, and debris fields",
+      "path": "galaxy/rendereventspaceobjects.js",
+      "symbols": [
+        "renderEventSpaceObjects",
+        "renderEventPlanet",
+        "renderEventDebris",
+        "getEventPlanetTooltip",
+        "getEventDebrisTooltip"
+      ]
+    },
+    {
+      "feature": "fleet",
+      "start": 1228867,
+      "end": 1234129,
+      "startLine": 35603,
+      "endLine": 35739,
+      "statementCount": 1,
+      "module": "getactions",
+      "responsibility": "fleet dispatch, templates, and fleet actions",
+      "path": "fleet/getactions.js",
+      "symbols": [
+        "getActions"
+      ]
+    },
+    {
+      "feature": "galaxy",
+      "start": 1234131,
+      "end": 1237995,
+      "startLine": 35741,
+      "endLine": 35821,
+      "statementCount": 2,
+      "module": "getemptyslotactions",
+      "responsibility": "galaxy, planets, moons, and debris fields",
+      "path": "galaxy/getemptyslotactions.js",
+      "symbols": [
+        "getEmptySlotActions",
+        "getDiscoveryLinkIcon"
+      ]
+    },
+    {
+      "feature": "alliance",
+      "start": 1237997,
+      "end": 1239844,
+      "startLine": 35823,
+      "endLine": 35879,
+      "statementCount": 2,
+      "module": "getalliancetooltip",
+      "responsibility": "alliance and diplomacy interactions",
+      "path": "alliance/getalliancetooltip.js",
+      "symbols": [
+        "getAllianceTooltip",
+        "getAllianceSelectedLanguage"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 1239846,
+      "end": 1240312,
+      "startLine": 35881,
+      "endLine": 35900,
+      "statementCount": 1,
+      "module": "getactivityelement",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/getactivityelement.js",
+      "symbols": [
+        "getActivityElement"
+      ]
+    },
+    {
+      "feature": "alliance",
+      "start": 1240314,
+      "end": 1241360,
+      "startLine": 35902,
+      "endLine": 35922,
+      "statementCount": 1,
+      "module": "clearposition",
+      "responsibility": "alliance and diplomacy interactions",
+      "path": "alliance/clearposition.js",
+      "symbols": [
+        "clearPosition"
+      ]
+    },
+    {
+      "feature": "galaxy",
+      "start": 1241362,
+      "end": 1241988,
+      "startLine": 35924,
+      "endLine": 35946,
+      "statementCount": 1,
+      "module": "displaycontentgalaxy",
+      "responsibility": "galaxy, planets, moons, and debris fields",
+      "path": "galaxy/displaycontentgalaxy.js",
+      "symbols": [
+        "displayContentGalaxy"
+      ]
+    },
+    {
+      "feature": "ui",
+      "start": 1241990,
+      "end": 1242340,
+      "startLine": 35948,
+      "endLine": 35965,
+      "statementCount": 1,
+      "module": "submitform",
+      "responsibility": "overlays, menus, forms, and reusable interface behavior",
+      "path": "ui/submitform.js",
+      "symbols": [
+        "submitForm"
+      ]
+    },
+    {
+      "feature": "fleet",
+      "start": 1242342,
+      "end": 1243895,
+      "startLine": 35967,
+      "endLine": 36025,
+      "statementCount": 2,
+      "module": "loadcontent",
+      "responsibility": "fleet dispatch, templates, and fleet actions",
+      "path": "fleet/loadcontent.js",
+      "symbols": [
+        "loadContent",
+        "loadContentNew"
+      ]
+    },
+    {
+      "feature": "resources",
+      "start": 1243897,
+      "end": 1243999,
+      "startLine": 36027,
+      "endLine": 36029,
+      "statementCount": 1,
+      "module": "errorboxdeuterium",
+      "responsibility": "resource display and production interactions",
+      "path": "resources/errorboxdeuterium.js",
+      "symbols": [
+        "errorBoxDeuterium"
+      ]
+    },
+    {
+      "feature": "fleet",
+      "start": 1244001,
+      "end": 1245145,
+      "startLine": 36031,
+      "endLine": 36061,
+      "statementCount": 2,
+      "module": "doscan",
+      "responsibility": "fleet dispatch, templates, and fleet actions",
+      "path": "fleet/doscan.js",
+      "symbols": [
+        "doScan",
+        "initPhalanx"
+      ]
+    },
+    {
+      "feature": "galaxy",
+      "start": 1245147,
+      "end": 1246300,
+      "startLine": 36063,
+      "endLine": 36099,
+      "statementCount": 1,
+      "module": "initspysystem",
+      "responsibility": "galaxy, planets, moons, and debris fields",
+      "path": "galaxy/initspysystem.js",
+      "symbols": [
+        "initSpySystem"
+      ]
+    },
+    {
+      "feature": "fleet",
+      "start": 1246302,
+      "end": 1247147,
+      "startLine": 36101,
+      "endLine": 36121,
+      "statementCount": 1,
+      "module": "initexpeditionfleettemplates",
+      "responsibility": "fleet dispatch, templates, and fleet actions",
+      "path": "fleet/initexpeditionfleettemplates.js",
+      "symbols": [
+        "initExpeditionFleetTemplates"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 1247149,
+      "end": 1247176,
+      "startLine": 36123,
+      "endLine": 36123,
+      "statementCount": 1,
+      "module": "checkingtarget",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/checkingtarget.js",
+      "symbols": [
+        "checkingTarget"
+      ]
+    },
+    {
+      "feature": "galaxy",
+      "start": 1247178,
+      "end": 1248734,
+      "startLine": 36125,
+      "endLine": 36181,
+      "statementCount": 1,
+      "module": "galaxychecktarget",
+      "responsibility": "galaxy, planets, moons, and debris fields",
+      "path": "galaxy/galaxychecktarget.js",
+      "symbols": [
+        "galaxyCheckTarget"
+      ]
+    },
+    {
+      "feature": "fleet",
+      "start": 1248736,
+      "end": 1252684,
+      "startLine": 36183,
+      "endLine": 36297,
+      "statementCount": 3,
+      "module": "sendexpedtionfleetfromtemplate",
+      "responsibility": "fleet dispatch, templates, and fleet actions",
+      "path": "fleet/sendexpedtionfleetfromtemplate.js",
+      "symbols": [
+        "sendExpedtionFleetFromTemplate",
+        "initMissleAttackLayer",
+        "displayMiniFleetMessage"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 1252686,
+      "end": 1254122,
+      "startLine": 36299,
+      "endLine": 36361,
+      "statementCount": 3,
+      "module": "getfilterclass",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/getfilterclass.js",
+      "symbols": [
+        "getFilterClass",
+        "filterToggle",
+        "sendFilterToggle"
+      ]
+    },
+    {
+      "feature": "fleet",
+      "start": 1254123,
+      "end": 1255594,
+      "startLine": 36362,
+      "endLine": 36396,
+      "statementCount": 1,
+      "module": "happyedit",
+      "responsibility": "fleet dispatch, templates, and fleet actions",
+      "path": "fleet/happyedit.js",
+      "symbols": [
+        "HappyEdit"
+      ]
+    },
+    {
+      "feature": "empire",
+      "start": 1255596,
+      "end": 1259072,
+      "startLine": 36398,
+      "endLine": 36506,
+      "statementCount": 1,
+      "module": "happyedit-prototype-onajaxdone",
+      "responsibility": "empire, construction, and technology screens",
+      "path": "empire/happyedit-prototype-onajaxdone.js",
+      "symbols": [
+        "HappyEdit.prototype.onAjaxDone"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 1259074,
+      "end": 1259232,
+      "startLine": 36508,
+      "endLine": 36511,
+      "statementCount": 1,
+      "module": "happyedit-prototype-onitemclick",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/happyedit-prototype-onitemclick.js",
+      "symbols": [
+        "HappyEdit.prototype.onItemClick"
+      ]
+    },
+    {
+      "feature": "galaxy",
+      "start": 1259234,
+      "end": 1259719,
+      "startLine": 36513,
+      "endLine": 36526,
+      "statementCount": 1,
+      "module": "happyedit-prototype-onclickresetbashing",
+      "responsibility": "galaxy, planets, moons, and debris fields",
+      "path": "galaxy/happyedit-prototype-onclickresetbashing.js",
+      "symbols": [
+        "HappyEdit.prototype.onClickResetBashing"
+      ]
+    },
+    {
+      "feature": "ui",
+      "start": 1259721,
+      "end": 1259895,
+      "startLine": 36528,
+      "endLine": 36531,
+      "statementCount": 1,
+      "module": "happyedit-prototype-fetchdata",
+      "responsibility": "overlays, menus, forms, and reusable interface behavior",
+      "path": "ui/happyedit-prototype-fetchdata.js",
+      "symbols": [
+        "HappyEdit.prototype.fetchData"
+      ]
+    },
+    {
+      "feature": "messages",
+      "start": 1259897,
+      "end": 1260081,
+      "startLine": 36533,
+      "endLine": 36540,
+      "statementCount": 1,
+      "module": "happyedit-prototype-displayerrors",
+      "responsibility": "messages, reports, chat, and notifications",
+      "path": "messages/happyedit-prototype-displayerrors.js",
+      "symbols": [
+        "HappyEdit.prototype.displayErrors"
+      ]
+    },
+    {
+      "feature": "ui",
+      "start": 1260111,
+      "end": 1261398,
+      "startLine": 36545,
+      "endLine": 36582,
+      "statementCount": 4,
+      "module": "happyedit-prototype-onclicktab",
+      "responsibility": "overlays, menus, forms, and reusable interface behavior",
+      "path": "ui/happyedit-prototype-onclicktab.js",
+      "symbols": [
+        "HappyEdit.prototype.onClickTab",
+        "HappyEdit.prototype.onFetch",
+        "HappyEdit.prototype.fetch",
+        "HappyEdit.prototype.initItemsCommon"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 1261400,
+      "end": 1261501,
+      "startLine": 36584,
+      "endLine": 36586,
+      "statementCount": 1,
+      "module": "happyedit-prototype-refreshitems",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/happyedit-prototype-refreshitems.js",
+      "symbols": [
+        "HappyEdit.prototype.refreshItems"
+      ]
+    },
+    {
+      "feature": "messages",
+      "start": 1261503,
+      "end": 1261842,
+      "startLine": 36588,
+      "endLine": 36600,
+      "statementCount": 1,
+      "module": "happyedit-prototype-handlesubmitresponse",
+      "responsibility": "messages, reports, chat, and notifications",
+      "path": "messages/happyedit-prototype-handlesubmitresponse.js",
+      "symbols": [
+        "HappyEdit.prototype.handleSubmitResponse"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 1261866,
+      "end": 1262219,
+      "startLine": 36605,
+      "endLine": 36616,
+      "statementCount": 2,
+      "module": "happyedit-prototype-onclicksaveplayerdata",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/happyedit-prototype-onclicksaveplayerdata.js",
+      "symbols": [
+        "HappyEdit.prototype.onClickSavePlayerData",
+        "HappyEdit.prototype.triggerNews"
+      ]
+    },
+    {
+      "feature": "ui",
+      "start": 1262221,
+      "end": 1263107,
+      "startLine": 36618,
+      "endLine": 36645,
+      "statementCount": 3,
+      "module": "happyedit-prototype-submitplayerdata",
+      "responsibility": "overlays, menus, forms, and reusable interface behavior",
+      "path": "ui/happyedit-prototype-submitplayerdata.js",
+      "symbols": [
+        "HappyEdit.prototype.submitPlayerData",
+        "HappyEdit.prototype.onClickSaveBuildingsData",
+        "HappyEdit.prototype.submitBuildingsData"
+      ]
+    },
+    {
+      "feature": "empire",
+      "start": 1263133,
+      "end": 1263787,
+      "startLine": 36650,
+      "endLine": 36669,
+      "statementCount": 2,
+      "module": "happyedit-prototype-onclicksaveresearchdata",
+      "responsibility": "empire, construction, and technology screens",
+      "path": "empire/happyedit-prototype-onclicksaveresearchdata.js",
+      "symbols": [
+        "HappyEdit.prototype.onClickSaveResearchData",
+        "HappyEdit.prototype.submitResearchData"
+      ]
+    },
+    {
+      "feature": "fleet",
+      "start": 1263810,
+      "end": 1264416,
+      "startLine": 36674,
+      "endLine": 36693,
+      "statementCount": 2,
+      "module": "happyedit-prototype-onclicksaveshipsdata",
+      "responsibility": "fleet dispatch, templates, and fleet actions",
+      "path": "fleet/happyedit-prototype-onclicksaveshipsdata.js",
+      "symbols": [
+        "HappyEdit.prototype.onClickSaveShipsData",
+        "HappyEdit.prototype.submitShipsData"
+      ]
+    },
+    {
+      "feature": "ui",
+      "start": 1264442,
+      "end": 1265076,
+      "startLine": 36698,
+      "endLine": 36717,
+      "statementCount": 2,
+      "module": "happyedit-prototype-onclicksavedefensesdata",
+      "responsibility": "overlays, menus, forms, and reusable interface behavior",
+      "path": "ui/happyedit-prototype-onclicksavedefensesdata.js",
+      "symbols": [
+        "HappyEdit.prototype.onClickSaveDefensesData",
+        "HappyEdit.prototype.submitDefensesData"
+      ]
+    },
+    {
+      "feature": "fleet",
+      "start": 1265104,
+      "end": 1265522,
+      "startLine": 36722,
+      "endLine": 36736,
+      "statementCount": 1,
+      "module": "happyedit-prototype-onclicksavewreckfielddata",
+      "responsibility": "fleet dispatch, templates, and fleet actions",
+      "path": "fleet/happyedit-prototype-onclicksavewreckfielddata.js",
+      "symbols": [
+        "HappyEdit.prototype.onClickSaveWreckfieldData"
+      ]
+    },
+    {
+      "feature": "ui",
+      "start": 1265524,
+      "end": 1266185,
+      "startLine": 36738,
+      "endLine": 36757,
+      "statementCount": 3,
+      "module": "happyedit-prototype-submitwreckfielddata",
+      "responsibility": "overlays, menus, forms, and reusable interface behavior",
+      "path": "ui/happyedit-prototype-submitwreckfielddata.js",
+      "symbols": [
+        "HappyEdit.prototype.submitWreckfieldData",
+        "HappyEdit.prototype.onClickSaveRewardsData",
+        "HappyEdit.prototype.submitRewardsData"
+      ]
+    },
+    {
+      "feature": "galaxy",
+      "start": 1266209,
+      "end": 1266624,
+      "startLine": 36762,
+      "endLine": 36773,
+      "statementCount": 2,
+      "module": "happyedit-prototype-onclicksaveplanetdata",
+      "responsibility": "galaxy, planets, moons, and debris fields",
+      "path": "galaxy/happyedit-prototype-onclicksaveplanetdata.js",
+      "symbols": [
+        "HappyEdit.prototype.onClickSavePlanetData",
+        "HappyEdit.prototype.submitPlanetData"
+      ]
+    },
+    {
+      "feature": "fleet",
+      "start": 1266647,
+      "end": 1267005,
+      "startLine": 36778,
+      "endLine": 36788,
+      "statementCount": 2,
+      "module": "happyedit-prototype-onclickfinishfleet",
+      "responsibility": "fleet dispatch, templates, and fleet actions",
+      "path": "fleet/happyedit-prototype-onclickfinishfleet.js",
+      "symbols": [
+        "HappyEdit.prototype.onClickFinishFleet",
+        "HappyEdit.prototype.submitFinishFleet"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 1267036,
+      "end": 1267238,
+      "startLine": 36793,
+      "endLine": 36796,
+      "statementCount": 1,
+      "module": "happyedit-prototype-onclickrestarteventhandler",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/happyedit-prototype-onclickrestarteventhandler.js",
+      "symbols": [
+        "HappyEdit.prototype.onClickRestartEventHandler"
+      ]
+    },
+    {
+      "feature": "lifeforms",
+      "start": 1267253,
+      "end": 1268374,
+      "startLine": 36799,
+      "endLine": 36829,
+      "statementCount": 3,
+      "module": "happyedit-prototype-submitdiscoverdata",
+      "responsibility": "lifeforms, classes, rewards, and graveyard screens",
+      "path": "lifeforms/happyedit-prototype-submitdiscoverdata.js",
+      "symbols": [
+        "HappyEdit.prototype.submitDiscoverData",
+        "HappyEdit.prototype.onClickSaveLifeformData",
+        "HappyEdit.prototype.onClickSaveLifeformBuildingData"
+      ]
+    },
+    {
+      "feature": "empire",
+      "start": 1268376,
+      "end": 1271372,
+      "startLine": 36831,
+      "endLine": 36892,
+      "statementCount": 3,
+      "module": "happyedit-prototype-onclickselectresearch",
+      "responsibility": "empire, construction, and technology screens",
+      "path": "empire/happyedit-prototype-onclickselectresearch.js",
+      "symbols": [
+        "HappyEdit.prototype.onClickSelectResearch",
+        "HappyEdit.prototype.onClickSelectAllResearch",
+        "HappyEdit.prototype.onClickSaveLifeformResearchData"
+      ]
+    },
+    {
+      "feature": "ui",
+      "start": 1271374,
+      "end": 1273020,
+      "startLine": 36894,
+      "endLine": 36933,
+      "statementCount": 2,
+      "module": "happyedit-prototype-onclicksavebuffs",
+      "responsibility": "overlays, menus, forms, and reusable interface behavior",
+      "path": "ui/happyedit-prototype-onclicksavebuffs.js",
+      "symbols": [
+        "HappyEdit.prototype.onClickSaveBuffs",
+        "HappyEdit.prototype.onChangeBuffTime"
+      ]
+    },
+    {
+      "feature": "empire",
+      "start": 1273021,
+      "end": 1278681,
+      "startLine": 36934,
+      "endLine": 37090,
+      "statementCount": 11,
+      "module": "lifeformresearch",
+      "responsibility": "empire, construction, and technology screens",
+      "path": "empire/lifeformresearch.js",
+      "symbols": [
+        "LifeformResearch",
+        "LifeformResearch.prototype.init",
+        "LifeformResearch.prototype.handleResponse",
+        "LifeformResearch.prototype.updateToken",
+        "LifeformResearch.prototype.displayErrors",
+        "LifeformResearch.prototype.onAjaxDone",
+        "LifeformResearch.prototype.onClickSelect100",
+        "LifeformResearch.prototype.onClickSelectRandom",
+        "LifeformResearch.prototype.onClickSelectArtifacts",
+        "LifeformResearch.prototype.onClickResetTree",
+        "LifeformResearch.prototype.onClickRestoreTree"
+      ]
+    },
+    {
+      "feature": "lifeforms",
+      "start": 1278682,
+      "end": 1282187,
+      "startLine": 37091,
+      "endLine": 37199,
+      "statementCount": 9,
+      "module": "lifeformsettings",
+      "responsibility": "lifeforms, classes, rewards, and graveyard screens",
+      "path": "lifeforms/lifeformsettings.js",
+      "symbols": [
+        "LifeformSettings",
+        "LifeformSettings.prototype.init",
+        "LifeformSettings.prototype.handleResponse",
+        "LifeformSettings.prototype.updateToken",
+        "LifeformSettings.prototype.displayErrors",
+        "LifeformSettings.prototype.onAjaxDone",
+        "LifeformSettings.prototype.onClickSubmitRemove",
+        "LifeformSettings.prototype.onClickSubmitSelect",
+        "LifeformSettings.prototype.submitLifeform"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 1282188,
+      "end": 1283861,
+      "startLine": 37200,
+      "endLine": 37234,
+      "statementCount": 2,
+      "module": "ogamelinechart",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/ogamelinechart.js",
+      "symbols": [
+        "OGameLineChart",
+        "OGameLineChart.epsilon"
+      ]
+    },
+    {
+      "feature": "ui",
+      "start": 1283863,
+      "end": 1284650,
+      "startLine": 37236,
+      "endLine": 37258,
+      "statementCount": 2,
+      "module": "ogamelinechart-prototype-init",
+      "responsibility": "overlays, menus, forms, and reusable interface behavior",
+      "path": "ui/ogamelinechart-prototype-init.js",
+      "symbols": [
+        "OGameLineChart.prototype.init",
+        "OGameLineChart.prototype.handleMouseMove"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 1284652,
+      "end": 1284947,
+      "startLine": 37260,
+      "endLine": 37269,
+      "statementCount": 2,
+      "module": "ogamelinechart-prototype-handlemouseleave",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/ogamelinechart-prototype-handlemouseleave.js",
+      "symbols": [
+        "OGameLineChart.prototype.handleMouseLeave",
+        "OGameLineChart.prototype.updateHighlight"
+      ]
+    },
+    {
+      "feature": "ui",
+      "start": 1284949,
+      "end": 1287387,
+      "startLine": 37271,
+      "endLine": 37371,
+      "statementCount": 5,
+      "module": "ogamelinechart-prototype-updatetooltip",
+      "responsibility": "overlays, menus, forms, and reusable interface behavior",
+      "path": "ui/ogamelinechart-prototype-updatetooltip.js",
+      "symbols": [
+        "OGameLineChart.prototype.updateTooltip",
+        "OGameLineChart.prototype.showTooltip",
+        "OGameLineChart.prototype.hideTooltip",
+        "OGameLineChart.prototype.getClosestLine",
+        "OGameLineChart.prototype.getClosestDataPoint"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 1287389,
+      "end": 1291378,
+      "startLine": 37373,
+      "endLine": 37503,
+      "statementCount": 7,
+      "module": "ogamelinechart-prototype-render",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/ogamelinechart-prototype-render.js",
+      "symbols": [
+        "OGameLineChart.prototype.render",
+        "OGameLineChart.prototype.renderTitle",
+        "OGameLineChart.prototype.renderLabels",
+        "OGameLineChart.prototype.renderAxis",
+        "OGameLineChart.prototype.renderVerticalLabels",
+        "OGameLineChart.prototype.renderHorizontalLabels",
+        "OGameLineChart.prototype.renderData"
+      ]
+    },
+    {
+      "feature": "ui",
+      "start": 1291380,
+      "end": 1292953,
+      "startLine": 37505,
+      "endLine": 37554,
+      "statementCount": 3,
+      "module": "ogamelinechart-prototype-renderdatapoints",
+      "responsibility": "overlays, menus, forms, and reusable interface behavior",
+      "path": "ui/ogamelinechart-prototype-renderdatapoints.js",
+      "symbols": [
+        "OGameLineChart.prototype.renderDataPoints",
+        "OGameLineChart.prototype.transformDataPointToCanvas",
+        "OGameLineChart.prototype.transformEventToCanvas"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 1292955,
+      "end": 1294962,
+      "startLine": 37556,
+      "endLine": 37656,
+      "statementCount": 10,
+      "module": "ogamelinechart-prototype-getminy",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/ogamelinechart-prototype-getminy.js",
+      "symbols": [
+        "OGameLineChart.prototype.getMinY",
+        "OGameLineChart.prototype.getMaxY",
+        "OGameLineChart.prototype.getDataKeys",
+        "OGameLineChart.prototype.getDataPoints",
+        "OGameLineChart.prototype.getNumDataPoints",
+        "OGameLineChart.prototype.setHighlight",
+        "OGameLineChart.prototype.setDataSetVisible",
+        "OGameLineChart.prototype.isDataSetVisible",
+        "OGameLineChart.prototype.getLineStyle",
+        "OGameLineChart.prototype.getLineWidth"
+      ]
+    },
+    {
+      "feature": "resources",
+      "start": 1294964,
+      "end": 1295554,
+      "startLine": 37658,
+      "endLine": 37673,
+      "statementCount": 1,
+      "module": "ogamelinechart-prototype-fixdpi",
+      "responsibility": "resource display and production interactions",
+      "path": "resources/ogamelinechart-prototype-fixdpi.js",
+      "symbols": [
+        "OGameLineChart.prototype.fixDPI"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 1295556,
+      "end": 1300116,
+      "startLine": 37675,
+      "endLine": 37854,
+      "statementCount": 11,
+      "module": "ogamelinechart-prototype-crossproduct",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/ogamelinechart-prototype-crossproduct.js",
+      "symbols": [
+        "OGameLineChart.prototype.crossProduct",
+        "OGameLineChart.prototype.dotProduct",
+        "OGameLineChart.prototype.addVector2",
+        "OGameLineChart.prototype.subVector2",
+        "OGameLineChart.prototype.scaleVector2",
+        "OGameLineChart.prototype.distance",
+        "OGameLineChart.prototype.projectOntoLineSegment",
+        "OGameLineChart.prototype.orthogonalDistanceFromLineSegment",
+        "$.fn.ogameLineChart",
+        "LazyLoader",
+        "LazyLoader"
+      ]
+    },
+    {
+      "feature": "ui",
+      "start": 1300119,
+      "end": 1300805,
+      "startLine": 37855,
+      "endLine": 37873,
+      "statementCount": 1,
+      "module": "document",
+      "responsibility": "overlays, menus, forms, and reusable interface behavior",
+      "path": "ui/document.js",
+      "symbols": [
+        "initialization"
+      ]
+    },
+    {
+      "feature": "marketplace",
+      "start": 1300818,
+      "end": 1344551,
+      "startLine": 37875,
+      "endLine": 39243,
+      "statementCount": 130,
+      "module": "marketplace",
+      "responsibility": "marketplace, items, and resource trading",
+      "path": "marketplace/marketplace.js",
+      "symbols": [
+        "Marketplace",
+        "Marketplace.prototype.onAjaxDone",
+        "Marketplace.prototype.onAjaxError",
+        "Marketplace.prototype.updateToken",
+        "Marketplace.prototype.initItemsCommon",
+        "Marketplace.prototype.refreshItems",
+        "Marketplace.prototype.getSorting",
+        "Marketplace.prototype.getFilters",
+        "Marketplace.prototype.getPagination",
+        "Marketplace.prototype.initTabBuying",
+        "Marketplace.prototype.onClickPriceMin",
+        "Marketplace.prototype.onClickPriceMax",
+        "Marketplace.prototype.onClickBuyingItem",
+        "Marketplace.prototype.onSortChangeBuying",
+        "Marketplace.prototype.onFilterChangeBuying",
+        "Marketplace.prototype.onPaginationChangeBuying",
+        "Marketplace.prototype.onPaginationChangeHistoryBuying",
+        "Marketplace.prototype.onPaginationChangeHistorySelling",
+        "Marketplace.prototype.fetchBuyingItems",
+        "Marketplace.prototype.onFetchBuyingItems",
+        "Marketplace.prototype.submitAcceptBuying",
+        "Marketplace.prototype.handleSubmitAcceptBuyingResponse",
+        "Marketplace.prototype.initTabSelling",
+        "Marketplace.prototype.onClickSellingItem",
+        "Marketplace.prototype.onSortChangeSelling",
+        "Marketplace.prototype.onFilterChangeSelling",
+        "Marketplace.prototype.onPaginationChangeSelling",
+        "Marketplace.prototype.fetchSellingItems",
+        "Marketplace.prototype.onFetchSellingItems",
+        "Marketplace.prototype.submitAcceptSelling"
+      ]
+    },
+    {
+      "feature": "fleet",
+      "start": 1344552,
+      "end": 1347691,
+      "startLine": 39244,
+      "endLine": 39340,
+      "statementCount": 10,
+      "module": "missile",
+      "responsibility": "fleet dispatch, templates, and fleet actions",
+      "path": "fleet/missile.js",
+      "symbols": [
+        "Missile",
+        "Missile.prototype.onAjaxDone",
+        "Missile.prototype.initCommon",
+        "Missile.prototype.deattachCommon",
+        "Missile.prototype.onFocusInterceptor",
+        "Missile.prototype.onKeyInputInterceptor",
+        "Missile.prototype.onFocusInterplanetary",
+        "Missile.prototype.onKeyInputInterplanetary",
+        "Missile.prototype.onClickButtonDestroy",
+        "Missile.prototype.onDestroyMissiles"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 1347692,
+      "end": 1349477,
+      "startLine": 39341,
+      "endLine": 39401,
+      "statementCount": 14,
+      "module": "textdestination",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/textdestination.js",
+      "symbols": [
+        "initialization",
+        "textDestination",
+        "textDestination.computed",
+        "textDestination.computed",
+        "textDestination.computed",
+        "textDestination.computed",
+        "textDestination.computed",
+        "textDestination.computed",
+        "textDestination.computed",
+        "textDestination.computed",
+        "textDestination.computed",
+        "textDestination.computed",
+        "type",
+        "initType"
+      ]
+    },
+    {
+      "feature": "ui",
+      "start": 1349478,
+      "end": 1352669,
+      "startLine": 39402,
+      "endLine": 39526,
+      "statementCount": 9,
+      "module": "ogamepaginatable",
+      "responsibility": "overlays, menus, forms, and reusable interface behavior",
+      "path": "ui/ogamepaginatable.js",
+      "symbols": [
+        "OGamePaginatable",
+        "OGamePaginatable.prototype.init",
+        "OGamePaginatable.prototype.handleClick",
+        "OGamePaginatable.prototype.update",
+        "OGamePaginatable.prototype.getPage",
+        "OGamePaginatable.prototype.getNumPages",
+        "OGamePaginatable.prototype.notifyChange",
+        "OGamePaginatable.prototype.refresh",
+        "$.fn.ogamePaginatable"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 1352682,
+      "end": 1357576,
+      "startLine": 39528,
+      "endLine": 39704,
+      "statementCount": 23,
+      "module": "percentagebar",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/percentagebar.js",
+      "symbols": [
+        "PercentageBar",
+        "PercentageBar.prototype.init",
+        "PercentageBar.prototype.initSteps",
+        "PercentageBar.prototype.initBar",
+        "PercentageBar.prototype.updateDrag",
+        "PercentageBar.prototype.onMouseUp",
+        "PercentageBar.prototype.onMouseMove",
+        "PercentageBar.prototype.onMouseEnter",
+        "PercentageBar.prototype.onMouseLeave",
+        "PercentageBar.prototype.onTouchStart",
+        "PercentageBar.prototype.onTouchMove",
+        "PercentageBar.prototype.onTouchEnd",
+        "PercentageBar.prototype.startDrag",
+        "PercentageBar.prototype.stopDrag",
+        "PercentageBar.prototype.updateDragTouch",
+        "PercentageBar.prototype.calcValue",
+        "PercentageBar.prototype.setValue",
+        "PercentageBar.prototype.getValue",
+        "PercentageBar.prototype.updateBar",
+        "addPercentageBarPlugin",
+        "initialization",
+        "PercentSelector",
+        "PercentSelector.fallbackMode"
+      ]
+    },
+    {
+      "feature": "ui",
+      "start": 1357739,
+      "end": 1360264,
+      "startLine": 39707,
+      "endLine": 39764,
+      "statementCount": 1,
+      "module": "percentselector-initbar",
+      "responsibility": "overlays, menus, forms, and reusable interface behavior",
+      "path": "ui/percentselector-initbar.js",
+      "symbols": [
+        "PercentSelector.initBar"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 1360266,
+      "end": 1362658,
+      "startLine": 39766,
+      "endLine": 39813,
+      "statementCount": 2,
+      "module": "percentselector-setpercent",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/percentselector-setpercent.js",
+      "symbols": [
+        "PercentSelector.setPercent",
+        "PercentSelector.setPercentFromPageX"
+      ]
+    },
+    {
+      "feature": "ui",
+      "start": 1362660,
+      "end": 1364221,
+      "startLine": 39815,
+      "endLine": 39858,
+      "statementCount": 1,
+      "module": "percentselector-createoverlay",
+      "responsibility": "overlays, menus, forms, and reusable interface behavior",
+      "path": "ui/percentselector-createoverlay.js",
+      "symbols": [
+        "PercentSelector.createOverlay"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 1364223,
+      "end": 1367003,
+      "startLine": 39860,
+      "endLine": 39939,
+      "statementCount": 10,
+      "module": "percentselector-handlers",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/percentselector-handlers.js",
+      "symbols": [
+        "PercentSelector.handlers",
+        "PercentSelector.handlers.touchDragging",
+        "PercentSelector.handlers.touchStart",
+        "PercentSelector.handlers.touchEnd",
+        "PercentSelector.handlers.touchMove",
+        "PercentSelector.handlers.mouseDragging",
+        "PercentSelector.handlers.mouseDown",
+        "PercentSelector.handlers.mouseOut",
+        "PercentSelector.handlers.mouseUp",
+        "PercentSelector.handlers.mouseMove"
+      ]
+    },
+    {
+      "feature": "galaxy",
+      "start": 1367004,
+      "end": 1367365,
+      "startLine": 39940,
+      "endLine": 39951,
+      "statementCount": 1,
+      "module": "jquery",
+      "responsibility": "galaxy, planets, moons, and debris fields",
+      "path": "galaxy/jquery.js",
+      "symbols": [
+        "initialization"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 1367366,
+      "end": 1367379,
+      "startLine": 39952,
+      "endLine": 39952,
+      "statementCount": 1,
+      "module": "buildurl",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/buildurl.js",
+      "symbols": [
+        "buildUrl"
+      ]
+    },
+    {
+      "feature": "ui",
+      "start": 1367381,
+      "end": 1368440,
+      "startLine": 39954,
+      "endLine": 39999,
+      "statementCount": 1,
+      "module": "sendbuildrequest",
+      "responsibility": "overlays, menus, forms, and reusable interface behavior",
+      "path": "ui/sendbuildrequest.js",
+      "symbols": [
+        "sendBuildRequest"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 1368442,
+      "end": 1368510,
+      "startLine": 40001,
+      "endLine": 40004,
+      "statementCount": 1,
+      "module": "fastbuild",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/fastbuild.js",
+      "symbols": [
+        "fastBuild"
+      ]
+    },
+    {
+      "feature": "empire",
+      "start": 1368512,
+      "end": 1368763,
+      "startLine": 40006,
+      "endLine": 40010,
+      "statementCount": 1,
+      "module": "cancelresearch",
+      "responsibility": "empire, construction, and technology screens",
+      "path": "empire/cancelresearch.js",
+      "symbols": [
+        "cancelResearch"
+      ]
+    },
+    {
+      "feature": "resources",
+      "start": 1368764,
+      "end": 1368856,
+      "startLine": 40011,
+      "endLine": 40013,
+      "statementCount": 3,
+      "module": "metalticker",
+      "responsibility": "resource display and production interactions",
+      "path": "resources/metalticker.js",
+      "symbols": [
+        "metalTicker",
+        "crystalTicker",
+        "deuteriumTicker"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 1368857,
+      "end": 1368918,
+      "startLine": 40014,
+      "endLine": 40015,
+      "statementCount": 2,
+      "module": "populationticker",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/populationticker.js",
+      "symbols": [
+        "populationTicker",
+        "foodTicker"
+      ]
+    },
+    {
+      "feature": "resources",
+      "start": 1368920,
+      "end": 1379836,
+      "startLine": 40017,
+      "endLine": 40285,
+      "statementCount": 18,
+      "module": "resourceticker",
+      "responsibility": "resource display and production interactions",
+      "path": "resources/resourceticker.js",
+      "symbols": [
+        "ResourceTicker",
+        "ResourceTicker.Metal",
+        "ResourceTicker.Crystal",
+        "ResourceTicker.Deuterium",
+        "ResourceTicker.Energy",
+        "ResourceTicker.Population",
+        "ResourceTicker.Food",
+        "ResourceTicker.prototype.reload",
+        "ResourceTicker.prototype.start",
+        "ResourceTicker.prototype.stop",
+        "ResourceTicker.prototype.restart",
+        "ResourceTicker.prototype.update",
+        "ResourceTicker.prototype.refresh",
+        "ResourceTicker.prototype.getStorageClass",
+        "ResourceTicker.prototype.activateOnClick",
+        "resourcesBar",
+        "reloadResources",
+        "getAjaxResourcebox"
+      ]
+    },
+    {
+      "feature": "ui",
+      "start": 1379837,
+      "end": 1382629,
+      "startLine": 40286,
+      "endLine": 40363,
+      "statementCount": 1,
+      "module": "window",
+      "responsibility": "overlays, menus, forms, and reusable interface behavior",
+      "path": "ui/window.js",
+      "symbols": [
+        "initialization"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 1382630,
+      "end": 1383553,
+      "startLine": 40364,
+      "endLine": 40398,
+      "statementCount": 2,
+      "module": "ogame-retrieveemail",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/ogame-retrieveemail.js",
+      "symbols": [
+        "ogame.retrieveEmail",
+        "initialization"
+      ]
+    },
+    {
+      "feature": "lifeforms",
+      "start": 1383554,
+      "end": 1390316,
+      "startLine": 40399,
+      "endLine": 40615,
+      "statementCount": 20,
+      "module": "rewarding",
+      "responsibility": "lifeforms, classes, rewards, and graveyard screens",
+      "path": "lifeforms/rewarding.js",
+      "symbols": [
+        "Rewarding",
+        "Rewarding.prototype.onAjaxTasksDone",
+        "Rewarding.prototype.onAjaxSelectDone",
+        "Rewarding.prototype.onAjaxRewardsDone",
+        "Rewarding.prototype.displayErrors",
+        "Rewarding.prototype.onAjaxError",
+        "Rewarding.prototype.initCommon",
+        "Rewarding.prototype.refreshContent",
+        "Rewarding.prototype.initTabTasks",
+        "Rewarding.prototype.onClickButtonTasks",
+        "Rewarding.prototype.onClickButtonRewards",
+        "Rewarding.prototype.onClickButtonCurrentTier",
+        "Rewarding.prototype.onClickButtonSelectReward",
+        "Rewarding.prototype.fetchTasks",
+        "Rewarding.prototype.onFetchTasks",
+        "Rewarding.prototype.initTabRewards",
+        "Rewarding.prototype.fetchRewards",
+        "Rewarding.prototype.onFetchRewards",
+        "Rewarding.prototype.submitReward",
+        "Rewarding.prototype.handleSubmitRewardResponse"
+      ]
+    },
+    {
+      "feature": "ui",
+      "start": 1390317,
+      "end": 1393604,
+      "startLine": 40616,
+      "endLine": 40738,
+      "statementCount": 15,
+      "module": "ogamesortable",
+      "responsibility": "overlays, menus, forms, and reusable interface behavior",
+      "path": "ui/ogamesortable.js",
+      "symbols": [
+        "OGameSortable",
+        "OGameSortable.prototype.init",
+        "OGameSortable.prototype.handleClick",
+        "OGameSortable.prototype.notifyChange",
+        "OGameSortable.prototype.activate",
+        "OGameSortable.prototype.deactivate",
+        "OGameSortable.prototype.isValidOrder",
+        "OGameSortable.prototype.setOrder",
+        "OGameSortable.prototype.getOrder",
+        "OGameSortable.prototype.refresh",
+        "OGameSortable.prototype.refreshAlign",
+        "OGameSortable.prototype.refreshState",
+        "OGameSortable.prototype.refreshOrder",
+        "OGameSortable.prototype.update",
+        "$.fn.ogameSortable"
+      ]
+    },
+    {
+      "feature": "fleet",
+      "start": 1393618,
+      "end": 1401494,
+      "startLine": 40741,
+      "endLine": 40969,
+      "statementCount": 3,
+      "module": "loadfleettemplates",
+      "responsibility": "fleet dispatch, templates, and fleet actions",
+      "path": "fleet/loadfleettemplates.js",
+      "symbols": [
+        "loadFleetTemplates",
+        "deleteTemplate",
+        "initStandardFleet"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 1401538,
+      "end": 1401565,
+      "startLine": 40972,
+      "endLine": 40972,
+      "statementCount": 1,
+      "module": "cachedtemplates",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/cachedtemplates.js",
+      "symbols": [
+        "cachedTemplates"
+      ]
+    },
+    {
+      "feature": "ui",
+      "start": 1401626,
+      "end": 1404303,
+      "startLine": 40975,
+      "endLine": 41058,
+      "statementCount": 1,
+      "module": "populatetemplatestable",
+      "responsibility": "overlays, menus, forms, and reusable interface behavior",
+      "path": "ui/populatetemplatestable.js",
+      "symbols": [
+        "populateTemplatesTable"
+      ]
+    },
+    {
+      "feature": "fleet",
+      "start": 1404365,
+      "end": 1405779,
+      "startLine": 41061,
+      "endLine": 41108,
+      "statementCount": 2,
+      "module": "loadstandardfleetdropdown",
+      "responsibility": "fleet dispatch, templates, and fleet actions",
+      "path": "fleet/loadstandardfleetdropdown.js",
+      "symbols": [
+        "loadStandardFleetDropdown",
+        "setShipsFleet"
+      ]
+    },
+    {
+      "feature": "core",
+      "start": 1405780,
+      "end": 1405981,
+      "startLine": 41109,
+      "endLine": 41116,
+      "statementCount": 1,
+      "module": "techdetail",
+      "responsibility": "legacy bootstrap and shared compatibility code",
+      "path": "core/techdetail.js",
+      "symbols": [
+        "initialization"
+      ]
+    },
+    {
+      "feature": "empire",
+      "start": 1405982,
+      "end": 1419600,
+      "startLine": 41117,
+      "endLine": 41439,
+      "statementCount": 24,
+      "module": "technologydetails",
+      "responsibility": "empire, construction, and technology screens",
+      "path": "empire/technologydetails.js",
+      "symbols": [
+        "initialization",
+        "TechnologyDetails",
+        "TechnologyDetails.prototype.init",
+        "TechnologyDetails.prototype.setParams",
+        "TechnologyDetails.prototype.onChangeAmount",
+        "TechnologyDetails.prototype.onKeyPressAmount",
+        "TechnologyDetails.prototype.onClickUpgrade",
+        "TechnologyDetails.prototype.onClickUpgradeStorage",
+        "TechnologyDetails.prototype.onClickBuyCommander",
+        "TechnologyDetails.prototype.handleDowngrade",
+        "TechnologyDetails.prototype.onClickDowngrade",
+        "TechnologyDetails.prototype.onClickMaximum",
+        "TechnologyDetails.prototype.onClickSelectClass",
+        "TechnologyDetails.prototype.onClickDeselectClass",
+        "TechnologyDetails.prototype.onClickShow",
+        "TechnologyDetails.prototype.onClickHide",
+        "TechnologyDetails.prototype.selectClass",
+        "TechnologyDetails.prototype.deselectClass",
+        "TechnologyDetails.prototype.displayErrors",
+        "TechnologyDetails.prototype.show",
+        "TechnologyDetails.prototype.hide",
+        "TechnologyDetails.prototype.startSlideDown",
+        "TechnologyDetails.prototype.stopSlideDown",
+        "TechnologyDetails.prototype.setMaximumBuildableAmount"
+      ]
+    },
+    {
+      "feature": "ui",
+      "start": 1419893,
+      "end": 1420518,
+      "startLine": 41446,
+      "endLine": 41470,
+      "statementCount": 1,
+      "module": "click",
+      "responsibility": "overlays, menus, forms, and reusable interface behavior",
+      "path": "ui/click.js",
+      "symbols": [
+        "initialization"
+      ]
+    }
+  ]
+}

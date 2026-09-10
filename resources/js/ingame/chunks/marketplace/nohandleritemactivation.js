@@ -1,0 +1,5 @@
+
+
+function noHandlerItemActivation() {
+  startedActivation = false;
+}

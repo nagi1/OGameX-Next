@@ -32442,7 +32442,8 @@ TimerHandler.prototype._timer = function () {
       this._callbacks[i]();
     }
   }
-};
+};;
+
 /*!
  * jQuery Cookie Plugin v1.3.1
  * https://github.com/carhartl/jquery-cookie
@@ -34012,7 +34013,8 @@ TimerHandler.prototype._timer = function () {
  * http://jquery.org/license
  */
 !function (a) {
-  "function" == typeof define && define.amd ? define(["jquery"], a) : "object" == typeof exports ? module.exports = a : a(jQuery);
+  "function" == typeof define && define.amd ? define(["jquery"], a) : "object" == typeof exports ? module.exports = a : a(jQuery);;
+
 }(function (a) {
   function b(b) {
     var g = b || window.event,
@@ -37058,7 +37060,8 @@ TimerHandler.prototype._timer = function () {
     field.data("promptText", promptText);
     Tipped.create(field[0], promptText, tooltipSettings);
     Tipped.show(field[0]);
-  };
+  };;
+
 
   methods._closePrompt = function (field) {
     field.data("promptText", "");
@@ -43805,7 +43808,8 @@ var Spinners = {
  * @license: https://creativecommons.org/licenses/by/4.0
  */
 !function (t, i) {
-  "function" == typeof define && define.amd ? define(["jquery"], i) : "object" == typeof module && module.exports ? module.exports = i(require("jquery")) : t.Tipped = i(jQuery);
+  "function" == typeof define && define.amd ? define(["jquery"], i) : "object" == typeof module && module.exports ? module.exports = i(require("jquery")) : t.Tipped = i(jQuery);;
+
 }(this, function ($) {
   var Tipped = {};
   $.extend(Tipped, {
@@ -46630,7 +46634,8 @@ function ajaxFormSubmit(form, url, okFunction, additionalParams) {
     data: params,
     success: successFunction
   });
-}
+};
+
 
 function initConnectionErrorFunction() {
   if (isMobile) {
@@ -46640,14 +46645,16 @@ function initConnectionErrorFunction() {
       });
     }, false);
   }
-}
+};
+
 // page: ainfo.js
 function initAllianceInfo() {
   initConnectionErrorFunction();
   initTooltips();
   initOverlays();
   initHideElements();
-}
+};
+
 
 $('[data-homepage-link]').on('click', function (e) {
   e.preventDefault();
@@ -47190,7 +47197,8 @@ function initBBCodes() {
       Tipped.refresh(thisObj);
     });
   });
-}
+};
+
 ogame.buddies = {
   initBuddyList: function () {
     $.tablesorter.addParser({
@@ -47285,7 +47293,8 @@ function updateRequestCount(count) {
 
 function updateBuddyCount(count) {
   $("#buddyCount").html(count);
-}
+};
+
 
 function reportMessage(id, fromPlayer, toPlayer) {
   $.ajax({
@@ -47339,7 +47348,8 @@ function requestsReady() {
   $(document).on('click', '.rejectRequest', rejectRequest);
   $(document).on('click', '.cancelRequest', cancelRequest);
   $(document).on('click', '.reportRequest', reportRequest);
-}
+};
+
 
 function initBuddyRequestForm() {
   $(".overlayDiv .buddyRequest form").unbind('submit').bind('submit', function (e) {
@@ -47364,7 +47374,8 @@ function initBuddyRequestForm() {
       $overlayTitle.append($(document.createElement('span')).addClass('buddyName').text(' (' + $thisObj.attr('data-title') + ')'));
     }
   });
-}
+};
+
 function initBuyResourceOverlay(isLastBuildingSlot, showLastBuildingSlotWarning, localization) {
   $('.close_buyResourceOverlay').on('click', function () {
     $('#buyResourceOverlayBody').closest('.ui-dialog').find('.ui-icon-closethick').click();
@@ -47392,11 +47403,13 @@ function initBuyResourceOverlay(isLastBuildingSlot, showLastBuildingSlotWarning,
       sendStuff();
     }
   });
-}
+};
+
 
 function sendDMAcceptanceForm() {
   $('#premiumAcceptForm').submit();
-}
+};
+
 
 function openBuyResourceDialog(buyResourceDialogLink) {
   openOverlay(buyResourceDialogLink, {
@@ -47415,7 +47428,8 @@ function initBuyResources() {
   $('.fill_resource').on('click', '.fillup', onChangeToPremium).on('click', '.btn_premium', submitBuyRequest);
   $('.fillup').on('keyup', '.resource_name input', handleInputForResourcePackages);
   initThousandSeparator();
-}
+};
+
 
 function onChangeToPremium(e) {
   var $btn = $(e.currentTarget).find('.btn_blue'),
@@ -47490,7 +47504,8 @@ function submitBuyRequest(event, confirmedProductionLoweredWarning) {
   }
 
   reallySubmitBuyRequest($btn, userInputAmounts);
-}
+};
+
 
 function reallySubmitBuyRequest($btn, userInputAmounts) {
   let costs = $btn.data('premiumCosts'),
@@ -47556,7 +47571,8 @@ function handleInputForResourcePackages(e) {
   }
 
   updateCostsAfterUserModification($input);
-}
+};
+
 
 function updateCostsAfterUserModification($clickedInput) {
   let $package = $clickedInput.parents('.fillup'),
@@ -47593,7 +47609,8 @@ function updateCostsAfterUserModification($clickedInput) {
 
 
   updateBuyTextAndActivatePackage($button, $package);
-}
+};
+
 
 function updatePercentageBasedPackages(dataFromBuy, myPackageType, $myButton, $currentPackage, $largePackageNumber) {
   if (!dataFromBuy['isBuyable']) {
@@ -47621,7 +47638,8 @@ function updatePercentageBasedPackages(dataFromBuy, myPackageType, $myButton, $c
       $currentPackage.children('.fillup_txt').html(loca.fillUpTo);
     }
   }
-}
+};
+
 
 function updateProductionBasedPackages(collectionData, myPackageType, $myButton, $currentPackage, darkMatter) {
   if (!collectionData['isBuyable']) {
@@ -47662,7 +47680,8 @@ function updateProductionBasedPackages(collectionData, myPackageType, $myButton,
 function updateBuyTextAndActivatePackage($buttonElem, $package) {
   $buttonElem.html(!$('.buy_resources.content_inner').hasClass('productionBasedPackages') || $buttonElem.data('sufficientDarkMatter') ? loca.buyNow : loca.getDM).attr('class', 'btn_premium small');
   $package.addClass('premium');
-}
+};
+
 /**/
 // ogame.chat implementation has been moved to resources/js/ingame/chat.js
 var _ogame_chat_removed = {
@@ -49344,23 +49363,28 @@ var _ogame_chat_removed = {
       $(value).html($this.playerList);
     });
   }
-};
-let characterClassArr = ['neutral', 'miner', 'warrior', 'explorer'];
-let allianceClassArr = ['neutral', 'warrior', 'trader', 'explorer'];
+};;
+
+let characterClassArr = ['neutral', 'miner', 'warrior', 'explorer'];;
+
+let allianceClassArr = ['neutral', 'warrior', 'trader', 'explorer'];;
+
 let characterClassBonuses = {
   warrior: {
     109: 2,
     110: 2,
     111: 2
   }
-};
+};;
+
 let allianceClassBonuses = {
   warrior: {
     109: 1,
     110: 1,
     111: 1
   }
-};
+};;
+
 
 function isJsonString(str) {
   try {
@@ -49370,7 +49394,8 @@ function isJsonString(str) {
   }
 
   return true;
-}
+};
+
 
 function isReportString(str) {
   let [reportType, lang, serverId, apiKey] = str.split('-');
@@ -49381,7 +49406,8 @@ function isReportString(str) {
   }
 
   return true;
-}
+};
+
 
 function loadPlanetAction(planetId, currentTarget, isBaseDefender, attackType) {
   let body = {
@@ -49414,7 +49440,8 @@ function loadPlanetAction(planetId, currentTarget, isBaseDefender, attackType) {
       showNotification(combatSimLoca.LOCA_ERROR_DEFAULT, 'error');
     }
   });
-}
+};
+
 
 function loadSpyReport(hashId, currentTarget, isBaseDefender, attackType) {
   if (!currentTarget || !currentTarget.length) {
@@ -49454,7 +49481,8 @@ function loadSpyReport(hashId, currentTarget, isBaseDefender, attackType) {
       showNotification(combatSimLoca.LOCA_ERROR_DEFAULT, 'error');
     }
   });
-}
+};
+
 
 function adjustResearchClassBonuses(planetData) {
   let className = findClassName(characterClassArr, planetData.characterClassId ?? 0);
@@ -49476,7 +49504,8 @@ function adjustResearchClassBonuses(planetData) {
       }
     });
   }
-}
+};
+
 
 function simChanged(obj) {
   if ($(obj).attr('max')) {
@@ -49497,7 +49526,8 @@ function simChanged(obj) {
   $('#showCombatResultShortInfo').prop('disabled', true).data('target', '');
   $("#saveCombatPlanning").removeAttr('disabled');
   $("#simulateCombatPlanning").prop('disabled', true);
-}
+};
+
 
 function switchSpaceObject(obj) {
   let currentTarget = $(obj);
@@ -49523,7 +49553,8 @@ function switchSpaceObject(obj) {
   basicData.find('.togglePanel li').removeClass('selected');
   basicData.find('.togglePanel ul #' + spaceObject.data('planetid')).addClass('selected');
   basicData.find('.toggleLink').html(spaceObject.html());
-}
+};
+
 
 function changeClass(target, selectedClass, type) {
   let classArr = characterClassArr;
@@ -49703,7 +49734,8 @@ function clearTechnologies(obj) {
   $("fleet-content[data-participant-id=" + participantId + "][data-attack-type=" + attackType + "] ship-section input").val('');
   $("fleet-content[data-participant-id=" + participantId + "][data-attack-type=" + attackType + "] defense-section input").val('');
   simChanged(obj);
-}
+};
+
 
 function expandLifeforms(obj) {
   let combatsimSection = $(obj).closest("combatsim-section");
@@ -49713,7 +49745,8 @@ function expandLifeforms(obj) {
   } else {
     combatsimSection.attr("show-lifeform", "1");
   }
-}
+};
+
 
 function showSpaceObjectSelection(obj) {
   let basicData = $($(obj).closest("basic-data")[0]);
@@ -49738,7 +49771,8 @@ function loadPlanetInfo(obj) {
   let isBaseDefender = attackType === 2 && $(obj).data('participantId') === $('fleet-content[data-attack-type=2]').first().data('participantId');
   loadPlanetAction(inputField.data('selectedPlanetid'), $(obj), isBaseDefender, attackType);
   simChanged(obj);
-}
+};
+
 
 function loadInfoParticipant(obj) {
   let loadDataSection = $(obj).closest("div.load_data");
@@ -49751,7 +49785,8 @@ function loadInfoParticipant(obj) {
   } else if (isReportString(inputField.val())) {
     loadSpyReport(inputField.val(), $(obj), isBaseDefender, attackType);
   }
-}
+};
+
 
 function selectCharacterClass(obj) {
   let selection = 'neutral';
@@ -49759,7 +49794,8 @@ function selectCharacterClass(obj) {
     if (obj.attributes[characterClass]) selection = characterClass;
   });
   changeClass(obj, selection, 'characterclass');
-}
+};
+
 
 function selectAllianceClass(obj) {
   let selection = 'neutral';
@@ -49767,7 +49803,8 @@ function selectAllianceClass(obj) {
     if (obj.attributes[allianceClass]) selection = allianceClass;
   });
   changeClass(obj, selection, 'allianceclass');
-}
+};
+
 
 function switchParticipant(obj) {
   if ($(obj).hasClass('active')) {
@@ -49879,7 +49916,8 @@ function saveSimName(obj) {
       showNotification(combatSimLoca.LOCA_ERROR_DEFAULT, 'error');
     }
   });
-}
+};
+
 
 function filterPlayerNames(obj) {
   if ($(obj).val().length >= 3) {
@@ -49895,7 +49933,8 @@ function filterPlayerNames(obj) {
     });
     showUsers(filtered);
   }
-}
+};
+
 
 function loadSimInfo(obj) {
   let simId = $(obj).data('simulationId');
@@ -49925,7 +49964,8 @@ function saveRequest() {
   } else {
     saveSim();
   }
-}
+};
+
 
 function saveSim() {
   let completeCombatsSim = $("div#combatsim");
@@ -50178,7 +50218,8 @@ function saveSim() {
       showNotification(combatSimLoca.LOCA_ERROR_DEFAULT, 'error');
     }
   });
-}
+};
+
 
 function removeCombatSim(simId) {
   if (combatSimId === simId) {
@@ -50504,7 +50545,8 @@ function removeParticipant(obj) {
       }
     });
   }
-}
+};
+
 
 function loadSimDetails() {
   if (combatSimId === 0) {
@@ -50532,7 +50574,8 @@ function loadSimDetails() {
       }
     });
   }
-}
+};
+
 
 function updateSimShortInfo(element) {
   if (!element || !element.length) {
@@ -50688,7 +50731,8 @@ $(function () {
     event.preventDefault();
     event.stopPropagation();
   });
-});
+});;
+
 $(document).ready(function () {
   let params = new URL(document.location).searchParams;
   let reportHash = params.get('reportHash');
@@ -50696,7 +50740,8 @@ $(document).ready(function () {
   if (reportHash) {
     loadSpyReport(reportHash, $("fleet-content[data-participant-id=0][data-attack-type=2] .loadInfoParticipant"), true, 2);
   }
-});
+});;
+
 
 function closeCombatSimResultOverlay() {
   if (!$(".overlayDiv.combatSimResultOverlay").length) {
@@ -50965,7 +51010,8 @@ function displayCombatResearchPercentages(side, participant) {
   $(`#combatSimRounds .combat_participant.${side} .${side}Weapon span`).text(`${combatResarchPercentages.weaponPercentage}%`);
   $(`#combatSimRounds .combat_participant.${side} .${side}Shield span`).text(`${combatResarchPercentages.shieldPercentage}%`);
   $(`#combatSimRounds .combat_participant.${side} .${side}Cover span`).text(`${combatResarchPercentages.armorPercentage}%`);
-}
+};
+
 
 function findClassName(classArr, id) {
   return classArr[id] ?? classArr[0];
@@ -50973,7 +51019,8 @@ function findClassName(classArr, id) {
 
 function findClassId(classArr, name) {
   return Math.max(0, classArr.indexOf(name));
-}
+};
+
 /* rounds end */
 /**
  * convert seconds to time interval for display. Usage in formatTime
@@ -51023,7 +51070,8 @@ function formatTimeWrapper(timestamp, maxDigits, showUnits, delimiter, zerofill,
   }
 
   return timeString;
-}
+};
+
 /**
  * counter finished reload page
  * @param url
@@ -51142,7 +51190,8 @@ class CountdownTimer {
     }
   }
 
-}
+};
+
 
 class CountdownTimerUnit {
   constructor(targetName, leftoverTime, shipCount, targetTechnologyId, timePerUnit, reloadPage, maxDigits = 2) {
@@ -51219,7 +51268,8 @@ class CountdownTimerUnit {
     }
   }
 
-}
+};
+
 /*
  *	allgemeiner Countdown
  */
@@ -51452,7 +51502,8 @@ function movementImageCountdown(htmlObj, leftoverTime, duration, isReturn, isRTL
     timerHandler.appendCallback(thisObj.updateCountdown);
     thisObj.updateCountdown();
   }
-}
+};
+
 function initItemActivation(currItemUuid) {
   inventoryObj.initalizeSlider(inventoryObj.items_inventory, "js_activeItemSlider", 395, 172, ' ', true, ' ', true, true);
 
@@ -51513,7 +51564,8 @@ function initItemActivation(currItemUuid) {
       'item': ''
     });
   });
-}
+};
+
 
 function initBuffBar() {
   let slider = $('.sliderWrapper .active_items');
@@ -51593,7 +51645,8 @@ function initBuffBar() {
     startCooldown($durationEl, $pusherEl, 32);
   });
   $(window).trigger('hashchange');
-}
+};
+
 
 function getItem(uuid) {
   if (typeof inventoryObj.items_inventory[uuid] != 'undefined') {
@@ -51654,11 +51707,13 @@ function updateItemDetails(uuid) {
   }
 }
 
-let startedActivation = false;
+let startedActivation = false;;
+
 
 function noHandlerItemActivation() {
   startedActivation = false;
-}
+};
+
 
 function activateItem(uuid) {
   if (startedActivation) {
@@ -51823,13 +51878,15 @@ function activateItem(uuid) {
   } else {
     updateItemAjax();
   }
-}
+};
+
 
 function initEmpireEquipment() {
   $(".overview_equipment .item_img_box .hidden").each(function () {
     startCooldown($(this), $(this).parent().parent().find('.pusher'), 32);
   });
-}
+};
+
 
 function startCooldown($durationEl, $pusherEl, maxHeight) {
   if ($.trim($durationEl.text()).match(/^\d+$/)) {
@@ -51841,9 +51898,11 @@ function startCooldown($durationEl, $pusherEl, maxHeight) {
       $pusherEl.css("height", realHeight + "px");
     });
   }
-}
+};
 
-let activatingItem = false;
+
+let activatingItem = false;;
+
 
 function fetchDataAboutCurrentAllianceClass(newClassName, upgradeItemAjax, questionType, price) {
   if (!activatingItem) {
@@ -51889,7 +51948,8 @@ function promptUserForAllianceClassChange(newClassName, upgradeItemAjax, questio
   }
 
   errorBoxDecision(LocalizationStrings.notice, localizationString, LocalizationStrings.yes, LocalizationStrings.no, upgradeItemAjax);
-}
+};
+
 function errorBoxAsArray(data) {
   if (data["type"] == "notify") {
     notifyBoxAsArray(data);
@@ -51902,7 +51962,8 @@ function errorBoxAsArray(data) {
 
 function notifyBoxAsArray(data) {
   errorBoxNotify(data["title"], data["text"], data["buttonOk"], String(data["okFunction"]), data["removeOpen"], data["modal"]);
-}
+};
+
 
 function fadeBox(message, failed, callback, duration) {
   if (failed) {
@@ -51977,11 +52038,13 @@ function removeNotification(notifyBoxId) {
   clearTimeout(NotificationTimers[notifyBoxId].timer2);
   clearTimeout(NotificationTimers[notifyBoxId].timer3);
   delete NotificationTimers[notifyBoxId];
-}
+};
+
 
 function decisionBoxAsArray(data) {
   errorBoxDecision(data["title"], data["text"], data["buttonOk"], data["buttonNOk"], String(data["okFunction"]), String(data["nokFunction"]), data["removeOpen"]);
-}
+};
+
 
 function errorBoxDecision(head, content, yes, no, yesHandler, noHandler, useHashCharacter) {
   var useHash = getIEVersion() <= 9 && (useHashCharacter || false);
@@ -52091,7 +52154,8 @@ function errorBoxNotify(head, content, ok, okHandler, useHashCharacter) {
     width: 400,
     dialogClass: 'errorBox'
   });
-}
+};
+
 /*
     Document   : eventBirthday
     Created on : 31.08.2012, 12:16:13
@@ -52118,7 +52182,8 @@ function eventBDayInitGalaxy() {
       }
     });
   }
-}
+};
+
 
 function eventBDayInit() {
   var $event_box = $('.event_box');
@@ -52180,7 +52245,8 @@ function eventBDayInit() {
       }
     }
   });
-}
+};
+
 
 function initBDayEventHints() {
   $(document).undelegate('.event_build_faster, .event_active_hint', 'click').delegate('.event_build_faster, .event_active_hint', 'click', function (e) {
@@ -52230,7 +52296,8 @@ function refreshFleetEvents(force) {
       }
     });
   }
-}
+};
+
 
 function toggleDetails() {
   var relTr = $(".partnerInfo." + $(this).attr("rel"));
@@ -52242,7 +52309,8 @@ function toggleDetails() {
     $(relTr).hide();
     $(this).parents("tr").addClass("detailsClosed").removeClass("detailsOpened");
   }
-}
+};
+
 function Exodus(cfg) {
   this.loca = cfg.loca;
   this.initServerSelect(cfg);
@@ -52462,7 +52530,8 @@ Exodus.prototype.onFetchServerNumbers = function (data) {
   this.dropDownServerSelect.ogameDropDown('destroy');
   this.dropDownServerSelect.html('');
   this.dropDownServerSelect.html(htmlOptions).ogameDropDown();
-};
+};;
+
 /**
  * Object.assign polyfill
  * @see https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Object/assign#Polyfill
@@ -52501,7 +52570,8 @@ if (typeof Number.isInteger !== "function") {
   Number.isInteger = function (number) {
     return typeof number === "number" && isFinite(number) && number > -9007199254740992 && number < 9007199254740992 && Math.floor(number) === number;
   };
-}
+};
+
 
 var Formatter = {
   // #################################################################################################################
@@ -52795,7 +52865,8 @@ var Formatter = {
     numberParts[0] = numberParts[0].replace(/\B(?=(\d{3})+(?!\d))/g, options.separators.thousands);
     return numberParts.join(options.separators.decimals) + unit;
   }
-};
+};;
+
 ogame.frontendActions = {
   socket: null,
   connected: false,
@@ -52954,7 +53025,8 @@ function reloadComponent(component, addFleft, callback) {
 
 $(document).ready(() => {
   ogame.frontendActions.initFrontendActions();
-});
+});;
+
 function Graveyard(cfg) {
   this.loca = cfg.loca;
   this.initServerSelect(cfg);
@@ -53171,7 +53243,8 @@ Graveyard.prototype.onFetchServerNumbers = function (data) {
   this.dropDownServerSelect.ogameDropDown('destroy');
   this.dropDownServerSelect.html('');
   this.dropDownServerSelect.html(htmlOptions).ogameDropDown();
-};
+};;
+
 /**
  * getElementById-Funktion mit Cache
  */
@@ -53183,7 +53256,8 @@ function getElementByIdWithCache(uid) {
   }
 
   return DOM_GET_ELEMENT_BY_ID_CACHE[uid];
-}
+};
+
 /**
  *  returns a formated number like php number_format()
  *
@@ -53284,7 +53358,8 @@ function getNumberFormatShort(value, precision) {
   }
 
   return number_format(value, precision, LocalizationStrings['decimalPoint'], LocalizationStrings['thousandSeperator']) + unit;
-}
+};
+
 
 function createExpireTime(timestamp) {
   var date = new Date();
@@ -53352,7 +53427,8 @@ function initHighscore() {
       scrollTop: 0
     }, 50);
   });
-}
+};
+
 
 function initHighscoreContent() {
   if (userWantsFocus) {
@@ -53704,7 +53780,8 @@ const IPI = {
       IPI.updateCurrentAction(actionTitle, actionHighlights);
     }
   }
-};
+};;
+
 /**
  * Save the current sort order to the cookie
  *
@@ -53749,7 +53826,8 @@ function clearImperiumOrder() {
       }
     }
   });
-}
+};
+
 /**
  * Generates the summary column for the imperium overview table
  *
@@ -53941,7 +54019,8 @@ function createPlanetsHtml(data) {
     newContent = newContent + '<div id="planet' + this.id + '" class="planet">' + content + '</div>';
   });
   return newContent;
-}
+};
+
 /**
  * Generates the imperium overview table
  *
@@ -54015,12 +54094,14 @@ function createImperiumHtml(destination, loading, data, isMoon) {
 
 
   initTooltips();
-}
+};
+
 
 function displayMessage(response) {
   // bei Upgrades steht in der response nur 1 oder nichts... nichts was man anzeigen sollte. also nur reload
   location.reload(true); // true == NICHT aus dem Cache ^^
-}
+};
+
 
 function doUpgrade(technologyId, planetId, mode, listId, showSlotWarning) {
   let warning;
@@ -54048,7 +54129,8 @@ function executeBuildAction(technologyId, planetId, mode, listId) {
   } else if (mode === 2 && listId) {
     buildListActionCancel(technologyId, listId, planetId);
   }
-}
+};
+
 
 function initEmpire() {
   initConnectionErrorFunction();
@@ -54116,7 +54198,8 @@ function initEmpire() {
 
 function initBuffBarEmpire() {
   $('.empireItems').removeClass('hidden');
-}
+};
+
 
 function changeSetting(key, value, success, error, showError) {
   $.ajax({
@@ -54151,7 +54234,8 @@ function changeSetting(key, value, success, error, showError) {
       }
     }
   });
-}
+};
+
 
 function getOverlayText($thisObj) {
   if ($thisObj.hasClass('building') && $thisObj.children().hasClass('build-faster-img')) {
@@ -54179,7 +54263,8 @@ function getOverlayText($thisObj) {
   } else if ($thisObj.hasClass('lfresearch') && $thisObj.children().hasClass('build-finish-img')) {
     return questionlfresearch;
   }
-}
+};
+
 
 function getFastBuildPrice($thisObj) {
   if ($thisObj.hasClass('building')) {
@@ -54301,7 +54386,8 @@ function outlawWarning(order, galaxy, system, planet, planettype, shipCount, cal
       title: loca.LOCA_FLEET_MISSILEATTACK || 'Missile Attack'
     });
   }
-}
+};
+
 
 function initThousandSeparator() {
   $('.checkThousandSeparator').each(function (e) {
@@ -54327,9 +54413,11 @@ function initThousandSeparator() {
   }).on('keyup', function (event) {
     formatNumber(this, this.value);
   });
-}
+};
 
-var speedingUpBuildListEntry = false; // overall index page
+
+var speedingUpBuildListEntry = false;;
+ // overall index page
 
 function initIndex() {
   initConnectionErrorFunction();
@@ -54403,6 +54491,9 @@ function initIndex() {
     $('html, body').animate({
       scrollTop: 0
     }, 500);
+    if (window.gfSlider === undefined) {
+      return;
+    }
     gfSlider.slideIn(getElementByIdWithCache("detail"), id);
   }).undelegate('a.close_details', 'click').delegate('a.close_details', 'click', function () {
     if (window.gfSlider !== undefined) {
@@ -54464,7 +54555,8 @@ function initPlanetSorting() {
       changeTooltip($thisObj, text);
     });
   });
-}
+};
+
 
 function initHideElements() {
   $(document).undelegate('html', 'touchstart.hideElem click.hideElem').delegate('html', 'touchstart.hideElem click.hideElem', function (e) {
@@ -54510,7 +54602,8 @@ function initHideElements() {
       }
     }
   });
-}
+};
+
 
 function initJumpgate() {
   $('select').ogameDropDown();
@@ -54613,7 +54706,8 @@ function openJumpgate() {
   openOverlay(jumpGateLink, {
     title: jumpGateLoca.LOCA_STATION_JUMPGATE_HEADLINE
   }); //}
-}
+};
+
 
 function redirectLogout() {
   location.href = redirectLogoutLink;
@@ -54629,7 +54723,8 @@ function redirectOverview() {
 
 function redirectSpaceDock() {
   location.href = redirectSpaceDockLink;
-}
+};
+
 if (typeof KeyEvent == "undefined") {
   var KeyEvent = {
     DOM_VK_CANCEL: 3,
@@ -54748,7 +54843,8 @@ if (typeof KeyEvent == "undefined") {
     DOM_VK_QUOTE: 222,
     DOM_VK_META: 224
   };
-}
+};
+
 
 (function ($) {
   $.fn.extend({
@@ -55243,7 +55339,8 @@ $(document).on('click', '[data-toggable]', function () {
       }
     }
   });
-});
+});;
+
 function OGameLoadingIndicator(container) {
   this.container = container;
 }
@@ -55278,7 +55375,8 @@ OGameLoadingIndicator.prototype.hide = function () {
     }
 
     return null;
-  };
+  };;
+
 })(jQuery);
 function MessageSlider(obj) {
   var thisObj = this;
@@ -56705,7 +56803,8 @@ function initShowMessage() {
   $(".melden", $dialog).click(function () {
     manageErrorbox($(this).attr("rel"), 1);
   });
-}
+};
+
 
 function initNetworkAjax() {
   var $myRiders = $(".reiter");
@@ -56748,7 +56847,8 @@ function initNetworkAjax() {
     $(".buttonOK").hide();
   });
   reduceMsgCount(aktCat);
-}
+};
+
 ogame.messages.combatreport = {
   data: [{
     'combatReportId': $('.detailReport').attr('data-combatreportid')
@@ -57708,7 +57808,8 @@ ogame.messages.combatreport = {
     $this.displayShipData($this.data.activeMember, $this.data.combatside, combatArray['combatRounds'][combatArray['combatRounds'].length - 1], combatArray['member'], coords, planetType);
     $this.setCombatValue();
   }
-};
+};;
+
 function closeDetails(id, expireTime) {
   var elem = $("#fleet" + id);
   elem.children(".openDetails").children().children().attr("src", "/img/icons/de1e5f629d9e47d283488eee0c0ede.gif");
@@ -57745,7 +57846,8 @@ function openCloseDetails(id, expireTime) {
   } else {
     openDetails(id, expireTime);
   }
-}
+};
+
 
 function preCloseMovements() {
   $.each(currentMovementTabExtensionStates, function (id, data) {
@@ -57786,7 +57888,8 @@ function initMovement() {
     });
   });
   timerHandler.appendCallback(function () {});
-}
+};
+
 
 function addUserToUnion() {
   $("#participantselect").append($("#buddyselect").find("li.ui-selected"));
@@ -57846,7 +57949,8 @@ function initFederationLayer() {
 function submit_unionform() {
   setUnionUsers();
   ajaxFormSubmit('unionform', $('form#unionform').attr('action'), unionEdit);
-}
+};
+
 
 function recallShipCountdown(fleetId, currentRecallTime) {
   var thisObj = this;
@@ -57864,7 +57968,8 @@ function recallShipCountdown(fleetId, currentRecallTime) {
     thisObj.timer = timerHandler.appendCallback(thisObj.updateCountdown);
     thisObj.updateCountdown();
   }
-}
+};
+
 function initNotesForm() {
   $('select').ogameDropDown();
   $("#createNote .text").trigger("keyup");
@@ -57986,7 +58091,8 @@ function initNotes() {
       return locaNotes.changesNotSaved;
     }
   });
-}
+};
+
 function getAjaxEventbox() {
   if (typeof ajaxEventboxURI === 'undefined') {
     return;
@@ -58080,7 +58186,8 @@ function reloadEventbox(data) {
   $(document).undelegate('#eventboxContent .toggleDetails', 'click').delegate('#eventboxContent .toggleDetails', 'click', function () {
     toggleDetails.call(this);
     return false;
-  });
+  });;
+
   $(function () {
     if ($("#eventboxContent").is(":visible")) {
       toggleEvents.loaded = true;
@@ -58094,14 +58201,16 @@ function reloadEventbox(data) {
 
       refreshFleetEvents(true);
     }
-  });
+  });;
+
 })(jQuery);
 /**
  * Created by florianer on 04.07.16.
  */
 if (ogame === undefined) {
   var ogame = {};
-}
+};
+
 
 ogame.Notify = function (title, text, options) {
   this.canNotify = false;
@@ -58125,7 +58234,8 @@ ogame.Notify = function (title, text, options) {
       }
     });
   }
-};
+};;
+
 
 ogame.Notify.prototype.setImage = function (image) {
   this.options.icon = image;
@@ -58133,14 +58243,16 @@ ogame.Notify.prototype.setImage = function (image) {
 
 ogame.Notify.prototype.setTag = function (tag) {
   this.options.tag = tag;
-};
+};;
+
 
 ogame.Notify.prototype.show = function () {
   if (this.canNotify) {
     this.notification = new Notification(this.title, this.options);
     setTimeout(this.notification.close.bind(this.notification), 5000);
   }
-};
+};;
+
 function scrollToTopOfDialog(dialog) {
   $('html, body').stop().animate({
     scrollTop: Math.max(0, dialog.offset().top - 300)
@@ -58537,7 +58649,8 @@ function initOverlays() {
 function updateOverlayToken(tokenId, updateToken) {
   $('[data-overlay-token-id=' + tokenId + ']').data('overlay-token', updateToken);
   token = updateToken;
-}
+};
+
 function initOverview() {
   $(".cancelMove").click(function () {
     var thisObj = $(this);
@@ -58597,14 +58710,16 @@ function fillField() {
   if (currentValue == "") {
     $("#planetName").val(defaultName);
   }
-}
+};
+
 
 function openBuddyOverlay(url, title) {
   openOverlay(url, {
     'class': 'buddies',
     'title': title
   });
-}
+};
+
 
 function planetGivenup(data) {
   errorBoxAsArray(data["errorbox"]);
@@ -58616,7 +58731,8 @@ function planetGivenup(data) {
   if (typeof data["password_checked"] != "undefined" && data["password_checked"]) {
     $("#planetMaintenanceDelete").attr('action', data["intent"]);
   }
-}
+};
+
 // https://tc39.github.io/ecma262/#sec-array.prototype.find
 if (!Array.prototype.find) {
   Object.defineProperty(Array.prototype, 'find', {
@@ -58937,7 +59053,8 @@ function onClickExecutePtrCopy(e) {
 }
 function pqChangeTarget(obj) {
   window.location = $(obj).data('targetUrl');
-}
+};
+
 
 function switchProductionTab(tab) {
   $("#productionqueuecomponent .spaceObjectTab").addClass('inactive');
@@ -58945,7 +59062,8 @@ function switchProductionTab(tab) {
   let targetQueues = tab === 'planet' ? 'moonProduction' : 'planetProduction';
   $(`#productionqueuecomponent .${targetQueues}`).hide();
   $(`#productionqueuecomponent .${tab}Production`).show();
-}
+};
+
 function display_info(type) {
   if (document.getElementById("infoInput").innerHTML == "" || document.getElementById("infoInput").innerHTML != get_displayText(type)) {
     document.getElementById("infoInput").innerHTML = get_displayText(type);
@@ -58962,7 +59080,8 @@ function display_error(type) {
 function hide_error(type) {
   document.getElementById("errorInput").innerHTML = "";
   document.getElementById("error").style.display = "none";
-}
+};
+
 
 function checkUsername() {
   var username = document.forms['new'].elements['username'].value;
@@ -58983,12 +59102,15 @@ function checkEmail() {
   } else {
     hide_error();
   }
-}
+};
+
 /**
  * Created by christian.wiedemann on 15.03.2016.
  */
-var TECHID_REPAIR_DOCK = 36;
-var burnUpCountDownForStationScreen = {};
+var TECHID_REPAIR_DOCK = 36;;
+
+var burnUpCountDownForStationScreen = {};;
+
 var repairTimeDownForStationScreen = {};
 
 function displayBurnUpEnquiry() {
@@ -59025,7 +59147,8 @@ function startWreckFieldRepairs() {
       }
     }
   });
-}
+};
+
 
 function reCommissionShips() {
   var button = $("input.reCommissionButton");
@@ -59042,7 +59165,8 @@ function reCommissionShips() {
       }
     }
   });
-}
+};
+
 
 function registerBurnUpCountDown(elementId) {
   var burnUpCountDownElement = $(elementId);
@@ -59068,11 +59192,14 @@ function registerRepairTimeCountDown(elementId) {
       });
     }
   }
-}
+};
+
 
 $(document).on("click", "div.burnUpButton", displayBurnUpEnquiry);
-$(document).on("click", "div.startRepairsButton", startWreckFieldRepairs);
-$(document).on("click", "div.reCommissionButton", reCommissionShips);
+$(document).on("click", "div.startRepairsButton", startWreckFieldRepairs);;
+
+$(document).on("click", "div.reCommissionButton", reCommissionShips);;
+
 $(document).on("ajaxShowElement", function (event, tid) {
   if (tid == TECHID_REPAIR_DOCK) {
     registerBurnUpCountDown("#burnUpCountDownForStationScreen");
@@ -59082,14 +59209,16 @@ $(document).on("ajaxShowElement", function (event, tid) {
 $(document).on("ajaxShowOverlay", function (event) {
   registerBurnUpCountDown("#burnUpCountDownForRepairOverlay");
   registerRepairTimeCountDown("#repairTimeCountDownForRepairOverlay");
-});
+});;
+
 function initResourceTrader() {
   $(".big_tabs").tabs({
     activate: hideTipsOnTabChange
   });
   $('.resource_link').on('click', onSelectResource);
   $('.btn_calltrader').on('click', callTrader);
-}
+};
+
 
 function onSelectResource(e) {
   var $resource = $(e.currentTarget); // if trader was not previously selected
@@ -59108,7 +59237,8 @@ function onSelectResource(e) {
       $getNewTrader.parent().children().toggleClass('hidden');
     }
   }
-}
+};
+
 
 function showTradeNowButton() {
   if ($("#callTrader").hasClass("traderActive")) {
@@ -59116,7 +59246,8 @@ function showTradeNowButton() {
   } else {
     $("#callTrader").hide();
   }
-}
+};
+
 /* ******** Code from Old Trader = Resource Trader ******* */
 
 
@@ -59126,7 +59257,8 @@ function calcCosts(id, amount) {
 
 function calcInputFromCosts(id, amount) {
   return Math.max(Math.floor(amount / factor[offer_id] * factor[id]), 0);
-}
+};
+
 
 function setValue(id, value) {
   if (offer_id == id) {
@@ -59134,7 +59266,8 @@ function setValue(id, value) {
   } else {
     formatNumber("#" + id + '_value', value);
   }
-}
+};
+
 
 function checkValue(id) {
   setValue(id, Math.min(getValue($("#" + id + "_value").val()), Math.round(freeStorage[id])));
@@ -59156,7 +59289,8 @@ function checkValue(id) {
 function setMaxValue(id) {
   setValue(id, freeStorage[id]);
   checkValue(id);
-}
+};
+
 
 function callTrader(e) {
   if ($(e.currentTarget).attr('disabled') == 'disabled') {
@@ -59253,7 +59387,8 @@ function closeTradeResourcesOverlay(doNotDisableCallTrader) {
     $('.resource_link').removeClass('oldTraderActive active');
     $("#activeTrader").hide();
   }
-}
+};
+
 function closeSearch() {
   if (currentPage !== undefined) {
     if (currentPage == 'fleet1' || currentPage == 'fleet2') {
@@ -59262,7 +59397,8 @@ function closeSearch() {
       $('a#start').focus();
     }
   }
-}
+};
+
 // moved to global scope due to CDN issues
 inventoryObj = {
   currentPage: null,
@@ -60128,7 +60264,8 @@ function GFSlider(obj) {
     thisObj.lastTid = 0;
     thisObj.isOpen = false;
   };
-}
+};
+
 function supplyFleet(data) {
   var data = $.parseJSON(data);
 
@@ -60152,7 +60289,8 @@ function updateSupplyDetails(ships, costs, index) {
   $("#deutCosts").html(gfNumberGetHumanReadable(costs));
   $("span.countdown").hide();
   $("#holdingTime-" + index).show();
-}
+};
+
 
 function initAllianceDepot() {
   $(".overlayDiv #allydepotlayer select").ogameDropDown();
@@ -60169,7 +60307,8 @@ function initAllianceDepot() {
     var costs = getValue($("#deutCosts").text());
     checkIntInput(this, 1, Math.floor(deuterium / costs));
   });
-}
+};
+
 /*
  *
  *  Push Notifications codelab
@@ -60231,7 +60370,8 @@ function initializeUI() {
 
     updateBtn();
   });
-}
+};
+
 
 function updateBtn() {
   if (Notification.permission === 'denied') {
@@ -60250,7 +60390,8 @@ function updateBtn() {
   }
 
   pushButton.disabled = false;
-}
+};
+
 
 function subscribeUser() {
   var applicationServerKey = urlB64ToUint8Array(applicationServerPublicKey);
@@ -60309,7 +60450,8 @@ function initSubscriptionSystem() {
     // console.warn('Push messaging is not supported');
     pushButton.textContent = 'Push Not Supported';
   }
-}
+};
+
 /*
  * author: Stefanie Knoth
  * description: scripts that are only needed for tablet here
@@ -60326,7 +60468,8 @@ function tabletInitOverviewAdvice() {
   $adviceWrapper.prev().before($exodus);
   $adviceWrapper.prev().before($exodusProcessed);
   $('#planetdata').after($adviceWrapper);
-}
+};
+
 
 function tabletInitGalaxyDetails() {
   if (!isMobile) {
@@ -60399,7 +60542,8 @@ function tabletInitGalaxyDetails() {
   $("a.planetMoveIcons").bind('click', function (e) {
     e.stopPropagation();
   });
-}
+};
+
 
 function tabletToggleTechtreeInfos(id) {
   if (!isMobile) {
@@ -60440,7 +60584,8 @@ function tabletInitEmpire() {
   width = width < 1024 ? '1024' : width;
   $('#outerWrapper').width(width);
   $('.reset').hide();
-}
+};
+
 
 function tabletInitPayment() {
   if (!isMobile) {
@@ -60465,7 +60610,8 @@ function tabletInitPayment() {
       fadeBox(paymentLoca.error, true);
     };
   }, false);
-}
+};
+
 
 function tabletInitGalaxy() {
   if (!isMobile) {
@@ -60488,7 +60634,8 @@ function tabletInitGalaxy() {
     moveX: 180,
     moveY: 60
   });
-}
+};
+
 
 function initRetinaImages() {
   // we only want to replace images if we're on a retina display:
@@ -60497,13 +60644,15 @@ function initRetinaImages() {
       $(this).attr('src', $(this).attr('rel'));
     });
   }
-}
+};
+
 function setupOverlay(pageLink, overlayTitle, techID) {
   $('.build-it_premium').addClass('overlay');
   $('.build-it_premium').attr('href', pageLink);
   $('.build-it_premium').data('overlay-title', overlayTitle);
   $('.build-it_premium').data('techid', techID);
-}
+};
+
 
 function drawErrorbox(type, message, header, options, link, otherclass) {
   var otherclass = otherclass == undefined ? false : otherclass;
@@ -60532,7 +60681,8 @@ function drawErrorbox(type, message, header, options, link, otherclass) {
       fadeBox(message, true);
     }
   });
-}
+};
+
 
 function showErrors() {
   var options = {
@@ -60574,7 +60724,8 @@ function showErrors() {
   }
 
   return 0;
-}
+};
+
 function initGlobalTechtree(id) {
   var $techtree = $("div.graph[data-id='" + id + "']");
   $techtree.find(".headline").unbind('click').bind('click', function () {
@@ -60602,12 +60753,14 @@ function initGlobalTechtree(id) {
       $(this).addClass('open');
     });
   }
-}
+};
+
 
 function initOverlayName() {
   let title = $('#technologytree').data('title');
   $("#technologytree").closest(".ui-dialog").find('.ui-dialog-title').html(title);
-}
+};
+
 
 function drawArrows(id) {
   var $techtree = $("div.graph[data-id='" + id + "']");
@@ -60846,7 +60999,8 @@ function initTechtree(id) {
   })(jQuery);
 
   tabletToggleTechtreeInfos(id);
-}
+};
+
 /**
  *
  * @param labelObject object
@@ -60921,7 +61075,8 @@ function positionInCoordinatesBlocked(coordinates, left, top) {
 }
 var javascriptAvailable = true;
 var days = new Array('Mon', 'Tus', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun');
-var months = new Array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
+var months = new Array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");;
+
 
 function getFormatedDate(timestamp, format) {
   var currTime = new Date();
@@ -60939,7 +61094,8 @@ function getFormatedDate(timestamp, format) {
   str = str.replace('[i]', dezInt(currTime.getMinutes(), 2));
   str = str.replace('[s]', dezInt(currTime.getSeconds(), 2));
   return str;
-}
+};
+
 /**
  * adds prefix digits to a number ('2'->'02')
  *
@@ -60962,7 +61118,8 @@ function dezInt(num, size, prefix) {
 
   result += (prefix != "0" ? minus : "") + num;
   return result;
-}
+};
+
 
 function getFormatedTime(time) {
   hours = Math.floor(time / 3600);
@@ -60971,7 +61128,8 @@ function getFormatedTime(time) {
   timeleft = timeleft % 60;
   seconds = timeleft;
   return dezInt(hours, 2) + ":" + dezInt(minutes, 2) + ":" + dezInt(seconds, 2);
-}
+};
+
 function tsdpkt(f) {
   var vz = "";
 
@@ -61003,7 +61161,8 @@ function tsdpkt(f) {
 
   r = vz + r;
   return r;
-}
+};
+
 
 function formatTime(seconds) {
   var hours = Math.floor(seconds / 3600);
@@ -61059,11 +61218,13 @@ function cntchar(inputField, m) {
   }
 
   $inputField.parents("form").find(".cntChars").text($inputField.val().length);
-}
+};
+
 
 function showGalaxy(galaxy, system, planet) {
   openParentLocation("index.php?page=ingame&component=galaxy&no_header=1&galaxy=" + galaxy + "&system=" + system + "&planet=" + planet);
-}
+};
+
 
 function openParentLocation(url) {
   try {
@@ -61089,7 +61250,8 @@ function submitOnEnter(ev) {
   } else {
     return true;
   }
-}
+};
+
 
 function setMaxIntInput(formElement, data) {
   for (var techID in data) {
@@ -61098,7 +61260,8 @@ function setMaxIntInput(formElement, data) {
       checkIntInput($(formElement).find("ship_" + techID), 0, data[techID]);
     }
   }
-}
+};
+
 
 function clearInput(id) {
   $(id).val("");
@@ -61144,7 +61307,8 @@ function clampFloat(val, minVal, maxVal) {
   floatVal = Math.max(floatVal, minVal);
   floatVal = Math.min(floatVal, maxVal);
   return floatVal;
-}
+};
+
 
 function handlerToSubmitAjaxForm(form) {
   var submitFunction = "submit_" + String(form);
@@ -61154,7 +61318,8 @@ function handlerToSubmitAjaxForm(form) {
   }
 
   return false;
-}
+};
+
 
 function ajaxCall(url, targetSelector, callback) {
   if (typeof targetSelector === 'string') {
@@ -61174,7 +61339,8 @@ function ajaxCall(url, targetSelector, callback) {
       callback();
     }
   });
-}
+};
+
 
 function ajaxSubmit(url, formDataOrSelector, targetSelector, callback) {
   if (typeof targetSelector === 'string') {
@@ -61195,7 +61361,8 @@ function ajaxSubmit(url, formDataOrSelector, targetSelector, callback) {
       callback();
     }
   });
-}
+};
+
 
 Number.prototype.isBetween = function (min, max) {
   return this >= min && this <= max;
@@ -61244,7 +61411,8 @@ function loadScript(url, callback) {
   } else {
     callback();
   }
-}
+};
+
 
 function formatNumber(object, value) {
   var formattedValue = number_format(getValue(value), 0, LocalizationStrings['decimalPoint'], LocalizationStrings['thousandSeparator']);
@@ -61261,7 +61429,8 @@ function formatNumber(object, value) {
   if ($thisObj.is(":focus")) {
     $thisObj.setSelection(range);
   }
-}
+};
+
 
 function initToggleHeader(name) {
   $('a.toggleHeader[data-name=' + name + ']').click(function (e) {
@@ -61272,14 +61441,16 @@ function initToggleHeader(name) {
     $(".c-right").toggleClass('shortCorner');
     changeSetting('headerImage', name + '|' + toggleState);
   });
-}
+};
+
 
 function initFormValidation() {
   $("form.formValidation").validationEngine({
     validationEventTrigger: "keyup blur",
     promptPosition: "centerRight"
   });
-}
+};
+
 
 Function.prototype.clone = function () {
   var fct = this;
@@ -61297,7 +61468,8 @@ Function.prototype.clone = function () {
   }
 
   return clone;
-};
+};;
+
 
 function hideTipsOnTabChange() {
   $("select").ogameDropDown('hide');
@@ -61321,7 +61493,8 @@ function focusOnTabChange(element, focusOnReady) {
   }
 
   $(window).unbind('blur').bind('blur', focusFunction);
-}
+};
+
 /**
  * @see http://obvcode.blogspot.de/2007/11/easiest-way-to-check-ie-version-with.html
  * @return {Number}
@@ -61422,7 +61595,8 @@ function refreshBars(barContainerClass, barClass, premiumBarClass) {
       $premiumBar.css('width', wPercentPremium + '%');
     }
   });
-}
+};
+
 function initTooltipSkins() {
   jQuery.extend(Tipped.Skins, {
     'cloud': {
@@ -61716,7 +61890,8 @@ function initTooltips(selector) {
 
 $(function () {
   initTooltips();
-});
+});;
+
 function initTrader() {
   var disableAnimationOnce = false;
   var url = $.deparam.fragment();
@@ -63448,7 +63623,8 @@ function initTrader() {
   if (typeof url["page"] != 'undefined' && url["page"] != '') {
     traderObj.selectTrader(url["page"], undefined, url["tab"]);
   }
-}
+};
+
 
 function Alliance(cfg) {
   this.tab = cfg.tab || '';
@@ -63757,7 +63933,8 @@ Alliance.prototype.onClickSubmitDisolve = function (e) {
   }, function () {
     that.loadingIndicator.hide();
   });
-};
+};;
+
 
 Alliance.prototype.onClickSubmitTransferLeadership = function (e) {
   e.preventDefault();
@@ -63787,7 +63964,8 @@ Alliance.prototype.onClickSubmitTakeoverLeadership = function (e) {
   }, function () {
     that.loadingIndicator.hide();
   });
-};
+};;
+
 
 Alliance.prototype.onClickLeaveAlliance = function (e) {
   e.preventDefault();
@@ -64149,7 +64327,8 @@ Alliance.prototype.onFormClickBroadcastButton = function (e) {
   };
   this.loadingIndicator.show();
   $.post(this.urlSend, params, this.handleResponse.bind(this)).done(this.onAjaxDone.bind(this));
-};
+};;
+
 
 $(function () {
   $(document).on('click', '[data-homepage-link]', function (e) {
@@ -64158,7 +64337,8 @@ $(function () {
       window.open('redir.php?url=' + encodeURIComponent(allyHome), '_newtab');
     }, false, false);
   });
-});
+});;
+
 function AllianceClassBoxes(params) {
   this.loca = params.loca;
   this.token = params.token;
@@ -64349,7 +64529,8 @@ AllianceClassBoxes.prototype.promptUserForAllianceClassChange = function (newCla
   }
 
   errorBoxDecision(LocalizationStrings.notice, localizationString, LocalizationStrings.yes, LocalizationStrings.no, upgradeItemAjax);
-};
+};;
+
 let buildListActionCalled = false;
 
 function buildListActionBuild(technologyId, amount, mode, buyWithDmAmount, planetId) {
@@ -64515,7 +64696,8 @@ function buildListActionCancel(technologyId, listId, planetId) {
       buildListActionCalled = false;
     }
   });
-}
+};
+
 function CharacterClassBoxes(params) {
   this.loca = params.loca;
   this.init();
@@ -64620,7 +64802,8 @@ CharacterClassBoxes.prototype.displayErrors = function (data) {
   let errorCode = data.errorCode || 0;
   let errorMessage = data.errorMessage || data.message || '';
   fadeBox(errorMessage, true);
-};
+};;
+
 
 function initExpeditionFleetTemplate() {
   $(".list tr:even").addClass("alt");
@@ -64766,12 +64949,14 @@ function reinitializeExpeditionFleetTemplateOGameDropdown() {
   $('#expeditionFleetTemplateForm select').ogameDropDown();
 }
 const FLEET_DISPATCH_PAGE1 = 'fleet1';
-const FLEET_DISPATCH_PAGE2 = 'fleet2';
+const FLEET_DISPATCH_PAGE2 = 'fleet2';;
+
 
 function getResourcesFromHeader(resourceId) {
   let value = $('#resources_' + resourceId).data('raw');
   return parseInt(value);
-}
+};
+
 
 function getKeyCode(e) {
   if (window.event) {
@@ -64781,7 +64966,8 @@ function getKeyCode(e) {
   }
 
   return null;
-}
+};
+
 
 function FleetDispatcher(cfg) {
   this.fleetHelper = new FleetHelper(cfg);
@@ -66925,7 +67111,8 @@ FleetHelper.prototype.isMissionValid = function (mission) {
   }
 
   return false;
-};
+};;
+
 var cancelProduction_id;
 var production_listid;
 
@@ -66937,7 +67124,8 @@ function cancelProduction(id, listid, question) {
 
 function cancelProductionStart() {
   window.location.replace(urlCancleBuilding + '&techid=' + cancelProduction_id + '&listid=' + production_listid);
-}
+};
+
 function submitOnKey(keyCode) {
   selectShipsPerFleet("0");
 
@@ -66974,7 +67162,8 @@ function submitOnKey(keyCode) {
       loadContentNew(galaxy, system);
     }
   }
-}
+};
+
 
 function keyevent(ev) {
   let keyCode;
@@ -66995,7 +67184,8 @@ function keyevent(ev) {
   }
 
   submitOnKey(keyCode);
-}
+};
+
 
 function launchMissiles(response) {
   var data = $.parseJSON(response);
@@ -67010,7 +67200,8 @@ function launchMissiles(response) {
 
   errorBoxAsArray(data["errorbox"]);
   $("#rocketattack").closest('.ui-dialog-content').remove();
-}
+};
+
 
 function movePlanet(url, data, reloadPage) {
   function movePlanetExecute() {
@@ -67129,7 +67320,8 @@ function sendSystemDiscoveryMission() {
       sendingSystemDiscoveryMission = false;
     }
   });
-}
+};
+
 
 function addToTable(strDataResult, strClass, shipCount) {
   let text = strDataResult.message || strDataResult;
@@ -67156,7 +67348,8 @@ function addToTable(strDataResult, strClass, shipCount) {
   $(div).prependTo('#fleetstatusrow').fadeOut(3000, function () {
     $(this).remove();
   });
-}
+};
+
 
 function setShips(ship, count) {
   var e = document.getElementById(ship);
@@ -67164,7 +67357,8 @@ function setShips(ship, count) {
   if (e !== null) {
     e.innerHTML = count;
   }
-}
+};
+
 
 function renderContentGalaxy(json) {
   token = json.token;
@@ -67327,7 +67521,8 @@ function renderEmptySlot(galaxyContentObject, systemData, reservedPlanets) {
 
     renderEmptySlotActions(galaxyContentObject, systemData);
   }
-}
+};
+
 
 function renderPhalanx(galaxyContentObject) {
   let {
@@ -67350,7 +67545,8 @@ function renderPhalanx(galaxyContentObject) {
       });
     }
   }
-}
+};
+
 
 function renderAlliance(galaxyContentObject, systemData) {
   let {
@@ -67366,7 +67562,8 @@ function renderAlliance(galaxyContentObject, systemData) {
                 </span>
             `);
   }
-}
+};
+
 
 function renderActions(galaxyContentObject, systemData) {
   if (systemData.playerId !== galaxyContentObject.player.playerId) {
@@ -67406,7 +67603,8 @@ function getPlayerName(galaxyContentObject, systemData) {
 
   playerName += getPlayerAbbreviations(player, galaxyContentObject);
   return playerName;
-}
+};
+
 
 function getPlayerColorClass(player) {
   switch (true) {
@@ -67439,7 +67637,8 @@ function getPlayerColorClass(player) {
   }
 
   return "status_abbr_active";
-}
+};
+
 
 function getPlayerAbbreviations(player) {
   let returnStatus = [];
@@ -67479,7 +67678,8 @@ function getPlayerAbbreviations(player) {
   }
 
   return returnStatus.length ? `<pre> (${returnStatus.join()})</pre>` : "";
-}
+};
+
 
 function getPlayerSelectedLanguage(player) {
   if (!player.selectedLanguageIcon) {
@@ -67487,7 +67687,8 @@ function getPlayerSelectedLanguage(player) {
   }
 
   return ` <selected-language-icon style="background-image: url('${player.selectedLanguageIcon}');" ></selected-language-icon> `;
-}
+};
+
 
 function getActivityStar(data) {
   if (data.showActivity === false) {
@@ -67504,7 +67705,8 @@ function getActivityStar(data) {
   return `<div class="activity minute${data.showActivity} tooltip js_hideTipOnMobile hideTooltipOnMouseenter"
             title="${loca.LOCA_ALL_ACTIVITY}">
         </div>`;
-}
+};
+
 
 function addFleetContainer(planetPosition, planetType) {
   return `<div id="ownFleetStatus_${planetPosition}_${planetType}"
@@ -67519,7 +67721,8 @@ function getFleetIcon(fleetArray, planetPosition, planetType) {
   }
 
   $(`#ownFleetStatus_${planetPosition}_${planetType}`).removeClass('fleetNeutral').addClass('tooltip').addClass(fleetArray[0]['class']).attr('title', fleetArray[0]['text']);
-}
+};
+
 
 function getPlanetTooltip(planet, galaxyContentObject, systemData) {
   let {
@@ -67636,7 +67839,8 @@ function getPlanetOrMoonTooltipLinks(planet, galaxyContentObject, systemData) {
   }
 
   return loca.LOCA_FLEET_NO_ACTION_AVAILABLE;
-}
+};
+
 
 function getEspionageMission(galaxyContentObject, planet, systemData) {
   let {
@@ -67660,7 +67864,8 @@ function getEspionageMission(galaxyContentObject, planet, systemData) {
   }
 
   return "";
-}
+};
+
 
 function getDebrisTooltip(planet, galaxyContentObject, systemData) {
   let {
@@ -67708,7 +67913,8 @@ function getDebrisTooltip(planet, galaxyContentObject, systemData) {
             </ul>
         </div>
         `;
-}
+};
+
 
 function getPlayerTooltip(galaxyContentObject) {
   let {
@@ -67776,7 +67982,8 @@ function getPlayerTooltip(galaxyContentObject) {
             </ul>
         </div>
         `;
-}
+};
+
 
 function renderEventSpaceObjects(galaxyContentObject, systemData) {
   galaxyContentObject.planets.map(planet => {
@@ -67960,7 +68167,8 @@ function getEventDebrisTooltip(planet, galaxyContentObject, systemData) {
             </ul>
         </div>
     `;
-}
+};
+
 
 function getActions(galaxyContentObject, systemData) {
   let {
@@ -68098,7 +68306,8 @@ function getActions(galaxyContentObject, systemData) {
         ${buddyLink}
         ${missileLink}
         `;
-}
+};
+
 
 function getEmptySlotActions(galaxyContentObject, systemData) {
   let emptyLink = `<div class="emptyAction"></div>`;
@@ -68180,7 +68389,8 @@ function getDiscoveryLinkIcon(galaxyContentObject) {
   }
 
   return discoverLink;
-}
+};
+
 
 function getAllianceTooltip(galaxyContentObject) {
   let {
@@ -68238,7 +68448,8 @@ function getAllianceSelectedLanguage(player) {
   }
 
   return ` <selected-language-icon style="background-image: url('${player.allianceSelectedLanguage}');" ></selected-language-icon> `;
-}
+};
+
 
 function getActivityElement(activityObject) {
   let {
@@ -68259,7 +68470,8 @@ function getActivityElement(activityObject) {
   }
 
   return "";
-}
+};
+
 
 function clearPosition(position) {
   $("#galaxyRow" + position + " .cellPosition").removeClass('status_abbr_buddy');
@@ -68281,7 +68493,8 @@ function clearPosition(position) {
   rowElement.removeClass('filtered_filter_newbie');
   rowElement.removeClass('empty_filter');
   rowElement.removeClass('filtered_filter_empty');
-}
+};
+
 
 function displayContentGalaxy(data) {
   // var selector = getTooltipSelector("#inhalt");
@@ -68305,7 +68518,8 @@ function displayContentGalaxy(data) {
   }
 
   getAjaxResourcebox();
-}
+};
+
 
 function submitForm() {
   galaxy = $("#galaxy_input").val();
@@ -68324,7 +68538,8 @@ function submitForm() {
   } else {
     loadContentNew(galaxy, system);
   }
-}
+};
+
 
 function loadContent(galaxy, system) {
   $("#galaxyLoading").show();
@@ -68384,11 +68599,13 @@ function loadContentNew(galaxy, system) {
         _token: token
     }, renderContentGalaxy);
   }
-}
+};
+
 
 function errorBoxDeuterium() {
   fadeBox(galaxyLoca.deuteriumNeeded, true); // getAjaxResourcebox();
-}
+};
+
 
 function doScan(position, planettype) {
   sendShips(constants.espionage, galaxy, system, position, planettype, spionageAmount);
@@ -68420,7 +68637,8 @@ function initPhalanx() {
   } else {
     $titleBar.find('.ui-dialog-title').append($("#phalanxWrap .refreshPhalanxLink"));
   }
-}
+};
+
 
 function initSpySystem() {
   $('#galaxyHeader').off('click').on('click', '.spysystemlink', function (event) {
@@ -68458,7 +68676,8 @@ function initSpySystem() {
       }
     });
   });
-}
+};
+
 
 function initExpeditionFleetTemplates() {
   $('#expeditionFleetTemplateSelect').on('change', function (e) {
@@ -68480,9 +68699,11 @@ function initExpeditionFleetTemplates() {
       }
     }
   });
-}
+};
 
-let checkingTarget = false;
+
+let checkingTarget = false;;
+
 
 function galaxyCheckTarget(expeditionFleetTemplateId, selectedGalaxy, selectedSystem) {
   if (!selectedGalaxy) {
@@ -68540,7 +68761,8 @@ function galaxyCheckTarget(expeditionFleetTemplateId, selectedGalaxy, selectedSy
       checkingTarget = false;
     }
   });
-}
+};
+
 
 function sendExpedtionFleetFromTemplate() {
   let selectedExpedtionFleetTemplateId = getValue($('#expeditionFleetTemplateSelect').val());
@@ -68656,7 +68878,8 @@ function displayMiniFleetMessage(response, addCoordinatesToMessage = true) {
   }
 
   shipsendingDone = 1;
-}
+};
+
 
 function getFilterClass(filterId) {
   let filterClass;
@@ -68720,7 +68943,8 @@ function sendFilterToggle(id, state) {
     success: function (data) {},
     error: function () {}
   });
-}
+};
+
 function HappyEdit(cfg) {
   this.tab = cfg.tab || '';
   this.urlSubmitPlayer = cfg.urlSubmitPlayer;
@@ -68755,7 +68979,8 @@ function HappyEdit(cfg) {
   };
   this.initItemsCommon(cfg);
   this.fetchData(this.tab);
-}
+};
+
 
 HappyEdit.prototype.onAjaxDone = function () {
   this.loadingIndicator.hide();
@@ -68865,12 +69090,14 @@ HappyEdit.prototype.onAjaxDone = function () {
       $('#ipiEdit .ajax').bind('click', that.onItemClick.bind(that));
       break;
   }
-};
+};;
+
 
 HappyEdit.prototype.onItemClick = function (e) {
   e.preventDefault();
   $.post($(e.currentTarget).data('link'), {}, this.handleSubmitResponse.bind(this));
-};
+};;
+
 
 HappyEdit.prototype.onClickResetBashing = function (e) {
   e.preventDefault();
@@ -68885,12 +69112,14 @@ HappyEdit.prototype.onClickResetBashing = function (e) {
     "system": system,
     "position": position
   }, this.handleSubmitResponse.bind(this));
-};
+};;
+
 
 HappyEdit.prototype.fetchData = function (tab) {
   this.loadingIndicator.show();
   $.getJSON(this.tabs[tab], {}, this.onFetch.bind(this)).done(this.onAjaxDone.bind(this));
-};
+};;
+
 
 HappyEdit.prototype.displayErrors = function (errors) {
   // only display the first error
@@ -68899,7 +69128,8 @@ HappyEdit.prototype.displayErrors = function (errors) {
   if (error) {
     fadeBox(error.message, true);
   }
-}; //
+};;
+ //
 // Item tabs general
 //
 
@@ -68941,11 +69171,13 @@ HappyEdit.prototype.initItemsCommon = function (cfg) {
   this.happyeditContent = $('#happyeditcomponent .content');
   this.titlebar = $('#happyeditcomponent .tabs');
   Object.keys(this.tabs).forEach(initTab => this.titlebar.on('click', '.' + initTab, this.onClickTab.bind(this)));
-};
+};;
+
 
 HappyEdit.prototype.refreshItems = function (htmlItems) {
   this.happyeditContent.html(htmlItems);
-};
+};;
+
 
 HappyEdit.prototype.handleSubmitResponse = function (response) {
   let data = JSON.parse(response);
@@ -68959,7 +69191,8 @@ HappyEdit.prototype.handleSubmitResponse = function (response) {
   } else {
     this.displayErrors(data.errors);
   }
-}; //
+};;
+ //
 // Tab: player
 //
 
@@ -68975,7 +69208,8 @@ HappyEdit.prototype.onClickSavePlayerData = function (e) {
 HappyEdit.prototype.triggerNews = function (e) {
   e.preventDefault();
   $.post(this.urlTriggerNews, {}, this.handleSubmitResponse.bind(this));
-};
+};;
+
 
 HappyEdit.prototype.submitPlayerData = function (formData) {
   this.loadingIndicator.show();
@@ -69004,7 +69238,8 @@ HappyEdit.prototype.onClickSaveBuildingsData = function (e) {
 HappyEdit.prototype.submitBuildingsData = function (formData) {
   this.loadingIndicator.show();
   $.post(this.urlSubmitBuildings, formData, this.handleSubmitResponse.bind(this)).done(this.onAjaxDone.bind(this));
-}; //
+};;
+ //
 // Tab: Research
 //
 
@@ -69028,7 +69263,8 @@ HappyEdit.prototype.onClickSaveResearchData = function (e) {
 HappyEdit.prototype.submitResearchData = function (formData) {
   this.loadingIndicator.show();
   $.post(this.urlSubmitResearch, formData, this.handleSubmitResponse.bind(this)).done(this.onAjaxDone.bind(this));
-}; //
+};;
+ //
 // Tab: Ships
 //
 
@@ -69052,7 +69288,8 @@ HappyEdit.prototype.onClickSaveShipsData = function (e) {
 HappyEdit.prototype.submitShipsData = function (formData) {
   this.loadingIndicator.show();
   $.post(this.urlSubmitShips, formData, this.handleSubmitResponse.bind(this)).done(this.onAjaxDone.bind(this));
-}; //
+};;
+ //
 // Tab: Defenses
 //
 
@@ -69076,7 +69313,8 @@ HappyEdit.prototype.onClickSaveDefensesData = function (e) {
 HappyEdit.prototype.submitDefensesData = function (formData) {
   this.loadingIndicator.show();
   $.post(this.urlSubmitDefense, formData, this.handleSubmitResponse.bind(this)).done(this.onAjaxDone.bind(this));
-}; //
+};;
+ //
 // Tab: Wreckfield
 //
 
@@ -69095,7 +69333,8 @@ HappyEdit.prototype.onClickSaveWreckfieldData = function (e) {
       allShips: allShips
     });
   }
-};
+};;
+
 
 HappyEdit.prototype.submitWreckfieldData = function (formData) {
   this.loadingIndicator.show();
@@ -69116,7 +69355,8 @@ HappyEdit.prototype.onClickSaveRewardsData = function (e) {
 HappyEdit.prototype.submitRewardsData = function (formData) {
   this.loadingIndicator.show();
   $.post(this.urlSubmitRewards, formData, this.handleSubmitResponse.bind(this)).done(this.onAjaxDone.bind(this));
-}; //
+};;
+ //
 // Tab: Planet
 //
 
@@ -69132,7 +69372,8 @@ HappyEdit.prototype.onClickSavePlanetData = function (e) {
 HappyEdit.prototype.submitPlanetData = function (formData) {
   this.loadingIndicator.show();
   $.post(this.urlSubmitPlanet, formData, this.handleSubmitResponse.bind(this)).done(this.onAjaxDone.bind(this));
-}; //
+};;
+ //
 // Tab: Fleet
 //
 
@@ -69147,7 +69388,8 @@ HappyEdit.prototype.submitFinishFleet = function (id) {
   $.post(this.urlSubmitFleet, {
     fleetId: id
   }, this.handleSubmitResponse.bind(this)).done(this.onAjaxDone.bind(this));
-}; //
+};;
+ //
 // Tab: Event handler
 //
 
@@ -69155,7 +69397,8 @@ HappyEdit.prototype.submitFinishFleet = function (id) {
 HappyEdit.prototype.onClickRestartEventHandler = function (e) {
   e.preventDefault();
   $.post(this.urlRestartEventHandler, {}, this.handleSubmitResponse.bind(this)).done(this.onAjaxDone.bind(this));
-}; // Lifeform
+};;
+ // Lifeform
 
 
 HappyEdit.prototype.submitDiscoverData = function (e) {
@@ -69188,7 +69431,8 @@ HappyEdit.prototype.onClickSaveLifeformBuildingData = function (e) {
     let targetUrl = $(e.currentTarget).data('link');
     $.post(targetUrl, formData, this.handleSubmitResponse.bind(this)).done(this.onAjaxDone.bind(this));
   }
-};
+};;
+
 
 HappyEdit.prototype.onClickSelectResearch = function (e) {
   e.preventDefault();
@@ -69251,7 +69495,8 @@ HappyEdit.prototype.onClickSaveLifeformResearchData = function (e) {
     let targetUrl = $(e.currentTarget).data('link');
     $.post(targetUrl, formData, this.handleSubmitResponse.bind(this)).done(this.onAjaxDone.bind(this));
   }
-};
+};;
+
 
 HappyEdit.prototype.onClickSaveBuffs = function (e) {
   e.preventDefault();
@@ -69292,7 +69537,8 @@ HappyEdit.prototype.onChangeBuffTime = function (e) {
       cooldownTarget.value = e.target.value;
     }
   }
-};
+};;
+
 function LifeformResearch(cfg) {
   this.token = cfg.token || null;
   this.loca = cfg.loca;
@@ -69449,7 +69695,8 @@ LifeformResearch.prototype.onClickRestoreTree = function (e) {
   }, function () {
     that.loadingIndicator.hide();
   });
-};
+};;
+
 function LifeformSettings(cfg) {
   this.token = cfg.token || null;
   this.loca = cfg.loca;
@@ -69558,7 +69805,8 @@ LifeformSettings.prototype.submitLifeform = function (lifeformid, planetid, name
   }, function () {
     that.loadingIndicator.hide();
   });
-};
+};;
+
 function OGameLineChart(container, data) {
   this.container = container;
   this.dataPoints = data.dataPoints || [];
@@ -69593,7 +69841,8 @@ function OGameLineChart(container, data) {
   this.visibility = data.visibility || {};
 }
 
-OGameLineChart.epsilon = 0.0001;
+OGameLineChart.epsilon = 0.0001;;
+
 
 OGameLineChart.prototype.init = function () {
   let html = '<div class="og-linechart"><canvas></canvas><div class="tooltip"></div></div>';
@@ -69617,7 +69866,8 @@ OGameLineChart.prototype.handleMouseMove = function (e) {
   }
 
   this.render();
-};
+};;
+
 
 OGameLineChart.prototype.handleMouseLeave = function (e) {
   this.setHighlight(null);
@@ -69628,7 +69878,8 @@ OGameLineChart.prototype.updateHighlight = function (p) {
   let line = this.getClosestLine(p, this.lineThresholdHighlight);
   let key = line ? line.key : null;
   this.setHighlight(key);
-};
+};;
+
 
 OGameLineChart.prototype.updateTooltip = function (p) {
   let pnt = this.getClosestDataPoint(p, this.lineThresholdHighlight);
@@ -69730,7 +69981,8 @@ OGameLineChart.prototype.getClosestDataPoint = function (p, threshold) {
   }
 
   return null;
-};
+};;
+
 
 OGameLineChart.prototype.render = function () {
   this.height = $(this.canvas).outerHeight();
@@ -69862,7 +70114,8 @@ OGameLineChart.prototype.renderData = function () {
   if (this.dataKeyHighlight !== null) {
     this.renderDataPoints(this.dataKeyHighlight, this.dataPoints[this.dataKeyHighlight]);
   }
-};
+};;
+
 
 OGameLineChart.prototype.renderDataPoints = function (key, dataPoints) {
   if (!this.isDataSetVisible(key)) {
@@ -69913,7 +70166,8 @@ OGameLineChart.prototype.transformEventToCanvas = function (e) {
     x: x,
     y: y
   };
-};
+};;
+
 
 OGameLineChart.prototype.getMinY = function () {
   let value = null;
@@ -70015,7 +70269,8 @@ OGameLineChart.prototype.getLineWidth = function (key) {
   }
 
   return this.lineWidths[key] || 1;
-};
+};;
+
 
 OGameLineChart.prototype.fixDPI = function () {
   let dpi = window.devicePixelRatio;
@@ -70032,7 +70287,8 @@ OGameLineChart.prototype.fixDPI = function () {
 
   this.canvas.setAttribute('width', style.width() * dpi);
   this.canvas.setAttribute('height', style.height() * dpi);
-};
+};;
+
 
 OGameLineChart.prototype.crossProduct = function (a, b, c) {
   return (c.y - a.y) * (b.x - a.x) - (c.x - a.x) * (b.y - a.y);
@@ -70213,7 +70469,8 @@ var LazyLoader;
         $(document).trigger("allComplete");
       }
     }
-  };
+  };;
+
   $(document).ready(function () {
     $('#mainmenucomponent li.has-sub > a').on('click', function () {
       $(this).removeAttr('href');
@@ -70232,7 +70489,8 @@ var LazyLoader;
         element.siblings('li').find('ul').slideUp(50);
       }
     });
-  });
+  });;
+
 })(jQuery);
 function Marketplace(cfg) {
   this.tab = cfg.tab || '';
@@ -71602,7 +71860,8 @@ Marketplace.prototype.getDeuteriumAvailable = function () {
 Marketplace.prototype.getResourceAvailable = function (resourceType) {
   let itemOption = this.getItemOption(this.ITEM_TYPE_RESOURCE, resourceType);
   return itemOption !== undefined ? itemOption.quantity : 0;
-};
+};;
+
 function Missile(cfg) {
   this.token = cfg.token;
   this.interceptor = cfg.interceptor;
@@ -71699,7 +71958,8 @@ Missile.prototype.onDestroyMissiles = function (response) {
   } else {
     fadeBox(data.message, true);
   }
-};
+};;
+
 $(function () {
   $('.slideIn').on('click', function () {
     loadDetails($(this).data('type'));
@@ -71760,7 +72020,8 @@ function type() {
 
 function initType() {
   type();
-}
+};
+
 function OGamePaginatable(container, data) {
   this.container = container;
   this.page = data.page || 0;
@@ -71885,7 +72146,8 @@ OGamePaginatable.prototype.refresh = function () {
     }
 
     return null;
-  };
+  };;
+
 })(jQuery);
 function PercentageBar(elem) {
   this.elem = $(elem);
@@ -72063,7 +72325,8 @@ $(function () {
   });
 });
 var PercentSelector = {};
-PercentSelector.fallbackMode = false; //($.browser.msie && $.browser.version < 9);
+PercentSelector.fallbackMode = false;;
+ //($.browser.msie && $.browser.version < 9);
 //This will init a bar (calling this directly is useful for re-doing a bar's sizes in the event it's been resized).
 
 PercentSelector.initBar = function (bar) {
@@ -72123,7 +72386,8 @@ PercentSelector.initBar = function (bar) {
 
     bar.isBound = true; //to prevent multi-binding!
   }
-};
+};;
+
 
 PercentSelector.setPercent = function (bar, newPercent, animate) {
   var $bar = $(bar);
@@ -72172,7 +72436,8 @@ PercentSelector.setPercentFromPageX = function (bar, page_x, animate) {
   if (percent < 10) percent = 10;
   percent = Math.round(percent);
   PercentSelector.setPercent(bar, percent, animate);
-};
+};;
+
 
 PercentSelector.createOverlay = function (bar) {
   var $bar = $(bar);
@@ -72217,7 +72482,8 @@ PercentSelector.createOverlay = function (bar) {
     ctx.closePath();
     ctx.stroke();
   }
-};
+};;
+
 
 PercentSelector.handlers = {};
 /**** touch handling ****/
@@ -72298,7 +72564,8 @@ PercentSelector.handlers.mouseMove = function (event) {
     var bar = PercentSelector.fallbackMode ? event.currentTarget : event.originalEvent.target.parentNode;
     PercentSelector.setPercentFromPageX(bar, event.pageX);
   }
-};
+};;
+
 $(function () {
   jQuery('.planetlink').hover(function () {
     jQuery(this).parent().addClass('hoverPlanet');
@@ -72310,8 +72577,10 @@ $(function () {
   }, function () {
     jQuery(this).parent().removeClass('hoverMoon');
   });
-});
-var buildUrl;
+});;
+
+var buildUrl;;
+
 
 function sendBuildRequest(url, ev, showSlotWarning) {
   if (ev != undefined) {
@@ -72358,23 +72627,28 @@ function sendBuildRequest(url, ev, showSlotWarning) {
   }
 
   return false;
-}
+};
+
 
 function fastBuild() {
   location.href = buildUrl;
   return false;
-}
+};
+
 
 function cancelResearch(id, listId, question) {
   errorBoxDecision(LOCA_ALL_NETWORK_ATTENTION, "" + question + "", LOCA_ALL_YES, LOCA_ALL_NO, function () {
     window.location.replace(urlResearchCancel + "&techid=" + id + "&listid=" + listId);
   });
-}
+};
+
 var metalTicker = undefined;
 var crystalTicker = undefined;
-var deuteriumTicker = undefined;
+var deuteriumTicker = undefined;;
+
 var populationTicker = undefined;
-var foodTicker = undefined;
+var foodTicker = undefined;;
+
 
 function ResourceTicker() {
   this.timerObj = undefined;
@@ -72644,7 +72918,8 @@ function getAjaxResourcebox(callback) {
   /*$.get(ajaxResourceboxURI, function (data) {
     reloadResources(data, callback);
   }, "text");*/
-}
+};
+
 window.addEventListener('load', () => {
   const formElement = document.getElementById('resourcesettingsForm');
 
@@ -72722,7 +72997,8 @@ window.addEventListener('load', () => {
     });
     return false;
   });
-});
+});;
+
 ogame.retrieveEmail = {
   send: function () {
     $.ajax({
@@ -72757,7 +73033,8 @@ $(document).ready(function () {
   $('#retrieve').off().on('click', function () {
     ogame.retrieveEmail.send();
   });
-});
+});;
+
 function Rewarding(cfg) {
   this.tab = cfg.tab || '';
   this.token = cfg.token;
@@ -72974,7 +73251,8 @@ Rewarding.prototype.handleSubmitRewardResponse = function (response) {
   } else {
     this.displayErrors(data.errors);
   }
-};
+};;
+
 function OGameSortable(container, data) {
   this.container = container;
   this.state = (data.state || 'active') === 'active' ? 'active' : 'inactive';
@@ -73097,7 +73375,8 @@ OGameSortable.prototype.update = function (data) {
     }
 
     return null;
-  };
+  };;
+
 })(jQuery);
 
 function loadFleetTemplates() {
@@ -73328,10 +73607,12 @@ function initStandardFleet() {
     $('.combatunits').val($(this).attr('rel')).trigger('change');
     $(this).parents('.ui-dialog').find('.ui-dialog-titlebar-close').click();
   });
-}
+};
+
 
 // Cache for templates to avoid reloading
-var cachedTemplates = null;
+var cachedTemplates = null;;
+
 
 // Populate the templates table with given templates array
 function populateTemplatesTable(templates) {
@@ -73417,7 +73698,8 @@ function populateTemplatesTable(templates) {
   });
 
   $(".list tr:even").addClass("alt");
-}
+};
+
 
 // Load templates and populate the standard fleets dropdown
 function loadStandardFleetDropdown() {
@@ -73467,7 +73749,8 @@ function setShipsFleet(ships, tempName, techId) {
   for (var techID in ships) {
     $("#ship" + techID).val(ships[techID]);
   }
-}
+};
+
 $(function () {
   $('.techdetail').on('click', function () {
     loadDetails($(this).data('techid'));
@@ -73475,7 +73758,8 @@ $(function () {
   $('#detail').on('click', '.close_details', function () {
     $('#detail').hide();
   });
-});
+});;
+
 $(function () {
   var sheet = function () {
     var style = document.createElement("style"); // WebKit hack
@@ -73798,7 +74082,8 @@ TechnologyDetails.prototype.stopSlideDown = function () {
 TechnologyDetails.prototype.setMaximumBuildableAmount = function () {
   var $buildAmount = $('#technologydetails #build_amount');
   $buildAmount.val($buildAmount.attr('max'));
-};
+};;
+
 
 // Buddy system and ignore player handlers
 // NOTE: The sendBuddyRequestLink handler is now defined in the blade templates
@@ -73931,7 +74216,13 @@ var Echo=(function(r){"use strict";class c{constructor(){this.notificationCreate
         return;
     }
 
-    window.Echo = new Echo({
+    const EchoConstructor = window.Echo?.default ?? window.Echo;
+
+    if (typeof EchoConstructor !== 'function') {
+        return;
+    }
+
+    window.Echo = new EchoConstructor({
         broadcaster: 'reverb',
         key: reverbAppKey,
         wsHost: reverbHost,
