@@ -377,7 +377,7 @@ class PlanetServiceFactory
 
             // System is full, move to next system
             $system++;
-            if ($system > UniverseConstants::MAX_SYSTEM_COUNT) {
+            if ($system > $this->settings->numberOfSystems()) {
                 // Galaxy is full, move to next galaxy
                 $system = UniverseConstants::MIN_SYSTEM;
                 $galaxy++;

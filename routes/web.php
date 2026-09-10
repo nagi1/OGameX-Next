@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use OGame\Http\Controllers\Admin\ActivityLogsController;
+use OGame\Http\Controllers\Admin\CronTasksController;
 use OGame\Http\Controllers\Admin\DeveloperShortcutsController;
 use OGame\Http\Controllers\Admin\FleetTimingController;
 use OGame\Http\Controllers\Admin\ModulesController;
@@ -282,6 +284,13 @@ Route::middleware(['auth', 'globalgame', 'locale', 'admin'])->group(function () 
     // Modules
     Route::get('/admin/modules', [ModulesController::class, 'index'])->name('admin.modules.index');
     Route::post('/admin/modules/toggle', [ModulesController::class, 'toggle'])->name('admin.modules.toggle');
+
+    // Activity logs (constructions, fleets, research)
+    Route::get('/admin/activity-logs', [ActivityLogsController::class, 'index'])->name('admin.activitylogs.index');
+
+    // Cron / scheduled task management
+    Route::get('/admin/cron-tasks', [CronTasksController::class, 'index'])->name('admin.crontasks.index');
+    Route::post('/admin/cron-tasks/run', [CronTasksController::class, 'run'])->name('admin.crontasks.run');
 
     // Server administration (multi-account detection, bans)
     Route::get('/admin/server-administration', [ServerAdministrationController::class, 'index'])->name('admin.server-administration.index');

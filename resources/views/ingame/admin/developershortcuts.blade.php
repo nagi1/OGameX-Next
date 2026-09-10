@@ -124,7 +124,7 @@
                                             <div>
                                                 <label for="system">{{ __('t_ingame.admin.dev_system') }}</label>
                                                 <input type="text" id="system" pattern="^[-+0-9,.kmb]+$" class="textInput w50 textCenter textBeefy"
-                                                       value="{{ $currentPlanet->getPlanetCoordinates()->system }}" min="1" max="499" name="system">
+                                                       value="{{ $currentPlanet->getPlanetCoordinates()->system }}" min="1" max="{{ $settings->numberOfSystems() }}" name="system">
                                             </div>
                                             <div>
                                                 <label for="position">{{ __('t_ingame.admin.dev_position') }}</label>
@@ -167,7 +167,7 @@
                                             <div>
                                                 <label for="system">{{ __('t_ingame.admin.dev_system') }}</label>
                                                 <input type="text" id="system" pattern="^[-+0-9,.kmb]+$" class="textInput w50 textCenter textBeefy"
-                                                       value="{{ $currentPlanet->getPlanetCoordinates()->system }}" min="1" max="499" name="system">
+                                                       value="{{ $currentPlanet->getPlanetCoordinates()->system }}" min="1" max="{{ $settings->numberOfSystems() }}" name="system">
                                             </div>
                                             <div>
                                                 <label for="position">{{ __('t_ingame.admin.dev_position') }}</label>
@@ -218,7 +218,7 @@
                                             <div>
                                                 <label for="system">{{ __('t_ingame.admin.dev_system') }}</label>
                                                 <input type="text" id="system" pattern="^[-+0-9,.kmb]+$" class="textInput w50 textCenter textBeefy"
-                                                       value="{{ $currentPlanet->getPlanetCoordinates()->system }}" min="1" max="499" name="system">
+                                                       value="{{ $currentPlanet->getPlanetCoordinates()->system }}" min="1" max="{{ $settings->numberOfSystems() }}" name="system">
                                             </div>
                                             <div>
                                                 <label for="position">{{ __('t_ingame.admin.dev_position') }} (1-16)</label>
@@ -269,7 +269,7 @@
                                             <div>
                                                 <label for="dm_system">{{ __('t_ingame.admin.dev_system') }}</label>
                                                 <input type="text" id="dm_system" pattern="^[0-9]+$" class="textInput w50 textCenter textBeefy"
-                                                       value="{{ $currentPlanet->getPlanetCoordinates()->system }}" min="1" max="499" name="system">
+                                                       value="{{ $currentPlanet->getPlanetCoordinates()->system }}" min="1" max="{{ $settings->numberOfSystems() }}" name="system">
                                             </div>
                                             <div>
                                                 <label for="dm_position">{{ __('t_ingame.admin.dev_position') }}</label>
