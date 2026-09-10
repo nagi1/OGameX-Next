@@ -94,6 +94,26 @@ class FleetArrivalQueueConfigTest extends TestCase
         }
     }
 
+    public function testLockContentionRetryBudgetCoversLockTtl(): void
+    {
+        $job = new ProcessFleetArrival(0);
+        $retryBudget = $job->tries * (FleetMissionService::DESTINATION_LOCK_WAIT + ProcessFleetArrival::LOCK_RETRY_DELAY);
+
+        $this->assertGreaterThanOrEqual(
+            FleetMissionService::DESTINATION_LOCK_TTL,
+            $retryBudget,
+            "Lock contention retry budget ({$retryBudget}s) must cover the destination lock TTL."
+        );
+    }
+
+    public function testPoisonJobFailsBeforeExhaustingContentionBudget(): void
+    {
+        $job = new ProcessFleetArrival(0);
+
+        $this->assertLessThan($job->tries, $job->maxExceptions);
+        $this->assertGreaterThanOrEqual(2, $job->maxExceptions);
+    }
+
     public function testJobAllowsMultipleLockContentionRetries(): void
     {
         // Simultaneous arrivals at one destination contend for the lock; the job

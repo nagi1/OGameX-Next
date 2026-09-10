@@ -14,10 +14,21 @@ class ProcessFleetArrival implements ShouldQueue
     use Queueable;
 
     /**
-     * Allow several lock-contention retries while a large battle holds the
-     * destination lock (release delay is 30s; see handle()).
+     * Seconds to wait before retrying after the destination lock was busy.
+     */
+    public const LOCK_RETRY_DELAY = 30;
+
+    /**
+     * Lock-contention retry budget. A released job counts as an attempt, so the
+     * retry window must cover the longest valid destination lock.
      */
     public int $tries = 20;
+
+    /**
+     * Lock contention is expected; repeated processing exceptions are not.
+     * Keep poison missions from consuming the full contention retry budget.
+     */
+    public int $maxExceptions = 3;
 
     /**
      * Must be >= the destination Cache::lock TTL (600s) so a long battle cannot
@@ -39,7 +50,7 @@ class ProcessFleetArrival implements ShouldQueue
             // Another worker is already processing this destination (e.g. a large battle).
             // Release back to the queue so this job is retried once the lock is free.
             Log::warning('Fleet destination lock busy, re-queuing job', ['mission_id' => $this->missionId]);
-            $this->release(30);
+            $this->release(self::LOCK_RETRY_DELAY);
         }
     }
 

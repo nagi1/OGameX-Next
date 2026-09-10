@@ -72,6 +72,11 @@ class FleetMissionService
     public const DESTINATION_LOCK_TTL = 600;
 
     /**
+     * Seconds to wait for a destination lock before the queue job is released.
+     */
+    public const DESTINATION_LOCK_WAIT = 10;
+
+    /**
      * The queue model where this class should get its data from.
      *
      * @var FleetMission
@@ -753,7 +758,7 @@ class FleetMissionService
 
         // Lock TTL must stay >= ProcessFleetArrival::$timeout so a long battle cannot
         // outlive the lock and let another worker observe uncommitted writes.
-        Cache::lock($lockKey, self::DESTINATION_LOCK_TTL)->block(10, function () use ($mission, $lockKey) {
+        Cache::lock($lockKey, self::DESTINATION_LOCK_TTL)->block(self::DESTINATION_LOCK_WAIT, function () use ($mission, $lockKey) {
             DB::transaction(function () use ($mission, $lockKey) {
                 $currentTime = (int) Date::now()->timestamp;
 
