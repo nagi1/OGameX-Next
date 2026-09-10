@@ -15,6 +15,7 @@ use OGame\Models\{
 };
 use OGame\Services\BuildingQueueService;
 use OGame\Services\CharacterClassService;
+use OGame\Services\ModulePlayerActionService;
 use OGame\Services\ObjectService;
 use OGame\Services\PlayerService;
 use OGame\Services\SettingsService;
@@ -25,10 +26,10 @@ class ResourcesController extends AbstractBuildingsController
     /**
      * ResearchController constructor.
      */
-    public function __construct(BuildingQueueService $queue)
+    public function __construct(BuildingQueueService $queue, ModulePlayerActionService $modulePlayerActionService)
     {
         $this->route_view_index = 'resources.index';
-        parent::__construct($queue);
+        parent::__construct($queue, $modulePlayerActionService);
     }
 
     /**

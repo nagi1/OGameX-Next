@@ -10,6 +10,7 @@ use OGame\Services\BuildingQueueService;
 use OGame\Services\DarkMatterService;
 use OGame\Services\FleetMissionService;
 use OGame\Services\PlanetMoveService;
+use OGame\Services\PlayerGameStateService;
 use OGame\Services\PlayerService;
 use OGame\Services\ResearchQueueService;
 use OGame\Services\SettingsService;
@@ -34,31 +35,14 @@ class GlobalGame
                 return $next($request);
             }
 
-            // Load current player and make it available as a request singleton via PlayerService.
-            $player = resolve(PlayerService::class, ['player_id' => $user->id]);
+            $currentPlanetId = $request->query('cp');
+            $player = resolve(PlayerGameStateService::class)->advance(
+                $user->id,
+                $currentPlanetId === null || $currentPlanetId === '' ? null : (int) $currentPlanetId,
+            );
 
             /** @var PlayerService $player */
             app()->instance(PlayerService::class, $player);
-
-            // Check if current planet change querystring parameter exists, if so, change current planet.
-            if (!empty($request->query('cp'))) {
-                $player->setCurrentPlanetId((int)$request->query('cp'));
-            }
-
-            // Update player.
-            $player->update();
-
-            // Update current planet of player.
-            // TODO: due to how planet update locking works, in the "load player" call above
-            // the player object and all of its planets are loaded for the first time. Then here
-            // in the update call we retrieve the current planet again to ensure we have the latest data.
-            // This update mechanism could be improved by calling it directly in the place when the player and
-            // planet objects are loaded for the first time. This would save one select call to the database.
-            // So it's not a big deal, but it's a small performance improvement that could be done.
-            $player->planets->current()->update();
-
-            // Update all fleet missions of player that are associated with any of the player's planets.
-            $player->updateFleetMissions();
 
             // Process any due planet moves.
             $planetMoveService = resolve(PlanetMoveService::class);
