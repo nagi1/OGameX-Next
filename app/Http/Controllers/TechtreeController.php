@@ -80,6 +80,9 @@ class TechtreeController extends OGameController
         } elseif ($tab === 3) {
             return view('ingame.techtree.technology')->with([
                 'object' => $object,
+                'technology_categories' => $this->getTechnologyCategories(
+                    $player->planets->current()
+                ),
             ]);
         } elseif ($tab === 4) {
             return view('ingame.techtree.applications')->with([
@@ -405,6 +408,124 @@ class TechtreeController extends OGameController
             'astrophysics_table' => $astrophysics_table,
             'current_level' => $current_level,
         ]);
+    }
+
+    /**
+     * Returns all game objects grouped by their technology category.
+     *
+     * @param PlanetService $planet
+     * @return array<string, array<int, array{
+     *     object: GameObject,
+     *     requirements: array<int, array{
+     *         object: GameObject,
+     *         current_level: int,
+     *         required_level: int,
+     *         fulfilled: bool
+     *     }>
+     * }>>
+     */
+    private function getTechnologyCategories(PlanetService $planet): array
+    {
+        $defenseObjects = ObjectService::getDefenseObjects();
+        $rocketObjects = array_values(array_filter(
+            $defenseObjects,
+            static fn ($object): bool => str_ends_with($object->machine_name, '_missile')
+        ));
+        $defenseObjects = array_values(array_filter(
+            $defenseObjects,
+            static fn ($object): bool => !str_ends_with($object->machine_name, '_missile')
+        ));
+
+        return [
+            't_ingame.techtree.category_construction' => $this->getTechnologyObjects(
+                [
+                    ...ObjectService::getBuildingObjects(),
+                    ...ObjectService::getStationObjects(),
+                ],
+                $planet
+            ),
+            't_ingame.techtree.category_research' => $this->getTechnologyObjects(
+                ObjectService::getResearchObjects(),
+                $planet
+            ),
+            't_ingame.techtree.category_ships' => $this->getTechnologyObjects(
+                ObjectService::getShipObjects(),
+                $planet
+            ),
+            't_ingame.techtree.category_defense' => $this->getTechnologyObjects(
+                $defenseObjects,
+                $planet
+            ),
+            't_ingame.techtree.category_rockets' => $this->getTechnologyObjects(
+                $rocketObjects,
+                $planet
+            ),
+        ];
+    }
+
+    /**
+     * Builds the technology overview data for the given objects.
+     *
+     * @param array<GameObject> $objects
+     * @param PlanetService $planet
+     * @return array<int, array{
+     *     object: GameObject,
+     *     requirements: array<int, array{
+     *         object: GameObject,
+     *         current_level: int,
+     *         required_level: int,
+     *         fulfilled: bool
+     *     }>
+     * }>
+     */
+    private function getTechnologyObjects(array $objects, PlanetService $planet): array
+    {
+        $technology_objects = [];
+
+        foreach ($objects as $object) {
+            $requirements = [];
+
+            foreach ($object->requirements as $requirement) {
+                $requirement_object = ObjectService::getObjectByMachineName(
+                    $requirement->object_machine_name
+                );
+
+                $current_level = $this->getTechnologyObjectLevel(
+                    $requirement_object,
+                    $planet
+                );
+
+                $requirements[] = [
+                    'object' => $requirement_object,
+                    'current_level' => $current_level,
+                    'required_level' => $requirement->level,
+                    'fulfilled' => $current_level >= $requirement->level,
+                ];
+            }
+
+            $technology_objects[] = [
+                'object' => $object,
+                'requirements' => $requirements,
+            ];
+        }
+
+        return $technology_objects;
+    }
+
+    /**
+     * Returns the current level of a building or research object.
+     */
+    private function getTechnologyObjectLevel(
+        GameObject $object,
+        PlanetService $planet
+    ): int {
+        if ($object->type === GameObjectType::Research) {
+            return $planet->getPlayer()?->getResearchLevel(
+                $object->machine_name
+            ) ?? 0;
+        }
+
+        return $planet->getObjectLevel($object->machine_name);
     }
 
     /**

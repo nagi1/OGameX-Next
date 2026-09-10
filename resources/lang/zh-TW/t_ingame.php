@@ -802,6 +802,12 @@ return [
         'is_requirement_for'                    => '是...的需求',
         'level'                                 => '等級',
 
+        'category_construction'      => '建築',
+        'category_research'          => '研究',
+        'category_ships'             => '艦船',
+        'category_defense'           => '防禦',
+        'category_rockets'           => '火箭',
+
         'col_level'                             => '等級',
         'col_difference'                        => '差異',
         'col_diff_per_level'                    => '差異/等級',

@@ -141,4 +141,69 @@ class TechtreeTest extends IsolatedAccountTestCase
             }
         }
     }
+
+    /**
+     * Verify that technology overview popups return HTTP 200 for all objects.
+     */
+    public function testTechtreeTechnologyPopupsHttp200(): void
+    {
+        foreach (ObjectService::getObjects() as $object) {
+            $response = $this->get(
+                'ajax/techtree?tab=3&object_id=' . $object->id
+            );
+
+            try {
+                $response->assertStatus(200);
+            } catch (AssertionFailedError $e) {
+                $this->fail(
+                    'AJAX technology page for "' .
+                    $object->title .
+                    '" does not return HTTP 200.'
+                );
+            }
+        }
+    }
+
+    /**
+     * Verify that technology requirements show their current status.
+     */
+    public function testTechtreeTechnologyPopupRequirementStatus(): void
+    {
+        $object = ObjectService::getObjectByMachineName('metal_mine');
+
+        $this->planetSetObjectLevel('deuterium_synthesizer', 0);
+        $this->playerSetResearchLevel('energy_technology', 0);
+
+        $response = $this->get(
+            'ajax/techtree?tab=3&object_id=' . $object->id
+        );
+
+        $response->assertStatus(200);
+        $response->assertSee(__('t_ingame.techtree.category_rockets'));
+        $response->assertSee('<li class="fusionPlant">', false);
+        $content = $response->getContent();
+        if ($content === false) {
+            $this->fail('AJAX technology page returned no content.');
+        }
+        $this->assertMatchesRegularExpression(
+            '/<li class="fusionPlant">.*?Deuterium Synthesizer\s*\(\s*Level\s*0\/5\s*\).*?Energy Technology\s*\(\s*Level\s*0\/3\s*\)/s',
+            $content
+        );
+
+        $this->planetSetObjectLevel('deuterium_synthesizer', 5);
+        $this->playerSetResearchLevel('energy_technology', 3);
+
+        $response = $this->get(
+            'ajax/techtree?tab=3&object_id=' . $object->id
+        );
+
+        $content = $response->getContent();
+        if ($content === false) {
+            $this->fail('AJAX technology page returned no content.');
+        }
+        $this->assertMatchesRegularExpression(
+            '/<li class="fusionPlant">.*?<span class="fulfilled">.*?Deuterium Synthesizer\s*\(\s*Level\s*5\s*\).*?<span class="fulfilled">.*?Energy Technology\s*\(\s*Level\s*3\s*\)/s',
+            $content
+        );
+    }
 }

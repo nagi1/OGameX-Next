@@ -971,6 +971,12 @@ return [
         'is_requirement_for'                    => 'is a requirement for',
         'level'                                 => 'Level',
 
+        'category_construction'      => 'Construction',
+        'category_research'          => 'Research',
+        'category_ships'             => 'Ships',
+        'category_defense'           => 'Defense',
+        'category_rockets'           => 'Rockets',
+
         // Shared table columns
         'col_level'                             => 'Level',
         'col_difference'                        => 'Difference',

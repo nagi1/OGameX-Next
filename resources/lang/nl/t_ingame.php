@@ -911,6 +911,12 @@ return [
         'is_requirement_for'                    => 'is een vereiste voor',
         'level'                                 => 'Niveau',
 
+        'category_construction'      => 'Constructie',
+        'category_research'          => 'Onderzoek',
+        'category_ships'             => 'Schepen',
+        'category_defense'           => 'Verdediging',
+        'category_rockets'           => 'Raketten',
+
         // Gedeelde tabelkolommen
         'col_level'                             => 'Niveau',
         'col_difference'                        => 'Verschil',
