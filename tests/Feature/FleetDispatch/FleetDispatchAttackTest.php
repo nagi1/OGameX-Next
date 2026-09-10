@@ -267,6 +267,72 @@ class FleetDispatchAttackTest extends FleetDispatchTestCase
     }
 
     /**
+     * A battle report keeps the attacking moon's identity after the moon is destroyed.
+     *
+     * The report is created while the moon exists, then rendered after the body has been
+     * permanently removed. This protects the origin snapshot used by old combat reports.
+     */
+    public function testBattleReportPreservesDestroyedAttackingMoonOrigin(): void
+    {
+        $this->basicSetup();
+
+        $attackingMoonName = $this->moonService->getPlanetName();
+        $attackingMoonCoordinates = $this->moonService->getPlanetCoordinates()->asString();
+        $attackingMoonId = $this->moonService->getPlanetId();
+
+        $this->moonService->addUnit('light_fighter', 5);
+        $this->moonService->addResources(new Resources(0, 0, 1_000_000, 0));
+        $this->moonService->save();
+        $this->moonService->reloadPlanet();
+        $this->switchToMoon();
+
+        $foreignPlanet = $this->createForeignPlanet();
+        $foreignPlanet->addUnit('rocket_launcher', 1);
+        $foreignPlanet->save();
+
+        $units = new UnitCollection();
+        $units->addUnit(ObjectService::getUnitObjectByMachineName('light_fighter'), 5);
+        $this->dispatchFleet(
+            $foreignPlanet->getPlanetCoordinates(),
+            $units,
+            new Resources(0, 0, 0, 0),
+            PlanetType::Planet
+        );
+
+        $fleetMissionService = resolve(FleetMissionService::class, ['player' => $this->moonService->getPlayer()]);
+        $mission = FleetMission::where('planet_id_from', $attackingMoonId)
+            ->where('mission_type', 1)
+            ->whereNull('parent_id')
+            ->latest('id')
+            ->firstOrFail();
+
+        $duration = $fleetMissionService->calculateFleetMissionDuration(
+            $this->moonService,
+            $foreignPlanet->getPlanetCoordinates(),
+            $units,
+            resolve(AttackMission::class)
+        );
+        $this->travel($duration + 1)->seconds();
+        $this->get('/overview')->assertStatus(200);
+
+        $message = Message::where('user_id', $this->planetPlayer()->getId())
+            ->where('key', 'battle_report')
+            ->where('created_at', '>=', $mission->created_at)
+            ->latest('id')
+            ->first();
+        $this->assertNotNull($message, 'Attacker should receive a battle report.');
+
+        $this->switchToFirstPlanet();
+        $this->moonService->permanentlyDeletePlanet();
+        $this->assertFalse(Planet::whereKey($attackingMoonId)->exists());
+
+        $response = $this->get('/ajax/messages/' . $message->id);
+        $response->assertOk();
+        $response->assertSee($attackingMoonName);
+        $response->assertSee($attackingMoonCoordinates);
+    }
+
+    /**
      * Regression test: if the attacker's surviving free cargo space is below the theoretical
      * loot, only the carried amount should be stolen and the remainder must stay on the target.
      */

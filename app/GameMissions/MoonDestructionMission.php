@@ -476,7 +476,7 @@ class MoonDestructionMission extends GameMission
             ],
         ];
 
-        $report->attacker = [
+        $report->attacker = array_merge([
             'player_id' => $attackPlayer->getId(),
             'resource_loss' => $battleResult->attackerResourceLoss->sum(),
             'units' => $battleResult->attackerUnitsStart->toArray(),
@@ -484,7 +484,7 @@ class MoonDestructionMission extends GameMission
             'shielding_technology' => $battleResult->attackerShieldLevel,
             'armor_technology' => $battleResult->attackerArmorLevel,
             'planet_id' => $battleResult->attackerPlanetId,
-        ];
+        ], $this->buildAttackerPlanetSnapshot($battleResult->attackerPlanetId));
 
         $report->defender = [
             'player_id' => $defenderPlayer->getId(),

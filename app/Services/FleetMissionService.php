@@ -25,6 +25,7 @@ use OGame\Models\Enums\PlanetType;
 use OGame\Models\FleetMission;
 use OGame\Models\Planet\Coordinate;
 use OGame\Models\Resources;
+use OGame\Support\FleetMissionPlanetFormatter;
 use Throwable;
 
 /**
@@ -936,12 +937,12 @@ class FleetMissionService
 
         // Send message to sender (Fleet Command)
         $this->messageService->sendSystemMessageToPlayer($origin_player, AcsDefendArrivalSender::class, [
-            'to' => '[planet]' . $mission->planet_id_to . '[/planet]',
+            'to' => FleetMissionPlanetFormatter::tag($mission, 'to'),
         ]);
 
         // Send message to host/target (Space Monitoring)
         $this->messageService->sendSystemMessageToPlayer($target_player, AcsDefendArrivalHost::class, [
-            'to' => '[planet]' . $mission->planet_id_to . '[/planet]',
+            'to' => FleetMissionPlanetFormatter::tag($mission, 'to'),
         ]);
     }
 
