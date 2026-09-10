@@ -125,6 +125,18 @@
                             </div>
                         </div>
 
+                        <p class="box_highlight textCenter no_buddies">@lang('Player deletion settings.')</p>
+
+                        <div class="group bborder" style="display: block;">
+                            <div class="fieldwrapper">
+                                <label class="styled textBeefy">@lang('Inactive days before player deletion:')</label>
+                                <div class="thefield">
+                                    <input type="text" pattern="[0-9]*" class="textInput w50 textCenter textBeefy" value="{{ $inactive_player_deletion_days }}" size="6" name="inactive_player_deletion_days" id="inactive_player_deletion_days">
+                                </div>
+                                <div class="smallFont">@lang('Number of days of inactivity after which a player is permanently deleted and their planets are removed. Set to 0 to disable. When enabled, values below 30 are raised to a minimum of 30 days.')</div>
+                            </div>
+                        </div>
+
                         <p class="box_highlight textCenter no_buddies">{{ __('t_ingame.admin.section_dm_regen') }}</p>
 
                         <div class="group bborder" style="display: block;">
@@ -494,6 +506,25 @@
         <script language="javascript">
             initBBCodes();
             initOverlays();
+
+            document.form.addEventListener('submit', function (event) {
+                var field = document.getElementById('inactive_player_deletion_days');
+                if (!field || parseInt(field.value, 10) <= 0) {
+                    return;
+                }
+
+                event.preventDefault();
+
+                errorBoxDecision(
+                    LocalizationStrings.attention,
+                    'Enabling inactive player deletion will PERMANENTLY delete inactive accounts and remove their planets. This action cannot be undone. Are you sure you want to continue?',
+                    LocalizationStrings.yes,
+                    LocalizationStrings.no,
+                    function () {
+                        document.form.submit();
+                    }
+                );
+            });
         </script>
     </div>
 

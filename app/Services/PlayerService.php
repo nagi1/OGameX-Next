@@ -9,8 +9,10 @@ use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use OGame\Events\Game\ResearchCompleted;
+use OGame\Factories\PlanetServiceFactory;
 use OGame\GameObjects\Models\Calculations\CalculationType;
 use OGame\Models\BuildingQueue;
+use OGame\Models\Enums\PlanetType;
 use OGame\Models\FleetMission;
 use OGame\Models\Highscore;
 use OGame\Models\Message;
@@ -887,49 +889,95 @@ class PlayerService
     /**
      * Delete the player and all associated records from the database.
      *
-     * @return void
+     * @param bool $permanentlyDeletePlanets Whether to remove planets through the permanent
+     * deletion lifecycle. This safely recalls foreign fleets before freeing the galaxy slots.
      */
-    public function delete(): void
+    public function delete(bool $permanentlyDeletePlanets = false): void
     {
-        // Include destroyed planets still awaiting purge so related rows are cleaned up.
+        DB::transaction(function () use ($permanentlyDeletePlanets): void {
+            // Clear the current-planet FK before removing any bodies.
+            $this->user->planet_current = null;
+            $this->user->save();
+
+            if ($permanentlyDeletePlanets) {
+                $this->deleteOwnFleetMissions();
+                $this->permanentlyDeletePlanets();
+            } else {
+                $this->rawDeletePlanets();
+            }
+
+            Message::where('user_id', $this->getId())->delete();
+            UserTech::where('user_id', $this->getId())->delete();
+
+            // Sessions have no database FK to users.
+            DB::table('sessions')->where('user_id', $this->getId())->delete();
+
+            // Highscores cascade with the user. Battle and espionage reports deliberately
+            // retain their history through ON DELETE SET NULL foreign keys.
+            $this->user->delete();
+        });
+    }
+
+    /**
+     * Permanently remove every primary planet, including its moon, via the planet lifecycle.
+     *
+     * This is used for automatic inactive-account deletion. Unlike a raw cascade, it recalls
+     * fleets owned by other players that are still travelling to the account's planets.
+     */
+    private function permanentlyDeletePlanets(): void
+    {
+        $planetIds = Planet::query()
+            ->where('user_id', $this->getId())
+            ->where('planet_type', PlanetType::Planet->value)
+            ->pluck('id');
+
+        $planetServiceFactory = resolve(PlanetServiceFactory::class);
+
+        foreach ($planetIds as $planetId) {
+            $planet = $planetServiceFactory->make((int) $planetId, true);
+
+            if ($planet !== null) {
+                $planet->permanentlyDeletePlanet();
+            }
+        }
+    }
+
+    /**
+     * Hard-delete all planets and their dependent queues and fleet missions.
+     */
+    private function rawDeletePlanets(): void
+    {
         $planetIds = Planet::where('user_id', $this->getId())->pluck('id');
 
         foreach ($planetIds as $planetId) {
-            // Delete all queue items.
             ResearchQueue::where('planet_id', $planetId)->delete();
             BuildingQueue::where('planet_id', $planetId)->delete();
             UnitQueue::where('planet_id', $planetId)->delete();
-            // Delete all fleet missions.
-            // Get all fleet missions for this planet then loop through them and delete them.
-            // TODO: this might be a performance bottleneck if there are many missions. Consider using a bulk delete compatible
-            // with the foreign key constraints instead.
-            $missions = FleetMission::where('planet_id_from', $planetId)->orWhere('planet_id_to', $planetId)->get();
+
+            $missions = FleetMission::where('planet_id_from', $planetId)
+                ->orWhere('planet_id_to', $planetId)
+                ->get();
+
             foreach ($missions as $mission) {
-                // Delete any that have this mission as their parent.
                 FleetMission::where('parent_id', $mission->id)->delete();
-                // Delete mission itself.
                 $mission->delete();
             }
         }
 
-        // Delete all messages.
-        Message::where('user_id', $this->getId())->delete();
-
-        // Delete highscore record.
-        Highscore::where('player_id', $this->getId())->delete();
-
-        // Delete tech record.
-        UserTech::where('user_id', $this->getId())->delete();
-
-        // Clear planet_current reference before deleting planets (FK constraint).
-        $this->user->planet_current = null;
-        $this->user->save();
-
-        // Delete all planets.
         Planet::where('user_id', $this->getId())->delete();
+    }
 
-        // Delete the actual user.
-        $this->user->delete();
+    /**
+     * Remove the player's missions and their child return missions before account deletion.
+     */
+    private function deleteOwnFleetMissions(): void
+    {
+        $missions = FleetMission::where('user_id', $this->getId())->get();
+
+        foreach ($missions as $mission) {
+            FleetMission::where('parent_id', $mission->id)->delete();
+            $mission->delete();
+        }
     }
 
     /**
