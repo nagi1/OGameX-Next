@@ -7,6 +7,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use OGame\Enums\FleetMissionStatus;
 use OGame\Factories\GameMissionFactory;
 use OGame\Factories\PlanetServiceFactory;
 use OGame\GameConstants\UniverseConstants;
@@ -25,6 +26,7 @@ use OGame\Services\CharacterClassService;
 use OGame\Services\CoordinateDistanceCalculator;
 use OGame\Services\FleetMissionService;
 use OGame\Services\FleetUnionService;
+use OGame\Services\IncomingFleetIntelService;
 use OGame\Services\MessageService;
 use OGame\Services\ObjectService;
 use OGame\Services\PlanetService;
@@ -127,7 +129,7 @@ class FleetController extends OGameController
      * @param PlanetServiceFactory $planetServiceFactory
      * @return View|RedirectResponse
      */
-    public function movement(PlayerService $player, FleetMissionService $fleetMissionService, PlanetServiceFactory $planetServiceFactory): View|RedirectResponse
+    public function movement(PlayerService $player, FleetMissionService $fleetMissionService, PlanetServiceFactory $planetServiceFactory, IncomingFleetIntelService $incomingFleetIntelService): View|RedirectResponse
     {
         // Get all the fleet movements for the current user.
         $friendlyMissionRows = $fleetMissionService->getActiveFleetMissionsForCurrentPlayer();
@@ -136,6 +138,8 @@ class FleetController extends OGameController
         if ($friendlyMissionRows->isEmpty()) {
             return redirect()->route('fleet.index');
         }
+
+        $viewerIntelLevel = $incomingFleetIntelService->resolveLevel($player);
 
         $fleet_events = [];
         foreach ($friendlyMissionRows as $row) {
@@ -220,6 +224,16 @@ class FleetController extends OGameController
             // Planet relocation ship transfers (deployment to self) cannot be recalled.
             $isRelocationTransfer = ($row->mission_type === 4 && $row->planet_id_from === $row->planet_id_to);
             $eventRowViewModel->is_recallable = ($row->mission_type !== 10 && !$isRelocationTransfer);
+
+            if ($row->user_id !== $player->getId()) {
+                if ($mission::getFriendlyStatus() === FleetMissionStatus::Hostile) {
+                    $incomingFleetIntelService->apply($eventRowViewModel, $viewerIntelLevel);
+                } else {
+                    $incomingFleetIntelService->applyFriendly($eventRowViewModel, $player->hasCommander());
+                }
+
+                $eventRowViewModel->is_recallable = false;
+            }
 
             // Track union membership for ACS Attack grouping
             $eventRowViewModel->union_id = $row->union_id;

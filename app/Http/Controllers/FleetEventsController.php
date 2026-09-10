@@ -14,6 +14,7 @@ use OGame\Models\Planet\Coordinate;
 use OGame\Models\Resources;
 use OGame\Models\User;
 use OGame\Services\FleetMissionService;
+use OGame\Services\IncomingFleetIntelService;
 use OGame\Services\PlayerService;
 use OGame\ViewModels\FleetEventRowViewModel;
 
@@ -199,10 +200,11 @@ class FleetEventsController extends OGameController
      * @param PlanetServiceFactory $planetServiceFactory
      * @return View
      */
-    public function fetchEventList(PlayerService $player, FleetMissionService $fleetMissionService, PlanetServiceFactory $planetServiceFactory): View
+    public function fetchEventList(PlayerService $player, FleetMissionService $fleetMissionService, PlanetServiceFactory $planetServiceFactory, IncomingFleetIntelService $incomingFleetIntelService): View
     {
         // Get all the fleet movements for the current user.
         $friendlyMissionRows = $fleetMissionService->getActiveFleetMissionsForCurrentPlayer();
+        $viewerIntelLevel = $incomingFleetIntelService->resolveLevel($player);
 
         $fleet_events = [];
         foreach ($friendlyMissionRows as $row) {
@@ -275,6 +277,12 @@ class FleetEventsController extends OGameController
             $friendlyStatus = $this->determineFriendly($row, $player);
             $eventRowViewModel->friendly_status = $friendlyStatus->value;
 
+            if ($friendlyStatus === FleetMissionStatus::Hostile) {
+                $incomingFleetIntelService->apply($eventRowViewModel, $viewerIntelLevel);
+            } elseif ($friendlyStatus === FleetMissionStatus::Neutral) {
+                $incomingFleetIntelService->applyFriendly($eventRowViewModel, $player->hasCommander());
+            }
+
             $eventRowViewModel->is_recallable = false;
             if ($friendlyStatus === FleetMissionStatus::Friendly) {
                 // Missile attacks (mission type 10) cannot be recalled.
@@ -345,6 +353,9 @@ class FleetEventsController extends OGameController
                 $waitEndRow->fleet_unit_count = $eventRowViewModel->fleet_unit_count;
                 $waitEndRow->fleet_units = $eventRowViewModel->fleet_units;
                 $waitEndRow->resources = $eventRowViewModel->resources;
+                $waitEndRow->fleet_intel_level = $eventRowViewModel->fleet_intel_level;
+                $waitEndRow->show_shipment = $eventRowViewModel->show_shipment;
+                $waitEndRow->friendly_status = $eventRowViewModel->friendly_status;
                 $fleet_events[] = $waitEndRow;
             }
 
@@ -381,6 +392,9 @@ class FleetEventsController extends OGameController
                 $returnTripRow->fleet_unit_count = $eventRowViewModel->fleet_unit_count;
                 $returnTripRow->fleet_units = $eventRowViewModel->fleet_units;
                 $returnTripRow->resources = new Resources(0, 0, 0, 0);
+                $returnTripRow->fleet_intel_level = $eventRowViewModel->fleet_intel_level;
+                $returnTripRow->show_shipment = $eventRowViewModel->show_shipment;
+                $returnTripRow->friendly_status = $eventRowViewModel->friendly_status;
                 $returnTripRow->destination_player_id = $eventRowViewModel->destination_player_id;
                 $returnTripRow->destination_player_name = $eventRowViewModel->destination_player_name;
                 $fleet_events[] = $returnTripRow;
@@ -555,6 +569,15 @@ class FleetEventsController extends OGameController
 
             // Attach all member fleets (own + foreign) for expanded view
             $summaryRow->union_member_fleets = $allMemberViewModels;
+
+            // ACS participants can inspect all fleets in their own union. A defender who is
+            // not a participant sees the hostile union through the espionage intel tiers.
+            $viewerIsUnionParticipant = collect($allMemberViewModels)
+                ->contains(fn (FleetEventRowViewModel $fleet): bool => $fleet->user_id === $player->getId());
+
+            if (!$viewerIsUnionParticipant && $summaryRow->friendly_status === FleetMissionStatus::Hostile->value) {
+                $incomingFleetIntelService->applyToUnionSummary($summaryRow, $viewerIntelLevel, $player->getId());
+            }
 
             $nonUnionEvents[] = $summaryRow;
         }
