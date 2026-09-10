@@ -1,3 +1,5 @@
+OGameX Next is not intended to replace the original OGameX repository. It is a faster-moving future version of the same project. When our work and the original project cross paths, we want improvements to flow back into OGameX where they belong.
+
 <div align="center">
 
 🌟 **If you find this project useful, please consider giving it a star!** 🌟
