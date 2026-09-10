@@ -168,13 +168,6 @@ class ExpeditionDiscovererCombatReductionTest extends FleetDispatchTestCase
 
         $actualRatio = $collectorCombatRate > 0 ? $discovererCombatRate / $collectorCombatRate : 0;
 
-        // Output debug info
-        echo "\n";
-        echo "Discoverer combat encounters: {$discovererCombatCount}/{$totalIterations} (" . round($discovererCombatRate * 100, 1) . "%)\n";
-        echo "Collector combat encounters: {$collectorCombatCount}/{$totalIterations} (" . round($collectorCombatRate * 100, 1) . "%)\n";
-        echo "Combat rate ratio (Discoverer/Collector): " . round($actualRatio, 3) . " (expected: ~{$expectedRatio})\n";
-        echo "Note: 50% weight reduction translates to ~33% probability reduction\n";
-
         // Assert that Discoverer has significantly fewer combat encounters
         $this->assertLessThan(
             $collectorCombatCount,
@@ -270,13 +263,6 @@ class ExpeditionDiscovererCombatReductionTest extends FleetDispatchTestCase
         $resourceRate = $outcomes['resources'] / $totalIterations;
         $shipRate = $outcomes['ships'] / $totalIterations;
         $nothingRate = $outcomes['nothing'] / $totalIterations;
-
-        echo "\n";
-        echo "Outcome distribution for Discoverer:\n";
-        echo "  Combat: {$outcomes['combat']} (" . round($combatRate * 100, 2) . "%)\n";
-        echo "  Resources: {$outcomes['resources']} (" . round($resourceRate * 100, 2) . "%)\n";
-        echo "  Ships: {$outcomes['ships']} (" . round($shipRate * 100, 2) . "%)\n";
-        echo "  Nothing: {$outcomes['nothing']} (" . round($nothingRate * 100, 2) . "%)\n";
 
         // Combat should be less than any individual non-combat outcome
         $this->assertLessThan(

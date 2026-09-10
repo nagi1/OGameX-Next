@@ -81,11 +81,6 @@ class FleetDispatchLargeResourcesTest extends FleetDispatchTestCase
         $crystalOnPlanet = $this->planetService->crystal()->get();
         $deuteriumOnPlanet = $this->planetService->deuterium()->get();
 
-        echo PHP_EOL . 'Planet resources:' . PHP_EOL;
-        echo 'Metal: ' . $metalOnPlanet . PHP_EOL;
-        echo 'Crystal: ' . $crystalOnPlanet . PHP_EOL;
-        echo 'Deuterium: ' . $deuteriumOnPlanet . PHP_EOL;
-
         // Check that hasResources returns true for exactly the amount we have
         $resources = new Resources(75000000, 75000000, 75000000, 0);
         $hasResources = $this->planetService->hasResources($resources);

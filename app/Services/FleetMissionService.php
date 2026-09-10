@@ -859,16 +859,20 @@ class FleetMissionService
             ->orderBy('time_arrival')
             ->orderBy('time_arrival_ms')
             ->orderBy('id')
-            ->limit(max(1, $limit))
-            ->get();
+            ->cursor();
 
         $processedDestinations = 0;
         $handledKeys = [];
+        $destinationLimit = max(1, $limit);
 
         foreach ($missions as $mission) {
             $lockKey = $this->getMissionDestinationLockKey($mission);
             if (isset($handledKeys[$lockKey])) {
                 continue;
+            }
+
+            if (count($handledKeys) >= $destinationLimit) {
+                break;
             }
 
             $handledKeys[$lockKey] = true;
