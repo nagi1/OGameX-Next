@@ -66302,7 +66302,7 @@ FleetDispatcher.prototype.validateMissions = function () {
 };
 
 FleetDispatcher.prototype.refreshMissions = function () {
-  $('#missions>li>a.selected').removeClass('selected'); //select expedition if no mission is selected and if it is the only one available
+  $('#missions>li>a.selected').removeClass('selected');
 
   if (this.isOnlyMissionAvailable(this.fleetHelper.MISSION_EXPEDITION)) {
     if (this.hasMission() === false) {
@@ -66310,6 +66310,10 @@ FleetDispatcher.prototype.refreshMissions = function () {
     }
 
     this.updateExpeditionTime();
+  }
+
+  if (this.isOnlyMissionAvailable(this.fleetHelper.MISSION_RECYCLE) && this.hasMission() === false) {
+    this.selectMission(this.fleetHelper.MISSION_RECYCLE);
   } // refresh mission buttons
 
 
