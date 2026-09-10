@@ -20,6 +20,7 @@ RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --profile minimal
 COPY composer.json composer.lock /var/www/
 COPY . /var/www/
 COPY docker/entrypoint.sh /usr/local/bin/entrypoint
-RUN dos2unix /usr/local/bin/entrypoint && chmod +x /usr/local/bin/entrypoint
+RUN dos2unix /usr/local/bin/entrypoint \
+    && chmod +x /usr/local/bin/entrypoint
 
 CMD ["/usr/local/bin/entrypoint"]

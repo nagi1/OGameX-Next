@@ -25,6 +25,7 @@ services:
     <<: *service
     environment:
       CONTAINER_ROLE: app
+      REVERB_HOST: ogamex-reverb
       <<: *host-services
     ports:
       - "${PHP_FPM_PORT:-9000}:9000"
@@ -42,6 +43,7 @@ services:
     profiles: ["queue"]
     environment:
       CONTAINER_ROLE: queue
+      REVERB_HOST: ogamex-reverb
       QUEUE_WORKERS_LIGHT: ${QUEUE_WORKERS_LIGHT:-2}
       QUEUE_WORKERS_HEAVY: ${QUEUE_WORKERS_HEAVY:-3}
       <<: *host-services

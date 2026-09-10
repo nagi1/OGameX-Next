@@ -2,10 +2,13 @@
 
 Use this setup when Lerd, Laravel Herd, Valet, or another local environment already provides your web server, MySQL, or Redis. It starts only OGameX PHP services in Docker and does not bind ports 80, 443, 3306, or 8080.
 
-Use the repository root `.env` for configuration. Set `LOCAL_DB_DATABASE` there
-to a dedicated development or test database, and add `LOCAL_DB_HOST`,
-`LOCAL_DB_PORT`, `LOCAL_DB_USERNAME`, or `LOCAL_DB_PASSWORD` only when your host
-services differ from the defaults.
+There is only one environment file to maintain: the repository root `.env`.
+Compose reads its `LOCAL_DB_*` and `LOCAL_REDIS_*` values directly and injects
+the resolved `DB_*` and `REDIS_*` values into every container. This includes
+commands launched with `docker exec`, such as the parallel test suite. Set
+`LOCAL_DB_DATABASE` to a dedicated development or test database, and add
+`LOCAL_DB_HOST`, `LOCAL_DB_PORT`, `LOCAL_DB_USERNAME`, or `LOCAL_DB_PASSWORD`
+only when your host services differ from the defaults.
 
 Build the image once from the repository root, then start the app and scheduler:
 
