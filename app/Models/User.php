@@ -16,8 +16,10 @@ use Illuminate\Notifications\DatabaseNotification;
 use Illuminate\Notifications\DatabaseNotificationCollection;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Mail;
 use Lab404\Impersonate\Models\Impersonate;
 use OGame\Enums\CharacterClass;
+use OGame\Mail\ResetPasswordMail;
 use OGame\Models\Concerns\HasModuleData;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
@@ -314,6 +316,19 @@ class User extends Authenticatable
     public function canBeImpersonated(): bool
     {
         return true;
+    }
+
+    /**
+     * Send the password reset notification using the OGameX branded email.
+     */
+    public function sendPasswordResetNotification($token): void
+    {
+        $resetUrl = url(route('password.reset', [
+            'token' => $token,
+            'email' => $this->email,
+        ], false));
+
+        Mail::to($this->email)->send(new ResetPasswordMail($resetUrl, $this->username));
     }
 
     /**
