@@ -5,13 +5,19 @@
         "dev": "vite",
         "build": "vite build",
         "prod": "npm run build",
-        "production": "npm run build"
+        "production": "npm run build",
+        "ingame:validate": "npm run asset:validate",
+        "ingame:group": "npm run asset:group",
+        "asset:group": "node scripts/group-javascript.js",
+        "asset:validate": "node scripts/validate-chunks.js"
     },
     "devDependencies": {
+        "acorn": "^8.18.0",
         "axios": "^1.20.0",
         "laravel-echo": "^2.4.0",
         "laravel-vite-plugin": "^3.2",
         "pusher-js": "^8.6.0",
+        "terser": "^5.51.2",
         "vite": "^8.2"
     }
 }

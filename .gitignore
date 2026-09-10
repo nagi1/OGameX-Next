@@ -19,3 +19,6 @@ yarn-error.log
 rust/*/target
 # Compiled rust apps (rust modules are recompiled during container start)
 storage/rust-libs/*.so
+
+# Local output from in-game JavaScript tooling.
+tmp/
