@@ -117,6 +117,12 @@ class ParallelTestSchemaServiceProvider extends ServiceProvider
             DB::purge($connection);
 
             Artisan::call('migrate', ['--database' => $connection, '--force' => true]);
+            foreach (File::directories(base_path('Modules')) as $modulePath) {
+                $migrationPath = $modulePath . '/database/migrations';
+                if (File::isDirectory($migrationPath)) {
+                    Artisan::call('migrate', ['--database' => $connection, '--path' => $migrationPath, '--realpath' => true, '--force' => true]);
+                }
+            }
             DB::statement('CREATE TABLE '.self::META_TABLE.' (version CHAR(64) NOT NULL PRIMARY KEY)');
             DB::table(self::META_TABLE)->insert(['version' => $version]);
         } finally {
@@ -232,6 +238,12 @@ class ParallelTestSchemaServiceProvider extends ServiceProvider
     private function migrationVersion(): string
     {
         $migrations = File::allFiles(database_path('migrations'));
+        foreach (File::directories(base_path('Modules')) as $modulePath) {
+            $migrationPath = $modulePath . '/database/migrations';
+            if (File::isDirectory($migrationPath)) {
+                $migrations = array_merge($migrations, File::allFiles($migrationPath));
+            }
+        }
         $contents = [];
 
         foreach ($migrations as $migration) {
