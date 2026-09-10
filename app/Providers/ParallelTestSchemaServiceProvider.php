@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\ParallelTesting;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
+use RuntimeException;
 use Throwable;
 
 /**
@@ -25,7 +26,7 @@ class ParallelTestSchemaServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
-        if (! $this->app->runningInConsole() || ! isset($_ENV['LARAVEL_PARALLEL_TESTING'])) {
+        if (!$this->app->runningInConsole() || !isset($_ENV['LARAVEL_PARALLEL_TESTING'])) {
             return;
         }
 
@@ -64,7 +65,7 @@ class ParallelTestSchemaServiceProvider extends ServiceProvider
         $acquired = $lockDatabase->selectOne('SELECT GET_LOCK(?, 120) AS acquired', ["ogamex-parallel-worker:{$worker}"]);
 
         if ((int) array_values((array) $acquired)[0] !== 1) {
-            throw new \RuntimeException("Could not acquire the parallel test worker lock for {$worker}.");
+            throw new RuntimeException("Could not acquire the parallel test worker lock for {$worker}.");
         }
 
         try {
@@ -101,7 +102,7 @@ class ParallelTestSchemaServiceProvider extends ServiceProvider
         $acquired = $lockDatabase->selectOne('SELECT GET_LOCK(?, 120) AS acquired', [$lock]);
 
         if ((int) array_values((array) $acquired)[0] !== 1) {
-            throw new \RuntimeException('Could not acquire the parallel test schema lock.');
+            throw new RuntimeException('Could not acquire the parallel test schema lock.');
         }
 
         try {
@@ -138,9 +139,15 @@ class ParallelTestSchemaServiceProvider extends ServiceProvider
         $definitions = [];
 
         foreach ($tableNames as $name) {
-            $definitions[$name] = array_values((array) DB::selectOne(
+            $definition = array_values((array) DB::selectOne(
                 "SHOW CREATE TABLE {$sourceName}.".$this->quoteIdentifier($name)
             ))[1];
+
+            if (!is_string($definition)) {
+                throw new RuntimeException("Could not read the table definition for {$name}.");
+            }
+
+            $definitions[$name] = $definition;
         }
 
         $foreignKeys = [];
@@ -153,6 +160,11 @@ class ParallelTestSchemaServiceProvider extends ServiceProvider
                 $definition,
                 1
             );
+
+            if (!is_string($definition)) {
+                throw new RuntimeException("Could not transform the table definition for {$name}.");
+            }
+
             $definition = preg_replace_callback(
                 '/,\n  (CONSTRAINT `[^`]+` FOREIGN KEY .*?)(?=(?:,\n  CONSTRAINT |\n\) ENGINE))/s',
                 function (array $matches) use (&$foreignKeys, $name, $targetName): string {
@@ -169,6 +181,10 @@ class ParallelTestSchemaServiceProvider extends ServiceProvider
                 },
                 $definition
             );
+
+            if (!is_string($definition)) {
+                throw new RuntimeException("Could not transform the table definition for {$name}.");
+            }
 
             DB::statement($definition);
         }
@@ -196,6 +212,9 @@ class ParallelTestSchemaServiceProvider extends ServiceProvider
         }
     }
 
+    /**
+     * @phpstan-impure
+     */
     private function hasVersion(string $database, string $version): bool
     {
         try {
