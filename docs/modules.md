@@ -256,5 +256,7 @@ git -C Modules/AI pull origin main        # update whenever you like
 - The host treats it exactly like an in-tree module: `ogamex:module:install` migrates it,
   runs its hooks, refreshes the caches and restarts the workers
   (see `docs/module-lifecycle.md`).
-- CI composes the pair at checkout time — the test workflows clone the module into
-  `Modules/AI` before running, using `vars.AI_MODULE_REPOSITORY` when set.
+- CI stays host-only: the host workflows run the host's own testsuites
+  (`--testsuite=Feature,Unit`), so the host suite, its shard timings and its CI never
+  depend on separately-maintained module code. Running a module's suite is the
+  module's own concern — the module ships a `scripts/ogamex` runner for its checkout.

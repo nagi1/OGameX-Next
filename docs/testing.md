@@ -32,6 +32,12 @@ The single exception is **coverage**, which stays serial: Laravel's parallel run
 cannot merge PCOV coverage across workers here (ParaTest fails with missing worker
 coverage files). See *Coverage* below.
 
+CI runs the host's own testsuites only (`--testsuite=Feature,Unit`), sharded against
+the host-owned timings in `tests/.pest/shards.json`. Modules are separately
+maintained repositories with their own pipeline, so the host workflow never
+clones, discovers or shards module tests. `composer tests` still runs host and
+module tests together locally.
+
 ## How parallel workers stay isolated
 
 `OGame\Providers\ParallelTestSchemaServiceProvider` (registered in

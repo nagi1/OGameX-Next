@@ -24,13 +24,6 @@ jobs:
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-      # The suite runs the AI module's commands and lanes, and Modules/AI lives in its
-      # own repository.
-      - name: Install the AI module
-        env:
-          AI_MODULE_REPOSITORY: ${{ vars.AI_MODULE_REPOSITORY || 'https://github.com/nagi1/ogamex-module-ai.git' }}
-        run: git clone --depth 1 "$AI_MODULE_REPOSITORY" Modules/AI
-
       - name: Setup Docker Compose
         uses: ./.github/actions/docker-compose-setup
 
@@ -44,11 +37,12 @@ jobs:
           echo "Duration: ${DURATION_MINUTES} minutes"
           echo ""
 
-          # Build the PHPUnit command
+          # Build the Pest command. Host testsuites only: modules are separately
+          # maintained repositories and never run in this workflow.
           if [ -n "$TEST_FILTER" ]; then
-            PHPUNIT_CMD="docker compose exec -T ogamex-app php vendor/bin/phpunit --filter $TEST_FILTER --stop-on-failure"
+            PHPUNIT_CMD="docker compose exec -T ogamex-app ./vendor/bin/pest --testsuite=Feature,Unit --filter $TEST_FILTER --stop-on-failure"
           else
-            PHPUNIT_CMD="docker compose exec -T ogamex-app php vendor/bin/phpunit --stop-on-failure"
+            PHPUNIT_CMD="docker compose exec -T ogamex-app ./vendor/bin/pest --testsuite=Feature,Unit --stop-on-failure"
           fi
 
           echo "Command: $PHPUNIT_CMD"
