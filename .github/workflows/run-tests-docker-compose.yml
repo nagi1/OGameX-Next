@@ -42,12 +42,17 @@ jobs:
     name: Tests (shard ${{ matrix.shard }}/3)
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          # Modules/AI is a submodule; the suite exercises its commands and hooks.
-          submodules: recursive
 
       - name: Check for no external remote sources
         uses: ./.github/actions/check-remote-sources
+
+      # Modules/AI lives in its own repository, and the suite exercises its commands,
+      # hooks and Horizon lanes. Set vars.AI_MODULE_REPOSITORY to compose another
+      # module checkout.
+      - name: Install the AI module
+        env:
+          AI_MODULE_REPOSITORY: ${{ vars.AI_MODULE_REPOSITORY || 'https://github.com/nagi1/ogamex-module-ai.git' }}
+        run: git clone --depth 1 "$AI_MODULE_REPOSITORY" Modules/AI
 
       - name: Setup Docker Compose
         uses: ./.github/actions/docker-compose-setup
@@ -67,8 +72,6 @@ jobs:
         options: --privileged
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          submodules: recursive
 
       - name: Check for no external remote sources
         uses: ./.github/actions/check-remote-sources

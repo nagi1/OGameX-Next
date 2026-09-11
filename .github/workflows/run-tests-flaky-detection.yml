@@ -23,8 +23,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          submodules: recursive
+
+      # The suite runs the AI module's commands and lanes, and Modules/AI lives in its
+      # own repository.
+      - name: Install the AI module
+        env:
+          AI_MODULE_REPOSITORY: ${{ vars.AI_MODULE_REPOSITORY || 'https://github.com/nagi1/ogamex-module-ai.git' }}
+        run: git clone --depth 1 "$AI_MODULE_REPOSITORY" Modules/AI
 
       - name: Setup Docker Compose
         uses: ./.github/actions/docker-compose-setup

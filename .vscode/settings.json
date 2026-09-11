@@ -7,7 +7,7 @@
     "task.autoDetect": "off",
     "dotnet.autoDetect": "off",
     "php.version": "8.5",
-    "git.detectSubmodules": true,
+    "git.repositoryScanMaxDepth": 2,
     "git.openRepositoryInParentFolders": "always"
 }
 

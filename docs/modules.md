@@ -240,18 +240,21 @@ php artisan optimize:clear
 
 ## Separately-maintained modules
 
-A module can live in its own repository and still be part of this checkout. `Modules/AI`
-is one: it is registered as a Git submodule in `.gitmodules`, so Git, VS Code and CI see
-it as its own repository with its own history and its own pull requests.
+A module can live in its own repository, with its own remote and its own releases, and
+still be developed against this host. `Modules/AI` is one, and it is deliberately **not**
+a submodule: the host pins nothing, so the module checkout is entirely yours.
 
 ```bash
-git clone --recurse-submodules git@github.com:nagi1/ogamex-next.git
-git submodule update --init --recursive          # after a plain clone
-git -C Modules/AI pull origin main                # update the module
-git add Modules/AI && git commit -m "Bump the AI module"   # pin the new commit
+git clone https://github.com/nagi1/ogamex-module-ai.git Modules/AI
+git -C Modules/AI pull origin main        # update whenever you like
 ```
 
-The host never merges the module's sources into its own history: it pins one commit, and
-`ogamex:module:*` treats the module exactly like an in-tree one (see
-`docs/module-lifecycle.md`). Every workflow checks out with `submodules: recursive`, so
-the tests that exercise the module run there too.
+- `.gitignore` ignores `/Modules/AI/`, so the host never stages or tracks it and cannot
+  accidentally absorb it as an embedded repository.
+- `.vscode/settings.json` scans two levels deep for repositories, so the module appears
+  in Source Control as its own repository with its own changes, branches and remotes.
+- The host treats it exactly like an in-tree module: `ogamex:module:install` migrates it,
+  runs its hooks, refreshes the caches and restarts the workers
+  (see `docs/module-lifecycle.md`).
+- CI composes the pair at checkout time — the test workflows clone the module into
+  `Modules/AI` before running, using `vars.AI_MODULE_REPOSITORY` when set.
