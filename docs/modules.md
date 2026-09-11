@@ -237,3 +237,21 @@ composer dump-autoload
 ```bash
 php artisan optimize:clear
 ```
+
+## Separately-maintained modules
+
+A module can live in its own repository and still be part of this checkout. `Modules/AI`
+is one: it is registered as a Git submodule in `.gitmodules`, so Git, VS Code and CI see
+it as its own repository with its own history and its own pull requests.
+
+```bash
+git clone --recurse-submodules git@github.com:nagi1/ogamex-next.git
+git submodule update --init --recursive          # after a plain clone
+git -C Modules/AI pull origin main                # update the module
+git add Modules/AI && git commit -m "Bump the AI module"   # pin the new commit
+```
+
+The host never merges the module's sources into its own history: it pins one commit, and
+`ogamex:module:*` treats the module exactly like an in-tree one (see
+`docs/module-lifecycle.md`). Every workflow checks out with `submodules: recursive`, so
+the tests that exercise the module run there too.

@@ -42,6 +42,9 @@ jobs:
     name: Tests (shard ${{ matrix.shard }}/3)
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          # Modules/AI is a submodule; the suite exercises its commands and hooks.
+          submodules: recursive
 
       - name: Check for no external remote sources
         uses: ./.github/actions/check-remote-sources
@@ -64,6 +67,8 @@ jobs:
         options: --privileged
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          submodules: recursive
 
       - name: Check for no external remote sources
         uses: ./.github/actions/check-remote-sources
