@@ -83,8 +83,9 @@ class InstallModule implements ModuleHook
 - Classes are autoloaded through the module's own PSR-4 mapping, so they run even
   while the module is disabled. They run **outside the module's service provider**:
   use host services, not module container bindings.
-- `ModuleHookContext` exposes `$module`, `$dryRun`, `line(string)` and
-  `path(string $relative = '')`.
+- `ModuleHookContext` exposes `$module` and `line(string)`. Hooks never run during a
+  dry run, so there is nothing to branch on: report what you changed and what the
+  operator has to do next.
 
 ### 2. Container and supervisor hooks
 

@@ -10,10 +10,10 @@ use Throwable;
 /**
  * Resolves a module's optional lifecycle hooks by convention.
  *
- * The classes live under the module's own namespace (Modules\<Name>\Hooks\...),
- * which the merge-plugin autoloads regardless of module status, so they are
- * available before the module is enabled. A hook that exists but cannot be used
- * fails loudly, so a module author is never left wondering why it was ignored.
+ * The classes live under the module's own namespace (Modules\<Name>\Hooks\...), which the
+ * merge plugin autoloads regardless of module status, so they are available before the
+ * module is enabled. A hook that exists but cannot be used fails loudly, so a module
+ * author is never left wondering why it was ignored.
  */
 final class ModuleHooks
 {
@@ -30,24 +30,20 @@ final class ModuleHooks
     private function resolve(Module $module, string $class): ModuleHook|null
     {
         $namespace = (string) config('modules.namespace', 'Modules');
-        $fqcn = $namespace.'\\'.$module->getStudlyName().'\\Hooks\\'.$class;
+        $hookClass = $namespace.'\\'.$module->getStudlyName().'\\Hooks\\'.$class;
 
-        if (!class_exists($fqcn)) {
+        if (!class_exists($hookClass)) {
             return null;
         }
 
-        if (!is_subclass_of($fqcn, ModuleHook::class)) {
-            throw new RuntimeException("Module hook [{$fqcn}] must implement [".ModuleHook::class.'].');
-        }
-
         try {
-            $hook = app($fqcn);
+            $hook = app($hookClass);
         } catch (Throwable $exception) {
-            throw new RuntimeException("Module hook [{$fqcn}] could not be resolved: {$exception->getMessage()}", 0, $exception);
+            throw new RuntimeException("Module hook [{$hookClass}] could not be resolved: {$exception->getMessage()}", 0, $exception);
         }
 
         if (!$hook instanceof ModuleHook) {
-            throw new RuntimeException("Module hook [{$fqcn}] must implement [".ModuleHook::class.'].');
+            throw new RuntimeException("Module hook [{$hookClass}] must implement [".ModuleHook::class.'].');
         }
 
         return $hook;
