@@ -13,6 +13,7 @@ OGameX is an open-source PHP/Laravel recreation of OGame, a browser-based space 
   2. `composer run cs`
   3. `composer run stan`
   4. `composer run tests` (or `composer run tests -- --filter SpecificTest` for targeted runs)
+- **Always run tests in parallel with `--bail`.** `composer run tests`, the CI workflow, the VS Code test task and the module runner all pass `--parallel --bail`; every worker owns a cloned database. Never fall back to a serial run just to see output — narrow it with `--filter` instead. Coverage is the only serial run (Laravel's parallel runner cannot merge PCOV coverage across workers).
 - **Game accuracy matters.** OGameX faithfully recreates OGame's mechanics. Before implementing or changing any game mechanic (combat, fleet timing, resource production, building/research requirements, expeditions), verify how it works in the original game. Incorrect mechanics will not be accepted regardless of code quality.
 - **Database schema changes go through new Laravel migrations.** Never edit a migration that has already been merged; add a new migration instead.
 - **Do not run `composer update` or modify lock files** unless the task is explicitly a dependency upgrade.
@@ -127,4 +128,4 @@ resources/views/
 | `composer run cs` | PSR-12 code style (fix) |
 | `composer run cs -- --test` | PSR-12 code style (check only) |
 | `composer run stan` | Static analysis |
-| `composer run tests` | Run test suite |
+| `composer run tests` | Run test suite (parallel, fail fast) |

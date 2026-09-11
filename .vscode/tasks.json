@@ -69,7 +69,7 @@
         {
             "label": "Run Laravel Tests",
             "type": "shell",
-            "command": "docker compose exec ogamex-app php artisan test",
+            "command": "docker compose exec ogamex-app ./vendor/bin/pest --parallel --bail",
             "group": {
                 "kind": "build",
                 "isDefault": true

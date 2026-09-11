@@ -54,7 +54,7 @@ jobs:
         with:
           timeout_minutes: 10
           max_attempts: 3
-          command: docker compose exec -T ogamex-app ./vendor/bin/pest --shard=${{ matrix.shard }}/3 --parallel
+          command: docker compose exec -T ogamex-app ./vendor/bin/pest --shard=${{ matrix.shard }}/3 --parallel --bail
 
   race-condition:
     runs-on: ubuntu-latest

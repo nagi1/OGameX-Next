@@ -87,7 +87,8 @@ To run the tests locally, you can use the following command:
 $ composer run tests
 ```
 
-You are also able to apply the `--filter` parameter to run a specific class or method such as :
+Tests always run in parallel with `--bail`, and every worker process gets its own
+cloned database, so a targeted run stays fast:
 
 ```
 $ composer run tests -- --filter PlanetServiceTest
