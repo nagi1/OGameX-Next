@@ -20,6 +20,9 @@
     <env name="QUEUE_CONNECTION" value="sync"/>
     <env name="BROADCAST_CONNECTION" value="log"/>
     <env name="BCRYPT_ROUNDS" value="4"/>
+    <!-- Native prepares add a round trip per statement; emulation keeps the suite fast
+         on database links where that round trip costs tens of milliseconds. -->
+    <env name="DB_EMULATE_PREPARES" value="true"/>
   </php>
   <source>
     <include>

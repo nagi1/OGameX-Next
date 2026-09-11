@@ -4,6 +4,7 @@ namespace Tests;
 
 use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Foundation\Application;
+use Illuminate\Foundation\Bootstrap\LoadConfiguration;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use Illuminate\Support\Facades\DB;
 use OGame\Models\Planet\Coordinate;
@@ -35,6 +36,14 @@ abstract class TestCase extends BaseTestCase
     public function createApplication(): Application
     {
         $app = require __DIR__ . '/../bootstrap/app.php';
+
+        // Ignition records every query, model and log line for its error pages. That
+        // recorder costs milliseconds per query, which dwarfs the work under test (the
+        // whole suite runs roughly ten times faster without it). Error pages keep the
+        // recorders outside the test environment.
+        $app->afterBootstrapping(LoadConfiguration::class, function (Application $app): void {
+            $app['config']->set('ignition.recorders', []);
+        });
 
         $app->make(Kernel::class)->bootstrap();
 

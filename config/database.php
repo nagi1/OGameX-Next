@@ -56,6 +56,10 @@ return [
             'engine' => null,
             'options' => extension_loaded('pdo_mysql') ? array_filter([
                 (PHP_VERSION_ID >= 80500 ? Pdo\Mysql::ATTR_SSL_CA : PDO::MYSQL_ATTR_SSL_CA) => env('MYSQL_ATTR_SSL_CA'),
+                // Native prepares cost an extra round trip per statement. On a high-latency
+                // database link that is tens of milliseconds per query (and per test), so
+                // environments behind such a link opt into client-side statement emulation.
+                PDO::ATTR_EMULATE_PREPARES => filter_var(env('DB_EMULATE_PREPARES'), FILTER_VALIDATE_BOOLEAN),
             ]) : [],
         ],
 
@@ -76,6 +80,7 @@ return [
             'engine' => null,
             'options' => extension_loaded('pdo_mysql') ? array_filter([
                 (PHP_VERSION_ID >= 80500 ? Pdo\Mysql::ATTR_SSL_CA : PDO::MYSQL_ATTR_SSL_CA) => env('MYSQL_ATTR_SSL_CA'),
+                PDO::ATTR_EMULATE_PREPARES => filter_var(env('DB_EMULATE_PREPARES'), FILTER_VALIDATE_BOOLEAN),
             ]) : [],
         ],
 
