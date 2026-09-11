@@ -29,7 +29,7 @@ This module keeps its example tests with the module, not in the OGameX core
 suite. Run only its tests with:
 
 ```bash
-php artisan test --testsuite=Modules --filter=HelloWorld
+php artisan test --testsuite=Modules --filter=HelloWorld --parallel --bail
 ```
 
 ## Start a real module

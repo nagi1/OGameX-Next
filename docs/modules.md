@@ -201,7 +201,7 @@ injection. Discuss new extension points before adding them.
 Keep module tests under `Modules/MyFeature/tests`. Run the module suite with:
 
 ```bash
-php artisan test --testsuite=Modules --filter=MyFeature
+php artisan test --testsuite=Modules --filter=MyFeature --parallel --bail
 ```
 
 The `HelloWorld` test shows how to enable a module before application boot. Use
