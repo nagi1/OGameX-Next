@@ -87,7 +87,13 @@ class HorizonConfigTest extends TestCase
 
     public function testSupervisorsOnlyUseQueueNamesFromTheEnum(): void
     {
-        $known = QueueName::values();
+        // Enabled modules register their own queue names in
+        // config('queue.module_queue_names') so they can own Horizon lanes without
+        // editing the host enum; treat those as known here.
+        $known = array_values(array_unique(array_merge(
+            QueueName::values(),
+            (array) config('queue.module_queue_names', []),
+        )));
 
         foreach ($this->supervisorQueues() as $supervisor => $queues) {
             $this->assertNotEmpty($queues, "Horizon supervisor '{$supervisor}' must define at least one queue.");
@@ -282,12 +288,12 @@ class HorizonConfigTest extends TestCase
             'The Horizon dashboard must live under the admin panel URL space.'
         );
 
-        $admin = $this->createMock(User::class);
-        $admin->method('hasRole')->with('admin')->willReturn(true);
+        $admin = $this->createStub(User::class);
+        $admin->method('hasRole')->willReturn(true);
         $this->assertTrue(Gate::forUser($admin)->check('viewHorizon'));
 
-        $player = $this->createMock(User::class);
-        $player->method('hasRole')->with('admin')->willReturn(false);
+        $player = $this->createStub(User::class);
+        $player->method('hasRole')->willReturn(false);
         $this->assertFalse(Gate::forUser($player)->check('viewHorizon'));
     }
 
@@ -314,5 +320,84 @@ class HorizonConfigTest extends TestCase
             $entrypoint,
             'Horizon must not need its own container role; the queue role selects it from the driver.'
         );
+    }
+
+    public function testHorizonSnapshotIsScheduledOnlyForTheRedisDriver(): void
+    {
+        $console = file_get_contents(base_path('routes/console.php'));
+        $this->assertIsString($console);
+
+        // The dashboard graphs read these snapshots, and the snapshot command needs
+        // Horizon's Redis state, so the schedule must stay behind the driver guard.
+        $this->assertStringContainsString("Schedule::command('horizon:snapshot')->everyFiveMinutes();", $console);
+        $this->assertStringContainsString("if (config('queue.default') === 'redis')", $console);
+    }
+
+    public function testSupervisorKeepsTheHorizonMasterAliveDuringDeploys(): void
+    {
+        $supervisor = file_get_contents(base_path('docker/supervisor/horizon.conf'));
+        $this->assertIsString($supervisor);
+
+        $this->assertStringContainsString('command=php /var/www/artisan horizon', $supervisor);
+        $this->assertStringContainsString('autostart=true', $supervisor);
+        $this->assertStringContainsString('autorestart=true', $supervisor);
+        $this->assertStringContainsString('stopsignal=TERM', $supervisor);
+        $this->assertStringContainsString('user=www-data', $supervisor);
+
+        $stopWait = $this->supervisorOption($supervisor, 'stopwaitsecs');
+        $this->assertNotNull($stopWait, 'The Horizon supervisor must declare stopwaitsecs.');
+        $this->assertGreaterThanOrEqual(
+            (int) config('horizon.defaults.supervisor-fleet-arrivals-heavy.timeout'),
+            $stopWait,
+            'Stopping the container must give the master time to drain its workers instead of killing a running battle.'
+        );
+    }
+
+    public function testQueueHealthcheckRecognisesBothWorkerBackends(): void
+    {
+        $healthcheck = base_path('docker/queue-healthcheck.sh');
+        $this->assertFileExists($healthcheck);
+
+        $script = file_get_contents($healthcheck);
+        $this->assertIsString($script);
+
+        // The probe must not assume one backend: supervisord runs either the Horizon
+        // config or the generated database pool config.
+        $this->assertStringContainsString('docker/supervisor/horizon.conf', $script);
+        $this->assertStringContainsString('/tmp/queue-worker.conf', $script);
+        $this->assertStringContainsString('RUNNING', $script);
+
+        foreach (['docker-compose.yml', 'docker-compose.prod.yml'] as $compose) {
+            $contents = file_get_contents(base_path($compose));
+            $this->assertIsString($contents);
+            $this->assertStringContainsString(
+                'sh /var/www/docker/queue-healthcheck.sh',
+                $contents,
+                "{$compose} must probe the queue container so a stopped worker pool is visible."
+            );
+        }
+    }
+
+    public function testFastTerminationIsConfigurableAndGracefulByDefault(): void
+    {
+        $this->assertIsBool(
+            config('horizon.fast_termination'),
+            'fast_termination must be a boolean so Horizon reads it consistently.'
+        );
+        $this->assertFalse(
+            config('horizon.fast_termination'),
+            'Deploys must wait for in-flight fleet-arrival work unless HORIZON_FAST_TERMINATION is set.'
+        );
+    }
+
+    private function supervisorOption(string $supervisor, string $option): int|null
+    {
+        $pattern = '/^'.preg_quote($option, '/').'=(\d+)$/m';
+
+        if (preg_match($pattern, $supervisor, $matches) !== 1) {
+            return null;
+        }
+
+        return (int) $matches[1];
     }
 }

@@ -18,20 +18,6 @@ enum QueueName: string
     case Default = 'default';
 
     /**
-     * AI work lane. Deterministic module jobs (sessions, building, social and
-     * experience work) run here so AI volume cannot starve the general or fleet
-     * lanes and the pool can be scaled on its own.
-     */
-    case Ai = 'ai';
-
-    /**
-     * AI language lane. Bounded foreground language-model generation runs here
-     * with low concurrency and a longer timeout, isolated from deterministic AI
-     * work and ordinary gameplay.
-     */
-    case AiLanguage = 'ai-language';
-
-    /**
      * Light fleet-arrival lane. Transports, deployments, returns and other
      * arrivals that cannot run a large battle are processed here, so a storm of
      * battles never blocks them.

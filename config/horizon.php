@@ -19,23 +19,6 @@ use OGame\Enums\QueueName;
 $generalMemory = (int) env('HORIZON_DEFAULT_MEMORY', 128);
 $generalTimeout = (int) env('HORIZON_DEFAULT_TIMEOUT', 60);
 
-// AI work lane: deterministic, short, database-bound module jobs (AI sessions,
-// building, social and experience work). They share the general envelope but keep a
-// dedicated pool so AI volume stays isolated from general and fleet traffic.
-$aiMemory = (int) env('HORIZON_AI_MEMORY', 256);
-$aiTimeout = (int) env('HORIZON_AI_TIMEOUT', 30);
-
-// AI language lane: one bounded provider request per job. The timeout must clear the
-// module's provider timeout (ai.language.timeout_seconds, default 20s) plus margin so
-// Horizon never kills a request mid-flight, and stay below the redis retry_after in
-// config/queue.php (660s).
-$aiLanguageMemory = (int) env('HORIZON_AI_LANGUAGE_MEMORY', 256);
-$aiLanguageTimeout = (int) env('HORIZON_AI_LANGUAGE_TIMEOUT', 60);
-
-// AI work is scheduled, not latency critical, so a slower poll than the fleet lanes
-// is fine and keeps idle CPU down.
-$aiSleep = (float) env('HORIZON_AI_SLEEP', 1.0);
-
 // Fleet-arrival lanes run battles, so they share a larger memory ceiling, a longer
 // timeout and a snappier poll interval.
 //
@@ -53,17 +36,10 @@ $fleetTimeout = (int) env('HORIZON_FLEET_TIMEOUT', 630);
 $fleetSleep = (float) env('HORIZON_FLEET_SLEEP', 0.5);
 
 // Smallest workable pools, shared by the local and fallback environments: one general
-// worker, one AI work worker, one AI language worker, two light and three heavy
-// fleet-arrival workers.
+// worker, two light and three heavy fleet-arrival workers.
 $smallPools = [
     'supervisor-default' => [
         'maxProcesses' => (int) env('HORIZON_DEFAULT_MAX_PROCESSES', 1),
-    ],
-    'supervisor-ai' => [
-        'maxProcesses' => (int) env('HORIZON_AI_MAX_PROCESSES', 1),
-    ],
-    'supervisor-ai-language' => [
-        'maxProcesses' => (int) env('HORIZON_AI_LANGUAGE_MAX_PROCESSES', 1),
     ],
     'supervisor-fleet-arrivals-light' => [
         'maxProcesses' => (int) env('HORIZON_FLEET_LIGHT_MAX_PROCESSES', 2),
@@ -74,7 +50,6 @@ $smallPools = [
 ];
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Horizon Name
@@ -175,10 +150,6 @@ return [
 
     'waits' => [
         'redis:'.QueueName::Default->value => 60,
-        'redis:'.QueueName::Ai->value => 120,
-        // Language replies are delayed by design and coalesced, so a longer wait is
-        // expected before it becomes a monitoring concern.
-        'redis:'.QueueName::AiLanguage->value => 180,
         'redis:'.QueueName::FleetArrivals->value => 60,
         'redis:'.QueueName::FleetArrivalsHeavy->value => 60,
     ],
@@ -251,9 +222,13 @@ return [
     | allowing a new instance of Horizon to start while the last
     | instance will continue to terminate each of its workers.
     |
+    | The default is the graceful behaviour: a deploy that returns before its
+    | fleet-arrival workers stopped can leave a battle writing to a database the
+    | new container already owns. Set HORIZON_FAST_TERMINATION=true only when the
+    | orchestrator itself waits for the old queue container to exit.
     */
 
-    'fast_termination' => false,
+    'fast_termination' => filter_var(env('HORIZON_FAST_TERMINATION', false), FILTER_VALIDATE_BOOLEAN),
 
     /*
     |--------------------------------------------------------------------------
@@ -295,47 +270,6 @@ return [
             'memory' => $generalMemory,
             'tries' => 1,
             'timeout' => $generalTimeout,
-            'nice' => 0,
-        ],
-
-        // AI work lane. Deterministic module jobs (AI sessions, building, social and
-        // experience work) run here so AI volume cannot starve the general or fleet
-        // lanes and the pool can be scaled on its own.
-        'supervisor-ai' => [
-            'connection' => 'redis',
-            'queue' => [QueueName::Ai->value],
-            'balance' => 'auto',
-            'autoScalingStrategy' => 'time',
-            'minProcesses' => 1,
-            'maxProcesses' => 1,
-            'maxTime' => 0,
-            'maxJobs' => 0,
-            'memory' => $aiMemory,
-            // ProcessAiWork carries the module's own lease/attempt limits and the
-            // job property wins over this value.
-            'tries' => 3,
-            'timeout' => $aiTimeout,
-            'sleep' => $aiSleep,
-            'nice' => 0,
-        ],
-
-        // AI language lane. A bounded foreground language-model request runs here,
-        // isolated from deterministic AI work and ordinary gameplay. The timeout
-        // clears the module provider timeout, and the module reserves and settles the
-        // attempt once, so the lane itself makes no retry.
-        'supervisor-ai-language' => [
-            'connection' => 'redis',
-            'queue' => [QueueName::AiLanguage->value],
-            'balance' => 'auto',
-            'autoScalingStrategy' => 'time',
-            'minProcesses' => 1,
-            'maxProcesses' => 1,
-            'maxTime' => 0,
-            'maxJobs' => 0,
-            'memory' => $aiLanguageMemory,
-            'tries' => 1,
-            'timeout' => $aiLanguageTimeout,
-            'sleep' => $aiSleep,
             'nice' => 0,
         ],
 
@@ -388,8 +322,6 @@ return [
         // so the same build can be scaled without editing this file:
         //
         //   HORIZON_DEFAULT_MAX_PROCESSES       - general (default) lane
-        //   HORIZON_AI_MAX_PROCESSES            - AI work lane
-        //   HORIZON_AI_LANGUAGE_MAX_PROCESSES   - AI language lane
         //   HORIZON_FLEET_LIGHT_MAX_PROCESSES   - light fleet-arrival lane
         //   HORIZON_FLEET_HEAVY_MAX_PROCESSES   - heavy fleet-arrival lane
         //
@@ -399,12 +331,6 @@ return [
         'production' => [
             'supervisor-default' => [
                 'maxProcesses' => (int) env('HORIZON_DEFAULT_MAX_PROCESSES', 5),
-            ],
-            'supervisor-ai' => [
-                'maxProcesses' => (int) env('HORIZON_AI_MAX_PROCESSES', 4),
-            ],
-            'supervisor-ai-language' => [
-                'maxProcesses' => (int) env('HORIZON_AI_LANGUAGE_MAX_PROCESSES', 2),
             ],
             'supervisor-fleet-arrivals-light' => [
                 'maxProcesses' => (int) env('HORIZON_FLEET_LIGHT_MAX_PROCESSES', 10),
@@ -419,12 +345,6 @@ return [
         'staging' => [
             'supervisor-default' => [
                 'maxProcesses' => (int) env('HORIZON_DEFAULT_MAX_PROCESSES', 2),
-            ],
-            'supervisor-ai' => [
-                'maxProcesses' => (int) env('HORIZON_AI_MAX_PROCESSES', 2),
-            ],
-            'supervisor-ai-language' => [
-                'maxProcesses' => (int) env('HORIZON_AI_LANGUAGE_MAX_PROCESSES', 1),
             ],
             'supervisor-fleet-arrivals-light' => [
                 'maxProcesses' => (int) env('HORIZON_FLEET_LIGHT_MAX_PROCESSES', 4),
