@@ -10,7 +10,6 @@ use OGame\Http\Controllers\OGameController;
 use OGame\Http\Controllers\ShipyardController;
 use OGame\Http\Traits\ObjectAjaxTrait;
 use OGame\Services\BuildingQueueService;
-use OGame\Services\ModulePlayerActionService;
 use OGame\Services\ObjectService;
 use OGame\Services\PlanetService;
 use OGame\Services\PlayerService;
@@ -44,7 +43,7 @@ abstract class AbstractBuildingsController extends OGameController
     /**
      * AbstractBuildingsController constructor.
      */
-    public function __construct(protected BuildingQueueService $queue, protected ModulePlayerActionService $modulePlayerActionService)
+    public function __construct(protected BuildingQueueService $queue)
     {
         parent::__construct();
     }
@@ -261,16 +260,12 @@ abstract class AbstractBuildingsController extends OGameController
             ]);
         }
 
-        $result = $this->modulePlayerActionService->queueBuilding(
-            $player->getId(),
-            $player->planets->current()->getPlanetId(),
-            (int) $request->input('technologyId'),
-        );
-
-        if (!$result->successful) {
+        try {
+            $this->queue->add($player->planets->current(), (int) $request->input('technologyId'));
+        } catch (Exception $exception) {
             return response()->json([
                 'success' => false,
-                'message' => $result->reason,
+                'message' => $exception->getMessage(),
             ]);
         }
 

@@ -9,7 +9,6 @@ use Illuminate\View\View;
 use OGame\Http\Controllers\Abstracts\AbstractBuildingsController;
 use OGame\Services\BuildingQueueService;
 use OGame\Services\HalvingService;
-use OGame\Services\ModulePlayerActionService;
 use OGame\Services\PlayerService;
 use OGame\Services\SettingsService;
 use OGame\Services\WreckFieldService;
@@ -19,10 +18,10 @@ class FacilitiesController extends AbstractBuildingsController
     /**
      * ResourcesController constructor.
      */
-    public function __construct(BuildingQueueService $queue, ModulePlayerActionService $modulePlayerActionService, private WreckFieldService $wreckFieldService)
+    public function __construct(BuildingQueueService $queue, private WreckFieldService $wreckFieldService)
     {
         $this->route_view_index = 'facilities.index';
-        parent::__construct($queue, $modulePlayerActionService);
+        parent::__construct($queue);
     }
 
     /**
