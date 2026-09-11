@@ -1,20 +1,17 @@
 #!/bin/sh
 #
-# Generic loader for module-provided container configuration.
-#
-# A module opts in simply by creating a file; the host needs no per-module edit:
+# Generic loader for module-provided container configuration. A module opts in by
+# creating a file; the host needs no per-module edit:
 #
 #   Modules/<Name>/docker/supervisor/*.conf   appended to the generated supervisor
 #                                             config (database queue driver)
 #   Modules/<Name>/docker/entrypoint.d/*.sh   sourced once at container start
 #
-# Only enabled modules contribute. Enablement is read from the same status file
-# nWidart uses (modules_statuses.json, or MODULES_STATUSES_FILE when set), so
-# disabling a module removes its workers and hooks without touching host files.
-#
-# Every step is guarded: a missing, unreadable or non-writable file is reported on
-# stderr and skipped, so a broken module degrades to "no contribution" instead of
-# preventing the container from starting.
+# Only enabled modules contribute, reading the same status file nWidart uses
+# (modules_statuses.json, or MODULES_STATUSES_FILE when set), so disabling a module
+# removes its workers and hooks without touching host files. Everything is guarded: a
+# missing, unreadable or non-writable file is reported on stderr and skipped, so a
+# broken module degrades to "no contribution" instead of stopping the container.
 
 modules_root() {
     printf '%s' "${MODULES_ROOT:-/var/www/Modules}"
@@ -63,17 +60,20 @@ module_name_for_path() {
     printf '%s' "${rest%%/*}"
 }
 
-# Verify a file exists and is writable, or that it can be created in its directory.
+# Print the module owning a contribution path, but only while that module is enabled.
+module_enabled_owner() {
+    name="$(module_name_for_path "$1")"
+    [ -n "$name" ] || return 1
+    module_is_enabled "$name" || return 1
+
+    printf '%s' "$name"
+}
+
+# The target must be writable, or creatable in its directory when it does not exist yet.
 module_target_is_writable() {
-    target="$1"
+    [ -w "$1" ] && return 0
 
-    if [ -e "$target" ]; then
-        [ -w "$target" ]
-        return $?
-    fi
-
-    dir="$(dirname "$target")"
-    [ -d "$dir" ] && [ -w "$dir" ]
+    [ ! -e "$1" ] && [ -w "$(dirname "$1")" ]
 }
 
 # Append every enabled module's supervisor fragments to the given config file.
@@ -98,9 +98,7 @@ append_module_supervisor_config() {
             continue
         fi
 
-        name="$(module_name_for_path "$fragment")"
-        [ -n "$name" ] || continue
-        module_is_enabled "$name" || continue
+        name="$(module_enabled_owner "$fragment")" || continue
 
         printf '\n; --- contributed by module %s: %s ---\n' "$name" "$(basename "$fragment")" >> "$target"
         cat "$fragment" >> "$target"
@@ -120,9 +118,7 @@ run_module_entrypoint_hooks() {
             continue
         fi
 
-        name="$(module_name_for_path "$hook")"
-        [ -n "$name" ] || continue
-        module_is_enabled "$name" || continue
+        module_enabled_owner "$hook" >/dev/null || continue
 
         # shellcheck disable=SC1090
         . "$hook"

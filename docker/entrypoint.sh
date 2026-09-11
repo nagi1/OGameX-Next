@@ -21,11 +21,12 @@ fi
 # Configure Git to trust the working directory
 git config --global --add safe.directory /var/www
 
-# Load module-provided container configuration (supervisor fragments and entrypoint
-# hooks). Only enabled modules contribute; see docker/module-hooks.sh. A missing or
-# unreadable loader simply means no module contributions.
+# Module-provided container configuration (supervisor fragments and entrypoint hooks).
+# Only enabled modules contribute; a missing or unreadable loader simply means none.
+module_hooks_loaded=false
 if [ -r /var/www/docker/module-hooks.sh ]; then
     . /var/www/docker/module-hooks.sh
+    module_hooks_loaded=true
     run_module_entrypoint_hooks "$role"
 fi
 
@@ -70,7 +71,7 @@ elif [ "$role" = "queue" ]; then
 
       # Let enabled modules add their own supervisor pools, so a module can own its
       # workers without a host edit and a disabled module leaves none behind.
-      if command -v append_module_supervisor_config >/dev/null 2>&1; then
+      if [ "$module_hooks_loaded" = "true" ]; then
           append_module_supervisor_config /tmp/queue-worker.conf
       fi
 
