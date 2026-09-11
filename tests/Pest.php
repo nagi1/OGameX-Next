@@ -39,7 +39,7 @@ $parallelToken = $_SERVER['TEST_TOKEN'] ?? $_ENV['TEST_TOKEN'] ?? null;
 if (is_string($parallelToken) && $parallelToken !== '') {
     $parallelCachePath = __DIR__.'/../bootstrap/cache/parallel/'.$parallelToken;
 
-    if (! is_dir($parallelCachePath) && ! @mkdir($parallelCachePath, 0777, true) && ! is_dir($parallelCachePath)) {
+    if (!is_dir($parallelCachePath) && !@mkdir($parallelCachePath, 0777, true) && !is_dir($parallelCachePath)) {
         throw new RuntimeException("Could not create the worker cache directory [{$parallelCachePath}].");
     }
 
