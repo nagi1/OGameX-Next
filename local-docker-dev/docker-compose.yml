@@ -51,8 +51,13 @@ services:
       REVERB_SCHEME: http
       QUEUE_WORKERS_LIGHT: ${QUEUE_WORKERS_LIGHT:-2}
       QUEUE_WORKERS_HEAVY: ${QUEUE_WORKERS_HEAVY:-3}
-      QUEUE_WORKERS_AI: ${QUEUE_WORKERS_AI:-1}
       <<: *host-services
+    healthcheck:
+      test: ["CMD-SHELL", "sh /var/www/docker/queue-healthcheck.sh"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
     depends_on:
       - ogamex-app
 

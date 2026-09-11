@@ -36,8 +36,6 @@ The queue worker is opt-in:
 docker compose -f local-docker-dev/docker-compose.yml --profile queue up -d
 ```
 
-It runs the fleet-arrival pools plus a dedicated AI pool (`QUEUE_WORKERS_AI`, default 1) that drains the AI module's `ai` and `ai-language` queues.
-
 ### Laravel Horizon
 
 The queue worker can run Laravel Horizon instead of the database worker pools. Set
@@ -54,9 +52,9 @@ The dashboard is served at `/admin/horizon` and is limited to users with the
 `admin` role. Worker pools, queue names and their timeouts live in
 `config/horizon.php` and use the enum in `app/Enums/QueueName.php`. Pool sizes and
 worker limits have per-environment defaults and can be tuned from `.env` with the
-`HORIZON_*` variables listed in `.env.example` — including the AI module's `ai`
-and `ai-language` pools (`HORIZON_AI_MAX_PROCESSES`, `HORIZON_AI_LANGUAGE_MAX_PROCESSES`).
-Rebuild the image once (`docker build -f local-docker-dev/Dockerfile -t ogamex-local-docker-dev:latest .`)
+`HORIZON_*` variables listed in `.env.example`. Enabled modules may contribute
+their own Horizon lanes at runtime. Rebuild the
+image once (`docker build -f local-docker-dev/Dockerfile -t ogamex-local-docker-dev:latest .`)
 so the phpredis extension required by Horizon is installed.
 
 Keep `LOCAL_DB_DATABASE` pointed at a dedicated development or test database. This setup runs migrations when the app container starts.

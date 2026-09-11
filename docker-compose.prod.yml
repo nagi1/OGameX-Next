@@ -104,8 +104,14 @@ services:
       # uses its own pools from config/horizon.php.
       QUEUE_WORKERS_LIGHT: ${QUEUE_WORKERS_LIGHT:-2}
       QUEUE_WORKERS_HEAVY: ${QUEUE_WORKERS_HEAVY:-3}
-      # AI work and AI language worker pool (database driver only). Horizon ignores it.
-      QUEUE_WORKERS_AI: ${QUEUE_WORKERS_AI:-1}
+    healthcheck:
+      # Reports the queue container unhealthy when no worker pool or Horizon master is
+      # running, whichever backend the entrypoint picked.
+      test: ["CMD-SHELL", "sh /var/www/docker/queue-healthcheck.sh"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
     networks:
       - app-network
     depends_on:

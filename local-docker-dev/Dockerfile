@@ -12,6 +12,8 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install gd \
     && pecl install redis \
     && docker-php-ext-enable redis \
+    && pecl install pcov \
+    && docker-php-ext-enable pcov \
     && rm -rf /tmp/pear /var/lib/apt/lists/*
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer

@@ -21,6 +21,14 @@ fi
 # Configure Git to trust the working directory
 git config --global --add safe.directory /var/www
 
+# Load module-provided container configuration (supervisor fragments and entrypoint
+# hooks). Only enabled modules contribute; see docker/module-hooks.sh. A missing or
+# unreadable loader simply means no module contributions.
+if [ -r /var/www/docker/module-hooks.sh ]; then
+    . /var/www/docker/module-hooks.sh
+    run_module_entrypoint_hooks "$role"
+fi
+
 if [ "$role" = "scheduler" ]; then
     while true; do
         php /var/www/artisan schedule:run --verbose --no-interaction
@@ -55,12 +63,17 @@ elif [ "$role" = "queue" ]; then
       # QUEUE_WORKERS_HEAVY. The worker flags live in docker/supervisor/queue-worker.conf.
       workers_light=${QUEUE_WORKERS_LIGHT:-2}
       workers_heavy=${QUEUE_WORKERS_HEAVY:-3}
-      workers_ai=${QUEUE_WORKERS_AI:-1}
-      echo "Starting ${workers_light} light + ${workers_heavy} heavy fleet-arrival and ${workers_ai} AI worker(s) under supervisor..."
+      echo "Starting ${workers_light} light + ${workers_heavy} heavy fleet-arrival worker(s) under supervisor..."
       sed -e "s/{{QUEUE_WORKERS_LIGHT}}/${workers_light}/g" \
           -e "s/{{QUEUE_WORKERS_HEAVY}}/${workers_heavy}/g" \
-          -e "s/{{QUEUE_WORKERS_AI}}/${workers_ai}/g" \
           /var/www/docker/supervisor/queue-worker.conf > /tmp/queue-worker.conf
+
+      # Let enabled modules add their own supervisor pools, so a module can own its
+      # workers without a host edit and a disabled module leaves none behind.
+      if command -v append_module_supervisor_config >/dev/null 2>&1; then
+          append_module_supervisor_config /tmp/queue-worker.conf
+      fi
+
       exec supervisord -c /tmp/queue-worker.conf
 elif [ "$role" = "reverb" ]; then
     php /var/www/artisan reverb:start --host="${REVERB_SERVER_HOST:-0.0.0.0}" --port="${REVERB_SERVER_PORT:-8090}"
