@@ -184,6 +184,16 @@ $ docker compose --profile queue up -d
 
 Set `QUEUE_WORKERS_LIGHT` and `QUEUE_WORKERS_HEAVY` in `.env` to tune the pools. Recreate the queue worker after changing them.
 
+An AI lane drains the deterministic AI work queue (`ai`) and the bounded AI language queue (`ai-language`), so AI jobs never wait behind fleet arrivals. Tune it with `QUEUE_WORKERS_AI`.
+
+The same container can run [Laravel Horizon](https://laravel.com/docs/horizon) instead. Horizon adds a monitoring dashboard and manages its worker pools itself. It only supports the Redis queue backend, which the Compose stack already provides, so enabling it is a single change: set `QUEUE_CONNECTION=redis` in `.env` and bring the stack back up (Compose recreates the containers with the new value):
+
+```
+$ docker compose --profile queue up -d
+```
+
+The container detects the driver and starts Horizon instead of the database pools, and a "Queue monitoring" link appears in the admin bar. The dashboard is at `/admin/horizon` and is limited to admins. Worker pools, queue names, timeouts and memory limits are defined in `config/horizon.php` and read their queue names from `app/Enums/QueueName.php`. Pool sizes have per-environment defaults for `local`, `staging` and `production` (any other `APP_ENV` falls back to the local sizes), and every worker limit can be tuned from `.env` with the `HORIZON_*` variables listed in `.env.example` — including the AI work and AI language pools via `HORIZON_AI_MAX_PROCESSES` and `HORIZON_AI_LANGUAGE_MAX_PROCESSES`. On Redis the fleet-arrival service cannot track delayed jobs by their integer jobs-table ID, so mission updates may dispatch duplicate (still idempotent) arrival jobs.
+
 ### <a name="production"></a> b) Install for production
 For production there is a separate docker-compose file called `docker-compose.prod.yml`. This configuration contains
 several performance optimizations and security settings that are not present in the development configuration.

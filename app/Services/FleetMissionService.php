@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Queue;
 use OGame\Enums\FleetSpeedType;
+use OGame\Enums\QueueName;
 use OGame\Events\Game\FleetMissionArrived;
 use OGame\Factories\GameMissionFactory;
 use OGame\Factories\PlanetServiceFactory;
@@ -36,15 +37,6 @@ use Throwable;
  */
 class FleetMissionService
 {
-    public const ARRIVAL_QUEUE_NAME = 'fleet-arrivals';
-
-    /**
-     * Dedicated queue for arrivals whose processing can run a large fleet battle.
-     * A separate worker pool drains this lane so battles cannot occupy every worker
-     * and stall light traffic (transports, deployments) at unrelated destinations.
-     */
-    public const ARRIVAL_QUEUE_NAME_HEAVY = 'fleet-arrivals-heavy';
-
     /**
      * Outbound mission types whose arrival processing can run a large battle against
      * another player's holdings at a contested destination, routed to the heavy arrival
@@ -1128,14 +1120,14 @@ class FleetMissionService
         // ACS Defend physical-arrival jobs only send arrival messages and never run a
         // battle, so they belong to the dedicated light lane.
         if ($isHoldArrival) {
-            return self::ARRIVAL_QUEUE_NAME;
+            return QueueName::FleetArrivals->value;
         }
 
         if ($mission->parent_id === null && in_array($mission->mission_type, self::HEAVY_MISSION_TYPES, true)) {
-            return self::ARRIVAL_QUEUE_NAME_HEAVY;
+            return QueueName::FleetArrivalsHeavy->value;
         }
 
-        return self::ARRIVAL_QUEUE_NAME;
+        return QueueName::FleetArrivals->value;
     }
 
     /**

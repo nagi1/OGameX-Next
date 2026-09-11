@@ -6,6 +6,7 @@ use Illuminate\Contracts\Cache\LockTimeoutException;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Support\Facades\Log;
+use OGame\Enums\QueueName;
 use OGame\Services\FleetMissionService;
 use Throwable;
 
@@ -39,7 +40,7 @@ class ProcessFleetArrival implements ShouldQueue
 
     public function __construct(public int $missionId)
     {
-        $this->onQueue(FleetMissionService::ARRIVAL_QUEUE_NAME);
+        $this->onQueue(QueueName::FleetArrivals->value);
     }
 
     public function handle(FleetMissionService $fleetMissionService): void

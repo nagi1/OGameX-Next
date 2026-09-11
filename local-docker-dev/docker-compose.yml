@@ -39,6 +39,9 @@ services:
     depends_on:
       - ogamex-app
 
+  # Runs Laravel Horizon when QUEUE_CONNECTION=redis and the database worker pools
+  # otherwise (see docker/entrypoint.sh), so there is a single queue service to start:
+  #   docker compose -f local-docker-dev/docker-compose.yml --profile queue up -d
   ogamex-queue-worker:
     <<: *service
     profiles: ["queue"]
@@ -48,6 +51,7 @@ services:
       REVERB_SCHEME: http
       QUEUE_WORKERS_LIGHT: ${QUEUE_WORKERS_LIGHT:-2}
       QUEUE_WORKERS_HEAVY: ${QUEUE_WORKERS_HEAVY:-3}
+      QUEUE_WORKERS_AI: ${QUEUE_WORKERS_AI:-1}
       <<: *host-services
     depends_on:
       - ogamex-app

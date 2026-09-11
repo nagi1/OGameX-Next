@@ -48,3 +48,9 @@ Schedule::command(DarkMatterRegenerateCommand::class)->everyFiveMinutes()->witho
 
 // Delete players that have been inactive beyond the configured threshold (0 = disabled)
 Schedule::command(DeleteInactivePlayers::class)->daily()->withoutOverlapping();
+
+// Record Horizon metrics (used by the dashboard's workload graphs). Only meaningful
+// while the Redis queue backend, which Horizon requires, is the active connection.
+if (config('queue.default') === 'redis') {
+    Schedule::command('horizon:snapshot')->everyFiveMinutes();
+}

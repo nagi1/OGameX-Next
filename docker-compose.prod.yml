@@ -35,6 +35,9 @@ services:
       CONTAINER_ROLE: app
       SERVICE_NAME: app
       SERVICE_TAGS: dev
+      # Redis lives inside the Compose network and the container environment overrides
+      # .env, so enabling Horizon only requires QUEUE_CONNECTION=redis.
+      REDIS_HOST: ogamex-redis
     working_dir: /var/www
     healthcheck:
       test: ["CMD-SHELL", "curl -f http://localhost:9000 || [ $? -eq 56 ]"]
@@ -45,6 +48,7 @@ services:
       - app-network
     depends_on:
       - ogamex-db
+      - ogamex-redis
 
   # Nginx Service
   ogamex-webserver:
@@ -75,11 +79,14 @@ services:
       - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
     environment:
       CONTAINER_ROLE: scheduler
+      REDIS_HOST: ogamex-redis
     networks:
       - app-network
     depends_on:
       ogamex-app:
         condition: service_healthy
+      ogamex-redis:
+        condition: service_started
 
   # Queue
   ogamex-queue-worker:
@@ -92,13 +99,30 @@ services:
       - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
     environment:
       CONTAINER_ROLE: queue
+      REDIS_HOST: ogamex-redis
+      # Fleet-arrival worker pools (database driver only). Horizon ignores these and
+      # uses its own pools from config/horizon.php.
       QUEUE_WORKERS_LIGHT: ${QUEUE_WORKERS_LIGHT:-2}
       QUEUE_WORKERS_HEAVY: ${QUEUE_WORKERS_HEAVY:-3}
+      # AI work and AI language worker pool (database driver only). Horizon ignores it.
+      QUEUE_WORKERS_AI: ${QUEUE_WORKERS_AI:-1}
     networks:
       - app-network
     depends_on:
       ogamex-app:
         condition: service_healthy
+      ogamex-redis:
+        condition: service_started
+
+  # Redis, the queue backend Laravel Horizon uses. Always available so enabling Horizon
+  # only requires QUEUE_CONNECTION=redis; it is lightweight and idle while the database
+  # queue driver is in use.
+  ogamex-redis:
+    image: redis:8-alpine
+    restart: unless-stopped
+    command: redis-server --save "" --appendonly no
+    networks:
+      - app-network
 
   # Reverb WebSocket Server
   ogamex-reverb:

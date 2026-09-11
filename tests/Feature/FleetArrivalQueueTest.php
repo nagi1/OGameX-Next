@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Mockery;
 use Mockery\Expectation;
 use Mockery\MockInterface;
+use OGame\Enums\QueueName;
 use OGame\GameObjects\Models\Units\UnitCollection;
 use OGame\Jobs\ProcessFleetArrival;
 use OGame\Models\Enums\PlanetType;
@@ -101,7 +102,7 @@ class FleetArrivalQueueTest extends FleetDispatchTestCase
             $mission->parent_id = null;
 
             $this->assertSame(
-                FleetMissionService::ARRIVAL_QUEUE_NAME_HEAVY,
+                QueueName::FleetArrivalsHeavy->value,
                 $service->arrivalQueueForMission($mission),
                 "Outbound combat mission type {$type} must route to the heavy lane."
             );
@@ -115,7 +116,7 @@ class FleetArrivalQueueTest extends FleetDispatchTestCase
             $mission->parent_id = null;
 
             $this->assertSame(
-                FleetMissionService::ARRIVAL_QUEUE_NAME,
+                QueueName::FleetArrivals->value,
                 $service->arrivalQueueForMission($mission),
                 "Logistics mission type {$type} must route to the light lane."
             );
@@ -133,7 +134,7 @@ class FleetArrivalQueueTest extends FleetDispatchTestCase
         $mission->parent_id = 4242;
 
         $this->assertSame(
-            FleetMissionService::ARRIVAL_QUEUE_NAME,
+            QueueName::FleetArrivals->value,
             $service->arrivalQueueForMission($mission),
             'Return missions never run a battle and must use the light lane.'
         );
@@ -154,7 +155,7 @@ class FleetArrivalQueueTest extends FleetDispatchTestCase
 
         $queue = DB::table('jobs')->where('id', $mission->arrival_job_id)->value('queue');
         $this->assertSame(
-            FleetMissionService::ARRIVAL_QUEUE_NAME,
+            QueueName::FleetArrivals->value,
             $queue,
             'A dispatched transport must be queued on the light lane.'
         );
@@ -182,7 +183,7 @@ class FleetArrivalQueueTest extends FleetDispatchTestCase
 
         $queue = DB::table('jobs')->where('id', $mission->arrival_job_id)->value('queue');
         $this->assertSame(
-            FleetMissionService::ARRIVAL_QUEUE_NAME_HEAVY,
+            QueueName::FleetArrivalsHeavy->value,
             $queue,
             'A dispatched attack must be queued on the heavy lane.'
         );
@@ -451,7 +452,7 @@ class FleetArrivalQueueTest extends FleetDispatchTestCase
             'Hold job must be scheduled at the physical arrival time (time_arrival - time_holding).'
         );
         $this->assertSame(
-            FleetMissionService::ARRIVAL_QUEUE_NAME,
+            QueueName::FleetArrivals->value,
             DB::table('jobs')->where('id', $mission->hold_job_id)->value('queue'),
             'ACS Defend hold jobs only send arrival messages and must use the light lane.'
         );
@@ -464,7 +465,7 @@ class FleetArrivalQueueTest extends FleetDispatchTestCase
             'Arrival job must be scheduled at the mission completion time (time_arrival).'
         );
         $this->assertSame(
-            FleetMissionService::ARRIVAL_QUEUE_NAME_HEAVY,
+            QueueName::FleetArrivalsHeavy->value,
             DB::table('jobs')->where('id', $mission->arrival_job_id)->value('queue'),
             'ACS Defend completion jobs may run a battle and must use the heavy lane.'
         );

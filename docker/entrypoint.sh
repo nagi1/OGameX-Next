@@ -27,6 +27,27 @@ if [ "$role" = "scheduler" ]; then
         sleep 60
     done
 elif [ "$role" = "queue" ]; then
+      # One queue container, two possible backends, chosen from the configured queue
+      # driver so operators only ever manage a single queue service:
+      #
+      #   QUEUE_CONNECTION=redis  -> Laravel Horizon, which provisions its worker pools
+      #                              from config/horizon.php (queue names, timeouts and
+      #                              memory limits). Horizon only supports Redis.
+      #   anything else           -> the database worker pools below: a light lane for
+      #                              logistics and a heavy lane for battle-capable missions.
+      #
+      # The container environment wins over .env (Laravel's env repository is immutable),
+      # so both sources are checked.
+      queue_connection="${QUEUE_CONNECTION:-}"
+      if [ -z "$queue_connection" ]; then
+          queue_connection=$(grep -E "^QUEUE_CONNECTION=" .env | head -n1 | cut -d '=' -f2 | tr -d '[:space:]')
+      fi
+
+      if [ "$queue_connection" = "redis" ]; then
+          echo "QUEUE_CONNECTION=redis detected, starting Laravel Horizon under supervisor..."
+          exec supervisord -c /var/www/docker/supervisor/horizon.conf
+      fi
+
       # Run two worker pools under supervisor so independent planet destinations are
       # processed in parallel. The light pool is dedicated to light traffic (transports,
       # deployments, returns) so it is never blocked by battles; the heavy pool handles
@@ -34,9 +55,11 @@ elif [ "$role" = "queue" ]; then
       # QUEUE_WORKERS_HEAVY. The worker flags live in docker/supervisor/queue-worker.conf.
       workers_light=${QUEUE_WORKERS_LIGHT:-2}
       workers_heavy=${QUEUE_WORKERS_HEAVY:-3}
-      echo "Starting ${workers_light} light + ${workers_heavy} heavy fleet-arrival worker(s) under supervisor..."
+      workers_ai=${QUEUE_WORKERS_AI:-1}
+      echo "Starting ${workers_light} light + ${workers_heavy} heavy fleet-arrival and ${workers_ai} AI worker(s) under supervisor..."
       sed -e "s/{{QUEUE_WORKERS_LIGHT}}/${workers_light}/g" \
           -e "s/{{QUEUE_WORKERS_HEAVY}}/${workers_heavy}/g" \
+          -e "s/{{QUEUE_WORKERS_AI}}/${workers_ai}/g" \
           /var/www/docker/supervisor/queue-worker.conf > /tmp/queue-worker.conf
       exec supervisord -c /tmp/queue-worker.conf
 elif [ "$role" = "reverb" ]; then
